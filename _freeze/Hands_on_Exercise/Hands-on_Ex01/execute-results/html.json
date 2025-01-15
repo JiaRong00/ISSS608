@@ -1,0 +1,15 @@
+{
+  "hash": "50ac7f8936cc0098f248c5f7ddd8ec0e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Hands-on Exercise 01: A Layered Grammar of Graphics - ggplot2 methods\"\nformat:\n  html:\n    fontcolor: '#18225a'\n    code-line-numbers: true\nauthor: \"Moo Jia Rong\"\ndate-modified: \"last-modified\"\nexecute:\n  echo: true\n  eval: true\n  warning: false\n  freeze: true \n---\n\n::: {.cell}\n\n:::\n\n\n\n### 1 Overview\n\nIn this exercise, I will be exploring the basic principles and essential components of ggplot2 to plot statistical graphics based on the principle of Layered Grammar of Graphics.\n\n### 2 Getting Started\n::: {.panel-tabset}\n\n## Loading Libraries\nWe will load the tidyverse library\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(tidyverse)\n```\n:::\n\n\n\n## Importing Dataset\nIn this exercise, we will be using the exam data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nexam_data <- read_csv(\"data/Exam_data.csv\")\n```\n:::\n\n\n\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\" code-summary=\"Show the code\"}\npacman::p_load(tidyverse)\nexam_data <- read_csv(\"data/Exam_data.csv\")\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

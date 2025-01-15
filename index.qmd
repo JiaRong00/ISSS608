@@ -1,7 +1,3 @@
 ---
-title: "ISSS608"
+title: "Welcome to Jia Rong's Visual Analytics & Applications Coursework"
 ---
-
-Welcome to **ISSS608 Visual Analytics and Applications**.
-
-![](images/image1-29.jpg)

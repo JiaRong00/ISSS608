@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "About Me"
 ---
 
-I am Jia Rong. This is the course page of ISSS608 whereby I share my Hands-on Exercises.
+Hi, I am Jia Rong. This website details my journey through the ISSS608 Visual Analytics and Applications course as part of my Master of IT in Business programme at SMU.

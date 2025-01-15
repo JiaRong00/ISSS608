@@ -9,15 +9,15 @@ execute:
   freeze: true 
 ---
 
-Getting started
+### Getting started
 
-Loading tidyverse onto r environment by using the code chunk below.
+#### Loading tidyverse onto r environment by using the code chunk below.
 
 ```{r}
 pacman::p_load(tidyverse)
 ```
 
-Importing data
+#### Importing data
 
 ```{r}
 realis2019 <- read_csv('data/REALIS2019.csv')
@@ -27,7 +27,8 @@ realis2019 <- read_csv('data/REALIS2019.csv')
 #| eval:FALSE
 popdata_fat <- read_csv('data/PopData2019_fat.csv')
 ```
-Pivoting data
+
+#### Pivoting data
 
 ```{r}
 popdata_long <- popdata_fat %>% 
@@ -36,19 +37,21 @@ popdata_long <- popdata_fat %>%
                values_to = "Population")
 ```
 
-Saving the data
+#### Saving the data
+
 ```{r}
 write_rds(popdata_long, 'rds/popdata_long.rds')
 ```
 
-Retrieving the rds files
+### Retrieving the rds files
+
 ```{r}
 #| echo: FALSE
 popdata_long<-read_rds('rds/popdata_long.rds')
 ```
 
+#### working with dplyr
 
-working with dplyr
 ```{r}
 realis2019_selected <- realis2019 %>%
   select('Project Name',
@@ -58,7 +61,9 @@ realis2019_selected <- realis2019 %>%
          'Property Type')
 realis2019_selected
 ```
-### working with filter() of dplyr.
+
+#### working with filter() of dplyr.
+
 ```{r}
 realis2019_filtered <- realis2019_selected %>%
   filter(`Property Type` == 'Condominium'|
