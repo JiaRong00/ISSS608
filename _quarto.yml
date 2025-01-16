@@ -3,7 +3,7 @@ project:
 
 website:
   reader-mode: true
-  title: "ISSS608 Coursework"
+  title: "ISSS608"
   navbar:
     background: primary
     foreground: light
@@ -28,6 +28,7 @@ website:
         text: 'Home'
       - icon: person-workspace
         href: about.qmd
+        text: 'About'
 
 format:
   html:
@@ -38,6 +39,7 @@ format:
     toc: true
     toc-depth: 6
     mainfont: 'cursive'
+    fontsize: 1.0em
 
 editor: visual
 
