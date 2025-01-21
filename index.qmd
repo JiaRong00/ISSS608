@@ -1,3 +1,20 @@
 ---
-title: "Welcome to Jia Rong's Visual Analytics & Applications Coursework"
+title: "Jia Rong's Visual Analytics & Applications Coursework"
 ---
+
+**Check out my latest posts:**
+
+---
+listing:
+  contents: 
+    - Hands_on_Exercise/Hands-on_Ex01.qmd
+    - Hands_on_Exercise/Hands-on_Ex02.qmd
+  type: grid
+  sort: "date desc"
+  max-items: 2
+  feed: true
+---
+
+
+
+

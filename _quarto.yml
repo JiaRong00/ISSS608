@@ -2,8 +2,11 @@ project:
   type: website
 
 website:
+  page-navigation: true
   reader-mode: true
   title: "ISSS608"
+  site-url: https://www.jiarong-visual-analytics.netlify.app
+  open-graph: true
   navbar:
     background: primary
     foreground: light
@@ -14,6 +17,10 @@ website:
         href: Hands_on_Exercise/Hands-on_Ex00.html
       - text: "Hands-on Exercise 1"
         href: Hands_on_Exercise/Hands-on_Ex01.html
+      - text: "Hands-on Exercise 2"
+        href: Hands_on_Exercise/Hands-on_Ex02.html
+      - text: "Hands-on Exercise 3"
+        href: Hands_on_Exercise/Hands-on_Ex03.html
     - text: "In-class Exercise"
       menu:
       - text: "In-class Exercise 1"
@@ -29,6 +36,23 @@ website:
       - icon: person-workspace
         href: about.qmd
         text: 'About'
+  sidebar:
+    - title: 'Hands-on Exercises'
+      style: "docked"
+      search: true
+      contents:
+        - section: "Hands-on Exercises"
+          contents:
+            - href: Hands_on_Exercise/Hands-on_Ex00.html
+              text: "Hands-on Exercise 0"
+            - href: Hands_on_Exercise/Hands-on_Ex01.html
+              text: "Hands-on Exercise 1"
+            - text: "Hands-on Exercise 2"
+              href: Hands_on_Exercise/Hands-on_Ex02.html
+            - text: "Hands-on Exercise 3"
+              href: Hands_on_Exercise/Hands-on_Ex03.html
+    - title: 'placeholder'
+      
 
 format:
   html:
@@ -38,8 +62,9 @@ format:
     css: styles.css
     toc: true
     toc-depth: 6
+    toc-title: "Table of Contents"
     mainfont: 'cursive'
-    fontsize: 1.0em
+    fontsize: 0.9em
 
 editor: visual
 
