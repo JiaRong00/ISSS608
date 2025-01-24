@@ -10,7 +10,11 @@
 <atom:link href="https://www.jiarong-visual-analytics.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.40</generator>
+<<<<<<< HEAD
 <lastBuildDate>Fri, 24 Jan 2025 03:06:19 GMT</lastBuildDate>
+=======
+<lastBuildDate>Tue, 21 Jan 2025 04:59:56 GMT</lastBuildDate>
+>>>>>>> 534dbb667c50311621c75f9baefd4db01632420e
 <item>
   <title>Hands-on Exercise 01: A Layered Grammar of Graphics - ggplot2 methods</title>
   <dc:creator>Moo Jia Rong</dc:creator>
@@ -1364,7 +1368,11 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 
  ]]></description>
   <guid>https://www.jiarong-visual-analytics.netlify.app/Hands_on_Exercise/Hands-on_Ex01.html</guid>
+<<<<<<< HEAD
   <pubDate>Fri, 24 Jan 2025 03:06:19 GMT</pubDate>
+=======
+  <pubDate>Tue, 21 Jan 2025 04:59:56 GMT</pubDate>
+>>>>>>> 534dbb667c50311621c75f9baefd4db01632420e
 </item>
 <item>
   <title>Hands-on Exercise 02: Beyond ggplot2 Fundamentals</title>
@@ -2265,7 +2273,11 @@ font-style: inherit;">theme_economist</span>()</span></code></pre></div>
 </section>
 </section>
 <section id="references" class="level3">
+<<<<<<< HEAD
 <h3 class="anchored" data-anchor-id="references"><strong>6 References</strong></h3>
+=======
+<h3 class="anchored" data-anchor-id="references"><strong>2.6 References</strong></h3>
+>>>>>>> 534dbb667c50311621c75f9baefd4db01632420e
 <ul>
 <li><a href="https://www.littlemissdata.com/blog/patchwork">Patchwork R package goes nerd viral</a></li>
 <li><a href="https://ggrepel.slowkow.com/">ggrepel</a></li>
@@ -2282,7 +2294,11 @@ font-style: inherit;">theme_economist</span>()</span></code></pre></div>
 
  ]]></description>
   <guid>https://www.jiarong-visual-analytics.netlify.app/Hands_on_Exercise/Hands-on_Ex02.html</guid>
+<<<<<<< HEAD
   <pubDate>Fri, 24 Jan 2025 03:06:19 GMT</pubDate>
+=======
+  <pubDate>Tue, 21 Jan 2025 04:59:56 GMT</pubDate>
+>>>>>>> 534dbb667c50311621c75f9baefd4db01632420e
 </item>
 </channel>
 </rss>
