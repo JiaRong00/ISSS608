@@ -42,7 +42,7 @@ exam_data <- read_csv("data/Exam_data.csv")
 ```
 :::
 
-## **3 Beyond ggplot2 Annotation: ggrepel**
+### **3 Beyond ggplot2 Annotation: ggrepel**
 One of the challenge in plotting statistical graph is annotation, especially with large number of data points.
 ```{r}
 #| code-fold: true

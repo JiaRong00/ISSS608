@@ -10,7 +10,7 @@
 <atom:link href="https://www.jiarong-visual-analytics.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Fri, 24 Jan 2025 03:11:42 GMT</lastBuildDate>
+<lastBuildDate>Fri, 24 Jan 2025 03:17:01 GMT</lastBuildDate>
 <item>
   <title>Hands-on Exercise 01: A Layered Grammar of Graphics - ggplot2 methods</title>
   <dc:creator>Moo Jia Rong</dc:creator>
@@ -1364,7 +1364,7 @@ font-style: inherit;">theme_minimal</span>()</span></code></pre></div>
 
  ]]></description>
   <guid>https://www.jiarong-visual-analytics.netlify.app/Hands_on_Exercise/Hands-on_Ex01.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:11:42 GMT</pubDate>
+  <pubDate>Fri, 24 Jan 2025 03:17:01 GMT</pubDate>
 </item>
 <item>
   <title>Hands-on Exercise 02: Beyond ggplot2 Fundamentals</title>
@@ -1422,8 +1422,8 @@ font-style: inherit;">"data/Exam_data.csv"</span>)</span></code></pre></div>
 </div>
 </div>
 </section>
-<section id="beyond-ggplot2-annotation-ggrepel" class="level2">
-<h2 class="anchored" data-anchor-id="beyond-ggplot2-annotation-ggrepel"><strong>3 Beyond ggplot2 Annotation: ggrepel</strong></h2>
+<section id="beyond-ggplot2-annotation-ggrepel" class="level3">
+<h3 class="anchored" data-anchor-id="beyond-ggplot2-annotation-ggrepel"><strong>3 Beyond ggplot2 Annotation: ggrepel</strong></h3>
 <p>One of the challenge in plotting statistical graph is annotation, especially with large number of data points.</p>
 <div class="cell">
 <details class="code-fold">
@@ -1604,6 +1604,7 @@ font-style: inherit;">"English scores versus Maths scores for Primary 3"</span>)
 </div>
 </div>
 </div>
+</section>
 <section id="beyond-ggplot2-themes" class="level3">
 <h3 class="anchored" data-anchor-id="beyond-ggplot2-themes"><strong>4 Beyond ggplot2 Themes</strong></h3>
 <p>ggplot2 comes with eight built-in themes, they are: <code>theme_gray()</code>, <code>theme_bw()</code>, <code>theme_classic()</code>, <code>theme_dark()</code>, <code>theme_light()</code>, <code>theme_linedraw()</code>, <code>theme_minimal()</code>, and <code>theme_void()</code>.</p>
@@ -2278,11 +2279,10 @@ font-style: inherit;">theme_economist</span>()</span></code></pre></div>
 
 
 </section>
-</section>
 
  ]]></description>
   <guid>https://www.jiarong-visual-analytics.netlify.app/Hands_on_Exercise/Hands-on_Ex02.html</guid>
-  <pubDate>Fri, 24 Jan 2025 03:11:42 GMT</pubDate>
+  <pubDate>Fri, 24 Jan 2025 03:17:01 GMT</pubDate>
 </item>
 </channel>
 </rss>
