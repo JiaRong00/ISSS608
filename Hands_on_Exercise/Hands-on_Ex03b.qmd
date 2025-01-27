@@ -1,0 +1,14 @@
+---
+title: "Hands-on Exercise 03b: Programming Animated Statistical Graphics with R"
+format:
+  html:
+    fontcolor: '#3b3b3b'
+    code-line-numbers: true
+author: "Moo Jia Rong"
+date-modified: "last-modified"
+execute:
+  echo: true
+  eval: true
+  warning: false
+  freeze: true 
+---

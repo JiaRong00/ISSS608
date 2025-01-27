@@ -7,11 +7,12 @@ title: "Jia Rong's Visual Analytics & Applications Coursework"
 ---
 listing:
   contents: 
-    - Hands_on_Exercise/Hands-on_Ex01.qmd
     - Hands_on_Exercise/Hands-on_Ex02.qmd
+    - Hands_on_Exercise/Hands-on_Ex03a.qmd
+    - Hands_on_Exercise/Hands-on_Ex03b.qmd
   type: grid
   sort: "date desc"
-  max-items: 2
+  max-items: 3
   feed: true
 ---
 
