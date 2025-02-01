@@ -1,0 +1,15 @@
+{
+  "hash": "3e0e0eebe0a1a510190d4b5f328fb535",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Hands-on Exercise 04a: Visualising Distribution\"\nformat:\n  html:\n    fontcolor: '#3b3b3b'\n    code-line-numbers: true\nauthor: \"Moo Jia Rong\"\ndate-modified: \"last-modified\"\nexecute:\n  echo: true\n  eval: true\n  warning: false\n  freeze: true \n---\n\n\n\n\n\n### **Learning Outcome**\n\nVisualising distribution is not new in statistical analysis. In chapter 1 we shared some of the popular statistical graphics methods for visualising distribution are histogram, probability density curve (pdf), boxplot, notch plot and violin plot and how they can be created by using ggplot2. In this chapter, we will explore two relatively new statistical graphic methods for visualising distribution, namely ridgeline plot and raincloud plot by using ggplot2 and its extensions.\n\n### **2 Getting Started** \n\nFor the purpose of this exercise, the *Exam_data.csv* dataset and the following R packages will be used:\n\n-   ggridges, a ggplot2 extension specially designed for plotting ridgeline plots,\n-   ggdist, a ggplot2 extension spacially desgin for visualising distribution and uncertainty,\n-   tidyverse, a family of R packages to meet the modern data science and visual communication needs,\n-   ggthemes, a ggplot extension that provides the user additional themes, scales, and geoms for the ggplots package, and\n-   colorspace, an R package provides a broad toolbox for selecting individual colors or color palettes, manipulating these colors, and employing them in various kinds of visualisations.\n\n::: panel-tabset\n\n## Loading Packages\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(ggdist, ggridges, ggthemes,\n               colorspace, tidyverse)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\npackage 'distributional' successfully unpacked and MD5 sums checked\npackage 'numDeriv' successfully unpacked and MD5 sums checked\npackage 'quadprog' successfully unpacked and MD5 sums checked\npackage 'ggdist' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n\tC:\\Users\\User\\AppData\\Local\\Temp\\Rtmp6XI9n0\\downloaded_packages\n```\n\n\n:::\n\n::: {.cell-output .cell-output-stdout}\n\n```\npackage 'ggridges' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n\tC:\\Users\\User\\AppData\\Local\\Temp\\Rtmp6XI9n0\\downloaded_packages\n```\n\n\n:::\n:::\n\n\n\n\n\n## Importing Dataset\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nexam_data <- read_csv(\"data/Exam_data.csv\")\n```\n:::\n\n\n\n\n\n:::\n\n### **3 Visualising Distribution with Ridgeline Plot**\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

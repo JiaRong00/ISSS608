@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: [{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -157,10 +157,6 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercise">    
         <li>
-    <a class="dropdown-item" href="./Hands_on_Exercise/Hands-on_Ex00.html">
- <span class="dropdown-text">Hands-on Exercise 0</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="./Hands_on_Exercise/Hands-on_Ex01.html">
  <span class="dropdown-text">Hands-on Exercise 1</span></a>
   </li>  
@@ -175,6 +171,22 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="./Hands_on_Exercise/Hands-on_Ex03b.html">
  <span class="dropdown-text">Hands-on Exercise 3b</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Hands_on_Exercise/Hands-on_Ex04a.html">
+ <span class="dropdown-text">Hands-on Exercise 4a</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Hands_on_Exercise/Hands-on_Ex04b.html">
+ <span class="dropdown-text">Hands-on Exercise 4b</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Hands_on_Exercise/Hands-on_Ex04c.html">
+ <span class="dropdown-text">Hands-on Exercise 4c</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Hands_on_Exercise/Hands-on_Ex04d.html">
+ <span class="dropdown-text">Hands-on Exercise 4d</span></a>
   </li>  
     </ul>
   </li>
@@ -195,7 +207,7 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-take-home-exercise">    
         <li>
-    <a class="dropdown-item" href="./Take-home_Ex1.html”">
+    <a class="dropdown-item" href="./Take-home_Exercise/Take-home_Ex01.html”">
  <span class="dropdown-text">Take-home Exercise 1</span></a>
   </li>  
     </ul>
@@ -260,66 +272,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1737688587009" data-listing-reading-time-sort="9" data-listing-word-count-sort="1799">
-<a href="./Hands_on_Exercise/Hands-on_Ex02.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Hands_on_Exercise\Hands-on_Ex02_files\figure-html\unnamed-chunk-3-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Hands-on Exercise 02: Beyond ggplot2 Fundamentals
-</h5>
-<div class="card-text listing-description">
-In this exercise, we will be using ggplot2 extensions to create more elegant and effective statistical graphics. The goal of this exercise is to:
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Moo Jia Rong
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1737960582611" data-listing-reading-time-sort="26" data-listing-word-count-sort="5198">
-<a href="./Hands_on_Exercise/Hands-on_Ex03a.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Hands-on Exercise 03a: Programming Interactive Data Visualisation with R
-</h5>
-<div class="card-text listing-description">
-In this hands-on exercise, we will learn how to create interactive data visualisation by using functions provided by <strong>ggiraph</strong> and <strong>plotlyr</strong> packages.
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Moo Jia Rong
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1738051102563" data-listing-reading-time-sort="9" data-listing-word-count-sort="1647">
-<a href="./Hands_on_Exercise/Hands-on_Ex03b.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="Hands_on_Exercise\Hands-on_Ex03b_files\figure-html\unnamed-chunk-4-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Hands-on Exercise 03b: Programming Animated Statistical Graphics with R
-</h5>
-<div class="card-text listing-description">
-When telling a visually-driven data story, animated graphics tends to attract the interest of the audience and make deeper impression than static graphics. In this hands-on…
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-Moo Jia Rong
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
+
 </div>
 <div class="listing-no-matching d-none">
 No matching items

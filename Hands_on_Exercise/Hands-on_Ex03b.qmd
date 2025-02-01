@@ -5,6 +5,7 @@ format:
     fontcolor: '#3b3b3b'
     code-line-numbers: true
 author: "Moo Jia Rong"
+date: "January 27, 2025"
 date-modified: "last-modified"
 execute:
   echo: true
@@ -15,7 +16,7 @@ execute:
 
 ### **Overview**
 
-When telling a visually-driven data story, animated graphics tends to attract the interest of the audience and make deeper impression than static graphics. In this hands-on exercise, we will create animated data visualisation by using gganimate and plotly r packages. 
+When telling a visually-driven data story, animated graphics tends to attract the interest of the audience and make deeper impression than static graphics. In this hands-on exercise, we will create animated data visualisation by using gganimate and plotly r packages.
 
 At the same time, we will also learn how to (i) reshape data by using tidyr package, and (ii) process, wrangle and transform data by using dplyr package.
 
@@ -24,6 +25,7 @@ At the same time, we will also learn how to (i) reshape data by using tidyr pack
 When creating animations, the plot does not actually move. Instead, many individual plots are built and then stitched together as movie frames, just like an old-school flip book or cartoon. Each frame is a different plot when conveying motion, which is built using some relevant subset of the aggregate data. The subset drives the flow of the animation when stitched back together.
 
 #### **1.2 Terminology**
+
 Before we dive into the steps for creating an animated statistical graph, it’s important to understand some of the key concepts and terminology related to this type of visualization.
 
 -   **Frame**: In an animated line graph, each frame represents a different point in time or a different category. When the frame changes, the data points on the graph are updated to reflect the new data.
@@ -31,10 +33,10 @@ Before we dive into the steps for creating an animated statistical graph, it’s
 -   **Animation Attributes**: The animation attributes are the settings that control how the animation behaves. For example, you can specify the duration of each frame, the easing function used to transition between frames, and whether to start the animation from the current frame or from the beginning.
 
 ### **2 Getting Started**
+
 We first install the required R packages & load the dataset
 
 ::: panel-tabset
-
 ##Load Packages
 
 -   **plotly**, R library for plotting interactive statistical graphs.
@@ -61,6 +63,7 @@ globalPop <- read_xls("data/GlobalPopulation.xls",
 ```
 
 Instead of using `mutate_at()`, `across()` can be used to derive the same outputs.
+
 ```{r}
 #| eval: false
 col <- c("Country", "Continent")
@@ -69,10 +72,10 @@ globalPop <- read_xls("data/GlobalPopulation.xls",
   mutate(across(col, as.factor)) %>%
   mutate(Year = as.integer(Year))
 ```
-
 :::
 
 ### **3 Animated Data Visualisation: gganimate methods**
+
 gganimate extends the grammar of graphics as implemented by ggplot2 to include the description of animation. It does this by providing a range of new grammar classes that can be added to the plot object in order to customise how it should change with time.
 
 -   `transition_*()` defines how the data should be spread out and how it relates to itself across time.
@@ -82,6 +85,7 @@ gganimate extends the grammar of graphics as implemented by ggplot2 to include t
 -   `ease_aes()` defines how different aesthetics should be eased during transitions.
 
 #### **Building a static population bubble plot**
+
 In the code chunk below, the basic ggplot2 functions are used to create a static bubble plot.
 
 ```{r}
@@ -98,13 +102,14 @@ ggplot(globalPop, aes(x = Old, y = Young,
 ```
 
 #### **Building the animated bubble plot**
+
 -   `transition_time()` of gganimate is used to create transition through distinct states in time (i.e. Year).
 -   `ease_aes()` is used to control easing of aesthetics. The default is linear. Other methods are: quadratic, cubic, quartic, quintic, sine, circular, exponential, elastic, back, and bounce.
 -   `transition_reveal()` can be used to let data gradually appear across axis
 
 ::: panel-tabset
-
 ## Transition with time
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -125,11 +130,13 @@ p
 ```
 
 ## With facet wrap
+
 ```{r}
 p + facet_wrap(~Continent)        
 ```
 
 ## Transition reveal
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -147,7 +154,6 @@ p2<- ggplot(globalPop, aes(x = Old, y = Young,
 
 p2
 ```
-
 :::
 
 ### **4 Animated Data Visualisation: plotly**
@@ -222,6 +228,7 @@ bp
 ```
 
 ### **5 References**
+
 -   [Getting Started](https://gganimate.com/articles/gganimate.html)
 -   [Building an animation step-by-step with gganimate](https://www.alexcookson.com/post/2020-10-18-building-an-animation-step-by-step-with-gganimate/)
 -   [Creating a composite gif with multiple gganimate panels](https://solarchemist.se/2021/08/02/composite-gif-gganimate/)

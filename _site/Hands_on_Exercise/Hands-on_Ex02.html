@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Moo Jia Rong">
+<meta name="dcterms.date" content="2025-01-20">
 
 <title>Hands-on Exercise 02: Beyond ggplot2 Fundamentals – ISSS608</title>
 <style>
@@ -65,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../Hands_on_Exercise/Hands-on_Ex03.html" rel="next">
+<link href="../Hands_on_Exercise/Hands-on_Ex03a.html" rel="next">
 <link href="../Hands_on_Exercise/Hands-on_Ex01.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -137,10 +138,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercise">    
         <li>
-    <a class="dropdown-item" href="../Hands_on_Exercise/Hands-on_Ex00.html">
- <span class="dropdown-text">Hands-on Exercise 0</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="../Hands_on_Exercise/Hands-on_Ex01.html">
  <span class="dropdown-text">Hands-on Exercise 1</span></a>
   </li>  
@@ -149,8 +146,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Hands-on Exercise 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../Hands_on_Exercise/Hands-on_Ex03.html">
- <span class="dropdown-text">Hands-on Exercise 3</span></a>
+    <a class="dropdown-item" href="../Hands_on_Exercise/Hands-on_Ex03a.html">
+ <span class="dropdown-text">Hands-on Exercise 3a</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Hands_on_Exercise/Hands-on_Ex03b.html">
+ <span class="dropdown-text">Hands-on Exercise 3b</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Hands_on_Exercise/Hands-on_Ex04a.html">
+ <span class="dropdown-text">Hands-on Exercise 4a</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Hands_on_Exercise/Hands-on_Ex04b.html">
+ <span class="dropdown-text">Hands-on Exercise 4b</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Hands_on_Exercise/Hands-on_Ex04c.html">
+ <span class="dropdown-text">Hands-on Exercise 4c</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Hands_on_Exercise/Hands-on_Ex04d.html">
+ <span class="dropdown-text">Hands-on Exercise 4d</span></a>
   </li>  
     </ul>
   </li>
@@ -171,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-take-home-exercise">    
         <li>
-    <a class="dropdown-item" href="../Take-home_Ex1.html”">
+    <a class="dropdown-item" href="../Take-home_Exercise/Take-home_Ex01.html”">
  <span class="dropdown-text">Take-home Exercise 1</span></a>
   </li>  
     </ul>
@@ -204,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Hands_on_Exercise/Hands-on_Ex00.html">Hands-on Exercises</a></li><li class="breadcrumb-item"><a href="../Hands_on_Exercise/Hands-on_Ex02.html">Hands-on Exercise 2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Hands_on_Exercise/Hands-on_Ex01.html">Hands-on Exercises</a></li><li class="breadcrumb-item"><a href="../Hands_on_Exercise/Hands-on_Ex02.html">Hands-on Exercise 2</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -235,12 +252,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Hands_on_Exercise/Hands-on_Ex00.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Hands-on Exercise 0</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../Hands_on_Exercise/Hands-on_Ex01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hands-on Exercise 1</span></a>
   </div>
@@ -253,8 +264,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Hands_on_Exercise/Hands-on_Ex03.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Hands-on Exercise 3</span></a>
+  <a href="../Hands_on_Exercise/Hands-on_Ex03a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands-on Exercise 3a</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Hands_on_Exercise/Hands-on_Ex03b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands-on Exercise 3b</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Hands_on_Exercise/Hands-on_Ex04a.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands-on Exercise 4a</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Hands_on_Exercise/Hands-on_Ex04b.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands-on Exercise 4b</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Hands_on_Exercise/Hands-on_Ex04c.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands-on Exercise 4c</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Hands_on_Exercise/Hands-on_Ex04d.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hands-on Exercise 4d</span></a>
   </div>
 </li>
       </ul>
@@ -293,7 +334,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Hands_on_Exercise/Hands-on_Ex00.html">Hands-on Exercises</a></li><li class="breadcrumb-item"><a href="../Hands_on_Exercise/Hands-on_Ex02.html">Hands-on Exercise 2</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Hands_on_Exercise/Hands-on_Ex01.html">Hands-on Exercises</a></li><li class="breadcrumb-item"><a href="../Hands_on_Exercise/Hands-on_Ex02.html">Hands-on Exercise 2</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Hands-on Exercise 02: Beyond ggplot2 Fundamentals</h1>
 </div>
@@ -309,11 +350,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 20, 2025</p>
+    </div>
+  </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">January 24, 2025</p>
+      <p class="date-modified">February 1, 2025</p>
     </div>
   </div>
     
@@ -1152,8 +1199,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../Hands_on_Exercise/Hands-on_Ex03.html" class="pagination-link" aria-label="Hands-on Exercise 3">
-        <span class="nav-page-text">Hands-on Exercise 3</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../Hands_on_Exercise/Hands-on_Ex03a.html" class="pagination-link" aria-label="Hands-on Exercise 3a">
+        <span class="nav-page-text">Hands-on Exercise 3a</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

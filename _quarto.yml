@@ -13,8 +13,6 @@ website:
     left:
     - text: "Hands-on Exercise"
       menu:
-      - text: "Hands-on Exercise 0"
-        href: Hands_on_Exercise/Hands-on_Ex00.html
       - text: "Hands-on Exercise 1"
         href: Hands_on_Exercise/Hands-on_Ex01.html
       - text: "Hands-on Exercise 2"
@@ -23,6 +21,14 @@ website:
         href: Hands_on_Exercise/Hands-on_Ex03a.html
       - text: "Hands-on Exercise 3b"
         href: Hands_on_Exercise/Hands-on_Ex03b.html
+      - text: "Hands-on Exercise 4a"
+        href: Hands_on_Exercise/Hands-on_Ex04a.html
+      - text: "Hands-on Exercise 4b"
+        href: Hands_on_Exercise/Hands-on_Ex04b.html
+      - text: "Hands-on Exercise 4c"
+        href: Hands_on_Exercise/Hands-on_Ex04c.html
+      - text: "Hands-on Exercise 4d"
+        href: Hands_on_Exercise/Hands-on_Ex04d.html
     - text: "In-class Exercise"
       menu:
       - text: "In-class Exercise 1"
@@ -30,7 +36,7 @@ website:
     - text: "Take-home Exercise"
       menu:
       - text: "Take-home Exercise 1"
-        href: Take-home_Ex1.html"
+        href: Take-home_Exercise/Take-home_Ex01.html"
     right:
       - icon: house-fill
         href: index.qmd
@@ -45,8 +51,6 @@ website:
       contents:
         - section: "Hands-on Exercises"
           contents:
-            - href: Hands_on_Exercise/Hands-on_Ex00.html
-              text: "Hands-on Exercise 0"
             - href: Hands_on_Exercise/Hands-on_Ex01.html
               text: "Hands-on Exercise 1"
             - text: "Hands-on Exercise 2"
@@ -55,6 +59,14 @@ website:
               href: Hands_on_Exercise/Hands-on_Ex03a.html
             - text: "Hands-on Exercise 3b"
               href: Hands_on_Exercise/Hands-on_Ex03b.html
+            - text: "Hands-on Exercise 4a"
+              href: Hands_on_Exercise/Hands-on_Ex04a.html
+            - text: "Hands-on Exercise 4b"
+              href: Hands_on_Exercise/Hands-on_Ex04b.html
+            - text: "Hands-on Exercise 4c"
+              href: Hands_on_Exercise/Hands-on_Ex04c.html
+            - text: "Hands-on Exercise 4d"
+              href: Hands_on_Exercise/Hands-on_Ex04d.html
     - title: 'placeholder'
       
 

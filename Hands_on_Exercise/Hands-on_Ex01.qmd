@@ -5,6 +5,7 @@ format:
     fontcolor: '#3b3b3b'
     code-line-numbers: true
 author: "Moo Jia Rong"
+date: "January 13, 2025"
 date-modified: "last-modified"
 execute:
   echo: true
