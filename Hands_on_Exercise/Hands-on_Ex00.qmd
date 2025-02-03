@@ -1,6 +1,7 @@
 ---
 title: "Hands-on Exercise 00: working with tidyverse"
 author: "Moo Jia Rong"
+date: "January 11, 2025"
 date-modified: "last-modified"
 execute:
   echo: true

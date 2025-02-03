@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.jiarong-visual-analytics.netlify.app/index.html</loc>
-    <lastmod>2025-02-01T07:01:39.024Z</lastmod>
+    <lastmod>2025-02-03T12:14:55.476Z</lastmod>
   </url>
   <url>
     <loc>https://www.jiarong-visual-analytics.netlify.app/Hands_on_Exercise/Hands-on_Ex03b.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://www.jiarong-visual-analytics.netlify.app/Hands_on_Exercise/Hands-on_Ex00.html</loc>
-    <lastmod>2025-01-15T10:46:32.330Z</lastmod>
+    <lastmod>2025-02-03T12:16:05.854Z</lastmod>
   </url>
   <url>
     <loc>https://www.jiarong-visual-analytics.netlify.app/about.html</loc>
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://www.jiarong-visual-analytics.netlify.app/Take-home_Exercise/Take-home_Ex01/Take-home_Ex01.html</loc>
-    <lastmod>2025-02-03T10:33:21.014Z</lastmod>
+    <lastmod>2025-02-03T11:51:17.830Z</lastmod>
   </url>
   <url>
     <loc>https://www.jiarong-visual-analytics.netlify.app/Hands_on_Exercise/Hands-on_Ex04b.html</loc>
@@ -43,5 +43,9 @@
   <url>
     <loc>https://www.jiarong-visual-analytics.netlify.app/Hands_on_Exercise/Hands-on_Ex04c.html</loc>
     <lastmod>2025-02-03T11:13:23.651Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.jiarong-visual-analytics.netlify.app/Hands_on_Exercise/Hands-on_Ex04d.html</loc>
+    <lastmod>2025-02-03T12:12:56.435Z</lastmod>
   </url>
 </urlset>
