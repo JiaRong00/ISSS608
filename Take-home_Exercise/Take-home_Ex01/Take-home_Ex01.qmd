@@ -13,3 +13,160 @@ execute:
   warning: false
   freeze: true 
 ---
+
+### **1 Overview**
+
+#### **1.1 Background**
+
+Heart attack is one of the leading causes of mortality globally. According to findings of research studies, heart attacks are increasingly common in young adults (aged 40 or below) [1](https://www.sciencedaily.com/releases/2019/03/190307081026.htm). The alarming trend highlights a need to understand the potential causes and risk factors of early heart attacks and the differences in the profiles of young adult heart attack patients from older patients to enable early detection and enforcement of preventive measures.
+
+#### **1.2 Dataset**
+
+In this exercise, we have obtained a dataset on heart attack incidents in Japan from [Kaggle](https://www.kaggle.com/datasets/ashaychoudhary/heart-attack-in-japan-youth-vs-adult), consisting of data on heart attack victims aged 18 to 79.
+
+#### **1.3 Objectives**
+
+Using the Japan heart attack dataset, we aim to perform Exploratory Data Analysis (EDA) to uncover insights on:
+
+### **2 Getting Started**
+
+#### **2.1 Loading Packages**
+
+```{r}
+pacman::p_load(tidyverse)
+```
+
+#### **2.2 Importing Data**
+
+The dataset used in this exercise is the *japan_heart_attack_dataset.csv* file downloaded from Kaggle. The file is imported into R environment using `read_csv()`.
+
+Using the `glimpse()` function, we observe that the dataset consists of 30,000 records spanning across 32 columns. Of which, there are 17 relevant variables and 15 extra column variables which are irrelevant to our analysis.
+
+In addition, by viewing the first few entries of each column, we can see that there are both categorical and continuous variables in the dataset.
+
+With a focus on the 17 relevant variables, a data dictionary table is generated, showing the range for the 7 continuous variables and the unique values for the 10 categorical variables.
+
+::: panel-tabset
+## Import data
+
+```{r}
+heart_attack <- read_csv("data/japan_heart_attack_dataset.csv")
+```
+
+## Glimpse data
+
+```{r}
+glimpse(heart_attack)
+```
+
+## Data dictionary
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+data_dict <- data.frame(matrix(ncol = 3, nrow = 0))
+x <- c("Variable", "Type", "Values")
+colnames(data_dict) <- x
+
+column_names <- colnames(heart_attack)[1:17]
+for (column in column_names){
+  values <- heart_attack[, column]
+  if (class(heart_attack[[column]])=="numeric"){
+    col_label<-paste0("(", min(values), ", ", max(values), ")")
+    col_type="Continuous"
+  }
+  else {
+    col_label<-paste0(unique(values))
+    col_type="Categorical"
+  }
+  new.row <- data.frame(Variable = column, Type = col_type , Values = col_label)
+  data_dict <- rbind(data_dict, new.row)
+  
+}
+
+knitr::kable(data_dict, "html")
+```
+:::
+
+### **3 Data Wrangling**
+
+#### **3.1 Removing irrelevant data**
+
+We first remove the 15 'extra columns' in the dataset, which are irrelvant for our analysis, using the code below.
+
+```{r}
+df<-heart_attack[, 1:17]
+```
+
+This leaves us with just 17 variables:
+
+[General Demographic Variables]{.underline}
+
+-   Age
+-   Gender
+-   Region
+-   BMI
+
+[Lifestyle Factors]{.underline}
+
+-   Smoking_History
+-   Physical_Activity
+-   Diet_Quality
+-   Alcohol_Consumption
+-   Stress_Levels
+
+[Medical History]{.underline}
+
+-   Diabetes_History
+-   Hypertension_History
+-   Cholesterol_History
+-   Heart_Rate
+-   Systolic_BP
+-   Diastolic_BP
+-   Family_History
+-   Heart_Attack_Occurrence
+
+#### **3.2 Check for duplicated or missing values**
+
+Next, the `duplicated()` and `is.na()` functions are used to check for duplicate records and missing values in the dataset respectively.
+
+There are no duplicated records or missing values in this dataset.
+
+::: panel-tabset
+
+## Duplicated records
+```{r}
+df[duplicated(df),]
+```
+
+## Missing values
+```{r}
+sum(is.na(df))
+```
+
+:::
+
+#### **3.3 Recode variables**
+
+The age distribution in the population is shown in the figure below. There is a relatively even spread of records from different ages. 
+
+```{r}
+ggplot(df, aes(Age)) +
+  geom_histogram(bins=10, 
+                 boundary = 100,
+                 color="black", 
+                 fill="#7F948F") +
+  labs(title = "Frequency of Age")
+```
+
+To facilitate comparison of profiles of younger versus older heart attack patients, we can create a new variable named *Age_Group* to bin the records into different age groups:
+
+1) Young Adults: 18-35
+2) Middle-aged Adults: 36-65
+3) Old Adults: 66-79
+
+```{r}
+df$Age_Groups <- ifelse(df$Age<=35, "Young", ifelse(df$Age<=65, "Middle-aged", "Old"))
+```
+
+
