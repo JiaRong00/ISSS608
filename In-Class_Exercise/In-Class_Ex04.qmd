@@ -1,0 +1,46 @@
+---
+title: "In-class Exercise 4"
+format:
+  html:
+    fontcolor: '#3b3b3b'
+    code-line-numbers: true
+author: "Moo Jia Rong"
+date: "February 8, 2025"
+date-modified: "last-modified"
+execute:
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+### **Getting Started**
+
+::: panel-tabset
+
+## Load Packages
+```{r}
+pacman::p_load(tidyverse)
+```
+
+## Import Data
+```{r}
+exam_data <- read_csv("data/Exam_data.csv")
+```
+
+:::
+
+### **Creating boxplot of English score by Class**
+
+```{r}
+ggplot(data=exam_data, 
+       aes(x = ENGLISH, 
+           y = CLASS, fill=CLASS))+
+  geom_boxplot()+
+  scale_fill_brewer("Class", palette="Set2")+
+  labs(x='English Score',
+       y='Class',
+       title='English Score by Class')
+```
+
+

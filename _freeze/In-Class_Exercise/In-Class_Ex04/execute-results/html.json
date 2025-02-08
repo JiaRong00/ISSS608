@@ -1,0 +1,17 @@
+{
+  "hash": "018280f23370b132fec69938ad4ebb3e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"In-class Exercise 4\"\nformat:\n  html:\n    fontcolor: '#3b3b3b'\n    code-line-numbers: true\nauthor: \"Moo Jia Rong\"\ndate: \"February 8, 2025\"\ndate-modified: \"last-modified\"\nexecute:\n  echo: true\n  eval: true\n  warning: false\n  freeze: true\n---\n\n\n\n### **Getting Started**\n\n::: panel-tabset\n\n## Load Packages\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(tidyverse)\n```\n:::\n\n\n\n## Import Data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nexam_data <- read_csv(\"data/Exam_data.csv\")\n```\n:::\n\n\n\n:::\n\n### **Creating boxplot of English score by Class**\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(data=exam_data, \n       aes(x = ENGLISH, \n           y = CLASS, fill=CLASS))+\n  geom_boxplot()+\n  scale_fill_brewer(\"Class\", palette=\"Set2\")+\n  labs(x='English Score',\n       y='Class',\n       title='English Score by Class')\n```\n\n::: {.cell-output-display}\n![](In-Class_Ex04_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "In-Class_Ex04_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

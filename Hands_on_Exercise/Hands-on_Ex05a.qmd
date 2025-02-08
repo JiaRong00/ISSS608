@@ -1,0 +1,21 @@
+---
+title: "Hands-on Exercise 05a: Creating Ternary Plot with R"
+format:
+  html:
+    fontcolor: '#3b3b3b'
+    code-line-numbers: true
+author: "Moo Jia Rong"
+date: "February 8, 2025"
+date-modified: "last-modified"
+execute:
+  echo: true
+  eval: true
+  warning: false
+  freeze: true
+---
+
+### **1 Overview**
+
+Ternary plots are a way of displaying the distribution and variability of three-part compositional data. (For example, the proportion of aged, economy active and young population or sand, silt, and clay in soil.) It’s display is a triangle with sides scaled from 0 to 1. Each side represents one of the three components. A point is plotted so that a line drawn perpendicular from the point to each leg of the triangle intersect at the component values of the point.
+
+

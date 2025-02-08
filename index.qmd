@@ -3,6 +3,7 @@ title: "Jia Rong's Visual Analytics & Applications Coursework"
 listing:
   contents: 
     - "Hands_on_Exercise/*.qmd"
+    - "In-Class_Exercise/*.qmd"
   type: grid
   sort: "date desc"
   max-items: 3
