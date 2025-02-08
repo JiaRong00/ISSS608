@@ -42,7 +42,7 @@ website:
     - text: "In-class Exercise"
       menu:
       - text: "In-class Exercise 4"
-        href: In-class_Ex04.html
+        href: In-Class_Exercise/In-class_Ex04.html
     - text: "Take-home Exercise"
       menu:
       - text: "Take-home Exercise 1"
