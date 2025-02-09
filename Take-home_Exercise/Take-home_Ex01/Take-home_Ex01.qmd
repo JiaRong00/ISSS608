@@ -26,18 +26,28 @@ In this exercise, we have obtained a dataset on heart attack incidents in Japan 
 
 #### **1.3 Objectives**
 
-As part of an international media company that publishes weekly content on digital platforms, we will Use the Japan heart attack dataset to perform Exploratory Data Analysis (EDA) and generate visualisations for an article, covering insights on:
+As part of an international media company that publishes weekly content on digital platforms, we will Use the Japan heart attack dataset to perform Exploratory Data Analysis and generate statistical visualisations for an article, covering insights on:
 
 (1) The general profile of Japan population
-(2) Trends in heart attack occurrence in the Japan populations
-(3) Correlations between ??
+(2) Trends and associations of heart attack occurrence with demographic, lifestyle factors and medical history in the Japan populations.
+(3) Age-specific factors for heart attack occurrence
 
 ### **2 Getting Started**
 
 #### **2.1 Loading Packages**
 
+The R packages used in this exercise includes:
+
+-   tidyverse (i.e. readr, tidyr, dplyr, ggplot2) for performing data science tasks such as importing, tidying, and wrangling data, as well as creating graphs
+-   knitr for displaying tables
+-   patchwork for preparing composite figure created using ggplot2
+-   ggstats for creating diverging barplots
+-   ggdist for visualising distributions and uncertainty
+-   ggmosaic for creating mosaic plots
+-   ggstatsplot for visualising significant test of association using stacked barplots
+
 ```{r}
-pacman::p_load(tidyverse,knitr, patchwork,ggpubr, plotly,ggridges,ggdist,ggmosaic)
+pacman::p_load(tidyverse,knitr, patchwork,ggstats, ggdist,ggmosaic, ggstatsplot)
 ```
 
 #### **2.2 Importing Data**
@@ -172,7 +182,7 @@ ggplot(df, aes(Age)) +
   labs(title = "Frequency of Age")
 ```
 
-To facilitate comparison of profiles of younger versus older heart attack patients, we can create a new variable named *Age_Group* to bin the records into different age groups:
+To facilitate comparison of profiles of younger versus older heart attack patients, we can create a new variable named *Age_Group* to bin the records into different age groups using `ifelse` statements:
 
 1)  Young Adults: 18-39
 2)  Middle-aged Adults: 40-65
@@ -247,7 +257,17 @@ df$Blood_Pressure <- ifelse(df$Systolic_BP<120 & df$Diastolic_BP<80, "Normal",
                                             ( df$Diastolic_BP<90 & df$Diastolic_BP>=80), "Hypertension I", "Hypertension II")))
 ```
 
-#### **3.6 Ordering levels for ordinal categorical variables**
+#### **3.6 Recode Cholesterol Level**
+
+Total Cholesterol Level can also be further categorised according to the criterion below:
+
+![Source: Singapore Heart Foundation](images/clipboard-3010395143.png)
+
+```{r}
+df$Cholesterol_Category <- ifelse(df$Cholesterol_Level<200, "Normal", ifelse(df$Cholesterol_Level<240, "Borderline High", "High"))
+```
+
+#### **3.7 Ordering levels for ordinal categorical variables**
 
 For ordinal categorical variables, we will order the different levels in an ascending order using `factor()`, so that the results will be displayed according to the order we have set in the graphs we will plot subsequently in our analysis.
 
@@ -269,6 +289,9 @@ df$BMI_Category <- factor(df$BMI_Category,
 
 df$Blood_Pressure <- factor(df$Blood_Pressure, 
                                  levels = c("Normal", "Elevated", "Hypertension I", "Hypertension II"), ordered = TRUE)
+
+df$Cholesterol_Category <- factor(df$Cholesterol_Category, 
+                                 levels = c("Normal", "Borderline High", "High"), ordered = TRUE)
 ```
 
 The first 5 results of the final dataset are displayed below using `kable()` of the knitr package.
@@ -277,13 +300,13 @@ The first 5 results of the final dataset are displayed below using `kable()` of 
 kable(head(df, n=5), caption = "Heart Attack in Japan")
 ```
 
-### **4 Exploratory Data Analysis**
+### **4 Exploratory Data Analysis and Statistical Visualisations**
 
 In this section, we will be conducting Exploratory Data Analysis on the processed dataset named *df*.
 
-#### **4.1 Univariate Analysis**
+Before diving into the analysis, we first take a look at the distribution of some of the key variables closely-linked to heart attack in the Japan population: Age group, Cholesterol Level, Blood Pressure, BMI category and heart attack occurrence.
 
-Before diving into multivariate analysis, we first take a look at the distribution of some of the key variables closely-linked to heart attack in the Japan population: Age group, Blood Pressure, BMI category and heart attack occurrence.
+The `ggplot()` and `geom_bar()` functions from the *ggplot2* package was used to generate the bar charts. `stat = 'count'` argument and `geom_text()` was used to add percentage annotations onto the bar chart. The bar chart colors were set using `scale_fill_manual()`. The axis labels were defined using `labs()`. The aesthetics of the bar charts were further customised using `theme()`. Individual plots were combined using *patchwork* package.
 
 ```{r}
 #| code-fold: true
@@ -296,11 +319,11 @@ p1<-ggplot(data=df,aes(x=Age_Groups, fill=Age_Groups))+
       label = scales::percent(..count../sum(..count..), accuracy = 0.1)  # Calculate percentage using sum of counts
     ),
     stat = "count",
-    vjust = 1.5,  # Adjust text placement 
+    vjust = 1.25,  # Adjust text placement 
     size=3
   ) +
   theme(axis.ticks.x = element_blank(), legend.position = "None")+
-  labs(x = "Age Group", fill="Age Group")
+  labs(x = "Age Group")
 
 p2<-ggplot(data=df,aes(x=Blood_Pressure, fill=Blood_Pressure))+
   geom_bar(stat = "count")+
@@ -310,11 +333,11 @@ p2<-ggplot(data=df,aes(x=Blood_Pressure, fill=Blood_Pressure))+
       label = scales::percent(..count../sum(..count..), accuracy = 0.1)  # Calculate percentage using sum of counts
     ),
     stat = "count",
-    vjust = 1.5,  # Adjust text placement 
+    vjust = 1.25,  # Adjust text placement 
     size=3
   ) +
   theme( axis.ticks.x = element_blank(), legend.position = "None" )+
-  labs(x = "Blood Pressure", fill="Blood Pressure")
+  labs(x = "Blood Pressure")
 
 p3<- ggplot(data=df,aes(x=Heart_Attack_Occurrence, fill=Heart_Attack_Occurrence))+
   geom_bar(stat = "count")+
@@ -324,11 +347,11 @@ p3<- ggplot(data=df,aes(x=Heart_Attack_Occurrence, fill=Heart_Attack_Occurrence)
       label = scales::percent(..count../sum(..count..), accuracy = 0.1)  # Calculate percentage using sum of counts
     ),
     stat = "count",
-    vjust = 1.5,  # Adjust text placement 
+    vjust = 1.05,  # Adjust text placement 
     size=3
   ) +
   theme( axis.ticks.x = element_blank(), legend.position = "None" )+
-  labs(x = "Heart Attack Occurrence", fill="Heart Attack")
+  labs(x = "Heart Attack Occurrence")
 
 p4<- ggplot(data=df,aes(x=BMI_Category, fill=BMI_Category))+
   geom_bar(stat = "count")+
@@ -338,105 +361,87 @@ p4<- ggplot(data=df,aes(x=BMI_Category, fill=BMI_Category))+
       label = scales::percent(..count../sum(..count..), accuracy = 0.1)  # Calculate percentage using sum of counts
     ),
     stat = "count",
-    vjust = 1.5,  # Adjust text placement 
+    vjust = 1.25,  # Adjust text placement 
     size=3
   ) +
   theme( axis.ticks.x = element_blank(), legend.position = "None" )+
   labs(x = "BMI Category", fill="BMI")
 
-p1+p2+p3+p4+ plot_annotation(title= "Overview of Japan Population Profile")+
-  plot_layout(widths = c(1, 2))
-```
-
-::: {.callout-note icon="false"}
-## Insights
-
--   The majority of the study population are Middle-aged (40-65), followed by Young adults (18-39) and Old adults (\>65).
--   About 10% of the population has had heart attack, indicating high prevalence of heart attack in Japan and underscores importance of addressing cardiovascular health.
--   Alarmingly, only 25.2% of the population has normal blood pressure, with almost 2/3 (62.6%) suffering from hypertension. Prolonged hypertension is a well-documented contributor to cardiovascular diseases, including heart attacks and strokes.
--   Nearly half of the population (49.8%) are either overweight or obese, which is known to be a significant risk factor for heart attack occurrence and correlates with other comorbidities such as diabetes and high cholesterol, exacerbating health conditions.
--   The high incidence of hypertension, overweight and obesity highlights a need for targeted public health campaigns to increase awareness to promote healthy lifestyles and targeted preventive measures such as early detections and lifestyle modifications.
-:::
-
-#### **4.2 Association of Heart Attack with Hypertension**
-
-Next, we delve into bivariate analyses to understand correlation of heart attack with various factors. Given the high incidence of hypertension observed in the previous section, we will investigate whether hypertension is associated with an increased risk of heart attack. 
-
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-p1<-ggplot(data=df) +
-  geom_mosaic(aes(x = product(Heart_Attack_Occurrence,Blood_Pressure), fill=Heart_Attack_Occurrence))+
-  theme(legend.position="right") +
-  labs(x = "Blood Pressure",
-       y = "Heart Attack")+
-scale_fill_manual("Heart Attack",values=c( "lightsteelblue", "thistle"))+
-  scale_y_continuous(labels = scales::percent)
-
-p2<-ggplot(data=df, aes(y=Heart_Attack_Occurrence, x=Systolic_BP, fill=Heart_Attack_Occurrence)) +
-  geom_density_ridges(alpha = 0.8, quantile_lines=TRUE, quantiles = 2)+
-scale_fill_manual("Heart Attack",values=c( "lightsteelblue","thistle"))+
-  theme(legend.position="None")+
-  labs(y = "Heart Attack",
-       x = "Systolic BP")
-
-p3<-ggplot(data=df, aes(y=Heart_Attack_Occurrence, x=Diastolic_BP, fill=Heart_Attack_Occurrence)) +
-  geom_density_ridges(alpha = 0.8, quantile_lines=TRUE, quantiles = 2)+
-scale_fill_manual("Heart Attack",values=c( "lightsteelblue","thistle"))+
-  theme(legend.position="None", axis.title.y = element_blank())+
-  labs(x = "Diastolic BP")
-
-p1/(p2+p3) + plot_layout(axis_titles = "collect")+ plot_annotation(title= "Heart Attack is not significantly associated with Hypertension")
-
-```
-
-::: {.callout-note icon="false"}
-## Insights
-
--   Heart attack occurrence does not significantly increase in groups with hypertension or elevated blood pressure, compared to normal blood pressure. This suggests that high blood pressure alone may only have a small impact on heart attack risk or that medication adherence and lifestyle modifications could play a role in mitigating the associated risks. The overall heart attack risk for an individual may only become more pronounced when multiple factors are accounted for, as presence of multiple risk factors simultaneously compounds the overall risks since each condition can exacerbate the others.  
-
-:::
-
-#### **4.3 Association of Heart Attack with Age, Gender and BMI**
-
-In this section, we will examine if biological factors like aging and gender are correlated with heart attack.
-
-```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
-p1<-ggplot(df, 
-       aes(x = Heart_Attack_Occurrence, 
-           fill=Gender))+
+p5<- ggplot(data=df,aes(x=Cholesterol_Category, fill=Cholesterol_Category))+
   geom_bar(stat = "count")+
-  scale_fill_manual(values=c("#DF9999","#99AEDF"))+
+  scale_fill_manual(values=c("lightsteelblue","lightcyan3","thistle"))+
   geom_text(
     aes(
       label = scales::percent(..count../sum(..count..), accuracy = 0.1)  # Calculate percentage using sum of counts
     ),
     stat = "count",
-    position = position_stack(vjust = 0.5),  # Adjust text placement 
+    vjust = 1.25,  # Adjust text placement 
     size=3
   ) +
+  theme(axis.ticks.x = element_blank(), legend.position = "None")+
+  labs(x = "Cholesterol Level")
+
+(p1+p5)/(p3+p4)/p2+ plot_annotation(title= "Overview of Japan Population Profile")
+```
+
+::: {.callout-note icon="false"}
+## Insights
+
+-   The study population primarily consist of Middle-aged (40-65), followed by Young adults (18-39) and Old adults (\>65).
+-   About 10% have experienced heart attack, indicating high prevalence of heart attack in Japan and underscores importance of addressing cardiovascular health.
+-   Alarmingly, only 25.2% have normal blood pressure, with 62.6% suffering from hypertension. Prolonged hypertension is a well-documented contributor to cardiovascular diseases, including heart attacks and strokes.
+-   Nearly half of the population (49.8%) are either overweight or obese, which is known to be a significant risk factor for heart attack occurrence and correlates with other comorbidities such as diabetes and high cholesterol, exacerbating health conditions.
+-   Similarly, approximately half of the population have elevated cholesterol levels.
+-   The high incidence of hypertension, overweight/obesity and high cholesterol highlights a need for targeted public health campaigns to increase awareness to promote healthy lifestyles and targeted preventive measures.
+:::
+
+#### **4.1 Gender, Age Group and Heart Attack Occurrence**
+
+Next, we delve into bivariate analyses to understand correlation of heart attack with various factors. In this section, we will examine if biological factors like aging and gender are associated with heart attack. The figures below show the heart attack occurrence by Gender and Age Groups.
+
+Mosaic plots were created using `geom_mosaic()` from the *ggmosaic* package and `ggplot()` from the *ggplot2* package. `labs()`, `theme()` and `scale_fill_manual` from *ggplot2* package were used to change the axis labels, theme and color of the graphs. `scale_y_continuous()` from *ggplot2* was used to display the percentages.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+
+p1<-ggplot(df)+
+    geom_mosaic(aes(x = product(Heart_Attack_Occurrence, Gender), fill=Heart_Attack_Occurrence))+
+  scale_fill_manual(values=c("#DF9999","#99AEDF")) +
   theme( axis.ticks.x = element_blank(), legend.position = "bottom" )+
-  labs(x = "Heart Attack Occurrence", fill="Gender")
+  labs(x = "Gender", y= "Heart Attack", fill="Heart Attack")+ 
+  scale_y_continuous(labels = scales::percent)
 
 p2<-ggplot(df)+
     geom_mosaic(aes(x = product(Heart_Attack_Occurrence, Age_Groups), fill=Heart_Attack_Occurrence))+
   scale_fill_manual(values=c("lightsteelblue","thistle")) +
   theme( axis.ticks.x = element_blank(), legend.position = "bottom" )+
-  labs(x = "Age Group", y= "Heart Attack Occurrence", fill="Heart Attack")+ 
+  labs(x = "Age Group", y= "Heart Attack", fill="Heart Attack")+ 
   scale_y_continuous(labels = scales::percent)
 
-p1+p2+ plot_annotation(title= "Heart attack occurrence is similar across Gender and Age groups")
+(p1+p2)+ plot_annotation(title= "Heart attack occurrence is not significantly associated with Gender and Age groups")
 ```
 
 ::: {.callout-note icon="false"}
 ## Insights
 
 -   Based on the stacked bar chart above, the chances of having heart attack is similar for both genders. This suggests that gender is not be a significant differentiator for heart attack occurrence in this study population.
--   Surprisingly, the proportion of Young adults having heart attack is comparable to that of Middle-aged and Old adults. This finding is in disaccordance with common assumptions of heart attack occurring predominantly in older adults, signifying that heart attack may become more common in young adults in the future. Understanding causes and risk factors for heart attack in young adults is therefore pertinent, for the development of effective prevention strategies and government-initiated public health interventions.
 
+-   Surprisingly, the proportion of Young adults having heart attack is comparable to that of Middle-aged and Old adults. This finding is in disaccordance with common assumptions of heart attack occurring predominantly in older adults, signifying that heart attack may become more common in young adults in the future. Understanding causes and risk factors for heart attack in young adults is therefore pertinent, for the development of effective prevention strategies and government-initiated public health interventions.
 :::
+
+### **4.2 BMI and Heart Attack Occurrrence**
+
+Next, we examine BMI distribution by age and gender, before investigating association of BMI categories with heart attack occurrence.
+
+The `ggplot()`, `geom_boxplot()` and `coord_flip()` functions in the *ggplot2* package are used to create the boxplot for BMI grouped by Age groups, colored by gender and change the orientation of the plot. The `stat_halfeye()` function from the *ggdist* package is used to show the BMI distributions for each Age group, by gender. The `theme()` and `lab()` functions in the *ggplot2* package are then used to change axis labels and dictate legend position.
+
+The `ggbarstats()` and `grouped_ggbarstats()` functions from *ggstatsplot* package are used to create the stacked bar charts with Chi-square test statistics. `digits.perc`, `label.args`, `sample.size.label.args`, `label.args`,ggplot.component\` were used to specify the label size, color and axis labels.
+
+The `table()` function is used to create contingency table before applying the chisq.test()\` function from base R to compute the Chi-square results to extract the Chi-square residuals data.
+
+::: panel-tabset
+## Total Population
 
 ```{r}
 #| code-fold: true
@@ -457,58 +462,145 @@ p1<-ggplot(df,
        y = "BMI") +   
   theme(
     legend.position = "right",
-    #panel.grid.major = element_blank(),
     axis.title.y = element_text(hjust=1, angle=0)) +
   coord_flip()+
   scale_fill_manual(values=alpha(c("thistle", "lightsteelblue"),0.35))
 
-p2<-ggplot(data=df, aes(x=Heart_Attack_Occurrence, y=BMI, fill=Heart_Attack_Occurrence)) +
-  geom_violin()+
-  geom_boxplot(width=0.1,alpha=0.2, fill="white")+
-scale_fill_manual("Heart Attack",values=c( "lightsteelblue","thistle"))+
-  theme(legend.position="right")+
-  labs(x = "Heart Attack",
-       y = "BMI")+ theme(axis.title.y = element_text(vjust = -14))
+p2<-ggbarstats(df, 
+           y = Heart_Attack_Occurrence, 
+           x = BMI_Category,
+           digits.perc = 1,
+           label.args = list(size = 2.5, fill = "white"),
+  sample.size.label.args = list(size = 2.5),
+  legend.title = "BMI",
+  xlab="Heart Attack",
+  ggplot.component = list(theme( axis.ticks.x=element_blank()), scale_fill_manual(values=c("rosybrown2","thistle","lightsteelblue","lightcyan3"))
+           ))
 
-p3<-ggplot(data=df) +
-  geom_mosaic(aes(x = product(Heart_Attack_Occurrence,BMI_Category), fill=Heart_Attack_Occurrence))+
-  theme(legend.position="None") +
-  labs(x = "BMI",
-       y = "Heart Attack")+
-scale_fill_manual(values=c( "lightsteelblue", "thistle"))+
-  scale_y_continuous(labels = scales::percent)
+p1/p2
 
-cmb<-p2+p3+ plot_layout(guides = "collect")+
-  plot_layout(widths = c(1, 3))
-p1/cmb+ plot_annotation(title= "Heart attack occurrence is similar across BMI categories")
 ```
+
+## Grouped by age
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+p<-grouped_ggbarstats(df, 
+           y = Heart_Attack_Occurrence, 
+           x = BMI_Category,
+           digits.perc = 1, 
+           grouping.var = Age_Groups, 
+           plotgrid.args = list(ncol = 2),
+           sample.size.label.args = list(size = 2.5),
+           label.args = list(size = 2.5, fill = "white"), 
+           ggplot.component = list(theme(plot.subtitle = element_text(size = 8), axis.ticks.x=element_blank()), scale_fill_manual(values=c("rosybrown2","thistle","lightsteelblue","lightcyan3"))),
+           legend.title = "BMI",
+            xlab="Heart Attack")
+
+```
+
+![](images/clipboard-2307200117.png)
+
+## Chi-squared Test
+
+Chi-square test residual table for whole population
+
+```{r}
+#Create contingency table
+contingency_table <- table(df$BMI_Category, df$Heart_Attack_Occurrence)
+
+# Perform chi-square test
+chi_square_test <- chisq.test(contingency_table)
+
+# View the results
+pearson_residuals <- chi_square_test$residuals
+print(pearson_residuals)
+```
+
+Chi-square test residual table for Young Adults
+
+```{r}
+#Create contingency table
+subset_df<-df[df$Age_Groups=='Young',]
+contingency_table <- table(subset_df$BMI_Category, subset_df$Heart_Attack_Occurrence)
+
+# Perform chi-square test
+chi_square_test <- chisq.test(contingency_table)
+
+# View the results
+pearson_residuals <- chi_square_test$residuals
+print(pearson_residuals)
+```
+:::
 
 ::: {.callout-note icon="false"}
 ## Insights
 
 -   Distribution of BMI is consistent across age group and gender, resembing a normal distribution. This indicates that BMI is not associated with gender or age in the population.
--   Interestingly, heart attack occurrence does not show significant variation across BMI categories. This suggests that BMI is not a strong differentiator for heart attack occurrence in this study population and that other factors, such as underlying medical conditions or lifestyle behaviors, may be a better predictor of heart attack occurrence than BMI alone.
 
+-   BMI category is associated with heart attack occurrence (Chi-square p-value\<0.05). Interestingly, there were significantly less obese individuals experiencing heart attack than expected, based on the large negative Chi-square residual value (-2.16). However, when stratified by age groups, this association remained significant for young adults only. This suggests that the association may be age-specific and that the effect of BMI on heart attack occurrence might be more pronounced in younger individuals, who may not have developed other comorbidities yet (e.g., hypertension, high cholesterol).
 :::
 
-#### **4.4 Cholesterol level**
+#### **4.3 Association of Heart Attack with Hypertension and Cholesterol**
 
+Given the high incidence of hypertension observed in the earlier section, we will investigate whether hypertension is associated with an increased risk of heart attack.
 
+Mosaic plots were created using `geom_mosaic()` from the *ggmosaic* package and `ggplot()` from the *ggplot2* package. `labs()`, `theme()` and `scale_fill_manual` from *ggplot2* package were used to change the axis labels, theme and color of the graphs. `facet_wrap()` was used to facet the mosaic plots by Age Group. `scale_y_continuous()` from *ggplot2* was used to display the percentages.
 
-#### **4.5 Association of Heart Attack with Medical Conditions and History**
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+p1<-ggplot(data=df) +
+  geom_mosaic(aes(x = product(Blood_Pressure,Heart_Attack_Occurrence), fill=Blood_Pressure))+
+  theme(legend.position="right") +
+  labs(y = "Blood Pressure",
+       x = "Heart Attack")+
+scale_fill_manual("Heart Attack",values=c( "lightsteelblue","lightcyan3", "thistle","rosybrown2"))+
+  scale_y_continuous(labels = scales::percent)+
+  facet_wrap(~Age_Groups)
+
+p2<-ggplot(data=df) +
+  geom_mosaic(aes(x = product(Cholesterol_Category,Heart_Attack_Occurrence), fill=Cholesterol_Category))+
+  theme(legend.position="right") +
+  labs(y = "Cholesterol Level",
+       x = "Heart Attack Occurrence")+
+scale_fill_manual("Heart Attack",values=c( "lightsteelblue","lightcyan3", "thistle"))+
+  facet_wrap(~Age_Groups) + 
+  scale_y_continuous(labels = scales::percent)
+
+p1/p2 + plot_layout(axis_titles = "collect")+ plot_annotation(title= "Heart Attack is not significantly associated with Hypertension and Cholesterol Level")
+
+```
+
+::: {.callout-note icon="false"}
+## Insights
+
+-   Heart attack occurrence does not significantly increase in groups with hypertension or elevated blood pressure, compared to normal blood pressure, across all age groups.
+
+-   Similarly, individuals with elevated cholesterol levels do not have increased risk of heart attack occurrence regardless of age groups.
+
+-   The findings suggests that high blood pressure or cholesterol levels alone may only have a small impact on heart attack risk or that medication adherence and lifestyle modifications could play a role in mitigating the associated risks. The overall heart attack risk for an individual may only become more pronounced when multiple factors are accounted for, as presence of multiple risk factors simultaneously compounds the overall risks since each condition can exacerbate the others.
+:::
+
+#### **4.4 Association of Heart Attack with Medical History**
 
 Heart attack is typically caused by a combination of various interrelated risk factors. Therefore, it is essential to examine other factors such as underlying medical conditions, family history, and lifestyle choices. These factors may interact in complex ways, increasing the likelihood of heart attacks.
 
-In this section, we will investigate if Diabetes History, Family History and Cholesterol level increases tendency of heart attack occurrence.
+In this section, we will investigate if Diabetes History and Family History increases tendency of heart attack occurrence.
+
+::: panel-tabset
+## Family history & Diabetes Mosaic Plot
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 p1<-ggplot(data=df) +
   geom_mosaic(aes(x = product(Heart_Attack_Occurrence,Diabetes_History), fill=Heart_Attack_Occurrence))+
   theme(legend.position="right") +
   labs(x = "Diabetes History",
        y = "Heart Attack Occurrence")+
 scale_fill_manual("Heart Attack",values=c( "lightsteelblue", "thistle"))+
-  facet_wrap(~Age_Groups) + 
   scale_y_continuous(labels = scales::percent)
 
 p2<-ggplot(data=df) +
@@ -519,22 +611,126 @@ p2<-ggplot(data=df) +
 scale_fill_manual("Heart Attack",values=c( "lightsteelblue", "thistle"))+
   facet_wrap(~Age_Groups) + 
   scale_y_continuous(labels = scales::percent)
-p2
+p2/p1
+```
+
+## Diabetes by Age Group
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+grouped_ggbarstats(df, 
+           y = Heart_Attack_Occurrence, 
+           x = Diabetes_History,
+           digits.perc = 1, 
+           grouping.var = Age_Groups, 
+           plotgrid.args = list(ncol = 2),
+           sample.size.label.args = list(size = 2.5),
+           label.args = list(size = 2.5, fill = "white"), 
+           legend.title = "Diabetes History",
+           xlab="Heart Attack",
+           ggplot.component = list(theme(plot.subtitle = element_text(size = 8), axis.ticks.x=element_blank()),scale_fill_manual(values = c("thistle","lightsteelblue"))))
+
+```
+
+![](images/clipboard-4138769921.png)
+
+## Chi-square test
+
+Chi-square test residual table for Young Adults
+
+```{r}
+#Create contingency table
+subset_df<-df[df$Age_Groups=='Young',]
+contingency_table <- table(subset_df$Diabetes_History, subset_df$Heart_Attack_Occurrence)
+
+# Perform chi-square test
+chi_square_test <- chisq.test(contingency_table)
+
+# View the results
+pearson_residuals <- chi_square_test$residuals
+print(pearson_residuals)
+```
+:::
+
+::: {.callout-note icon="false"}
+## Insights
+
+-   Proportion of individuals with heart attack did not differ significantly between groups with or without family history, across the age groups.
+
+-   Interestingly, proportion of individuals who have experienced heart attack was similar for individuals with or without diabetes history for the overall population but heart attack occurrence is associated with diabetes history in Young Adults (Chi-square p-value\<0.05) when the data is age-stratified. There is increased tendency of young adults with diabetes history experiencing heart attack compared to young adults without diabetes history, based on the large positive Chi-square residual value of 2.34.
+:::
+
+#### **4.5 Lifestyle Factors and Heart Attack Occurrence**
+
+In this section, we will investigate if lifestyle factors like physical activity, diet quality and alcohol consumption are associated with heart attack.
+
+The `gglikert()` function from *ggstats* package is used to create the diverging bar charts. `scale_fill_brewer()`, `theme()` and `labs()` from \*ggplot2\` package is used to set the color palette, change axis labels and ticks.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+# Create the subset data for "Yes" and "No" heart attack occurrences
+HA_y <- df %>% filter(Heart_Attack_Occurrence == "Yes") %>% select(Physical_Activity, Diet_Quality, Alcohol_Consumption)
+HA_n <- df %>% filter(Heart_Attack_Occurrence == "No") %>% select(Physical_Activity, Diet_Quality, Alcohol_Consumption)
+
+# Find the maximum length of the two subsets
+max_len <- max(nrow(HA_y), nrow(HA_n))
+
+# Pad the shorter dataframe with NAs
+HA_y <- bind_rows(HA_y, data.frame(Physical_Activity = rep(NA, max_len - nrow(HA_y)), Diet_Quality = rep(NA, max_len - nrow(HA_y)),Alcohol_Consumption = rep(NA, max_len - nrow(HA_y))))
+
+PA<-data.frame(Yes=HA_y$Physical_Activity, No=HA_n$Physical_Activity)
+
+DQ<-data.frame(Yes=HA_y$Diet_Quality, No=HA_n$Diet_Quality)
+
+AC<-data.frame(Yes=HA_y$Alcohol_Consumption, No=HA_n$Alcohol_Consumption)
+
+p1<-gglikert(PA) + 
+  scale_fill_brewer(palette="Blues") +
+  labs(x="Physical Activity", y="Heart Attack")+
+  theme(axis.ticks.x = element_blank(), 
+        axis.ticks.y = element_blank(),
+        axis.text.x=element_blank())
+
+p2<-gglikert(DQ) + 
+  scale_fill_brewer(palette="Set1") +
+  labs(x="Diet Quality", y="Heart Attack")+
+  theme(axis.ticks.x = element_blank(), 
+        axis.ticks.y = element_blank(),
+        axis.text.x=element_blank())
+
+
+p3<-gglikert(AC) + 
+  scale_fill_brewer(palette="Blues") +
+  labs(x="Alcohol Consumption", y="Heart Attack")+
+  theme(axis.ticks.x = element_blank(), 
+        axis.ticks.y = element_blank(),
+        axis.text.x=element_blank())
+
+(p1+p2)/p3+ plot_annotation(title="Heart attack is not associated with Physical Activity, Diet Quality\n&Alcohol consumption")
 ```
 
 ::: {.callout-note icon="false"}
 ## Insights
 
--   Based on the figure, we can observe that heart attack occurrence is relatively similar in middle-aged and old adults with or without diabetes history. However, percentage of young adults with heart attack was slightly higher in those with diabetes history compared to without.
--   Percentage of individuals with heart attack did not differ significantly between groups with or without family history, across the age groups.
-
+-   Heart attack occurrence does not vary significantly with Physical Activity, Diet Quality and Alcohol Consumption. This suggests that lifestyle factors may a secondary or insignificant role in heart attack risk for the study population. However, the data for these variables are measured on a likert scale which may be prone to biases, leading to potential inaccuracies and weaken the observed relationship between lifestyle factors and heart attack occurrence.
 :::
 
-#### **4.6:**
-
-#### **4.7:**
-
 ### **5 Conclusion**
-Other factors, such as the presence of additional risk factors (e.g., high cholesterol, smoking, obesity, or diabetes), the duration and severity of hypertension, and genetic predispositions, play a critical role in determining an individual's overall risk.
+
+Our analyses reveals a high prevalence of heart attack occurrence in the Japanese population, with approximately 10% affected, raising a cause for concern and emphasizes a pressing need for targeted cardiovascular health initiatives. Furthermore, significant portions of the population suffers from hypertension, elevated cholesterol levels, and/or are overweight or obese, all of which are well-known risk factors for heart disease.
+
+More importantly, heart attack incidence is comparable between young adults (18-39) and adults aged 40 and above, highlighting an emerging concern for cardiovascular health in younger populations. In our analyses, BMI category was found to be associated with heart attack occurrence, particularly in young adults, suggesting age-specific effects. Diabetes history was additionally associated with heart attack in young adults.
+
+On the other hand, hypertension, elevated cholesterol levels, family history, physical activity, diet quality, and alcohol consumption did not show a significant relationship with heart attack occurrence in this population.
+
+These findings underscore the need for more comprehensive studies to identify heart attack risk factors among younger adults. Future research and analyses could focus on exploring the complex interactions between risk factors to provide a clearer understanding of the risk profiles for heart attack in different demographic groups.
 
 ### **6 References**
+
+-   [Heart Attack Research](https://www.sciencedaily.com/releases/2019/03/190307081026.htm)
+-   [Blood Pressure Categories](https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings)
+-   [BMI Categories](https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html)
+-   [Cholesterol Level Categories](https://www.myheart.org.sg/heart-news/cholesterol-levels/)
+-   [Chi-square test](https://www.datacamp.com/tutorial/chi-square-test-r)

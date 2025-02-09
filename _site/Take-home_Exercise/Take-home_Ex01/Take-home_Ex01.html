@@ -195,7 +195,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-in-class-exercise">    
         <li>
-    <a class="dropdown-item" href="../../In-class_Ex04.html">
+    <a class="dropdown-item" href="../../In-Class_Exercise/In-class_Ex04.html">
  <span class="dropdown-text">In-class Exercise 4</span></a>
   </li>  
     </ul>
@@ -262,17 +262,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#recode-age" id="toc-recode-age" class="nav-link" data-scroll-target="#recode-age"><strong>3.3 Recode Age</strong></a></li>
   <li><a href="#recode-bmi" id="toc-recode-bmi" class="nav-link" data-scroll-target="#recode-bmi"><strong>3.4 Recode BMI</strong></a></li>
   <li><a href="#creating-blood-pressure-variable" id="toc-creating-blood-pressure-variable" class="nav-link" data-scroll-target="#creating-blood-pressure-variable"><strong>3.5 Creating blood pressure variable</strong></a></li>
-  <li><a href="#ordering-levels-for-ordinal-categorical-variables" id="toc-ordering-levels-for-ordinal-categorical-variables" class="nav-link" data-scroll-target="#ordering-levels-for-ordinal-categorical-variables"><strong>3.6 Ordering levels for ordinal categorical variables</strong></a></li>
+  <li><a href="#recode-cholesterol-level" id="toc-recode-cholesterol-level" class="nav-link" data-scroll-target="#recode-cholesterol-level"><strong>3.6 Recode Cholesterol Level</strong></a></li>
+  <li><a href="#ordering-levels-for-ordinal-categorical-variables" id="toc-ordering-levels-for-ordinal-categorical-variables" class="nav-link" data-scroll-target="#ordering-levels-for-ordinal-categorical-variables"><strong>3.7 Ordering levels for ordinal categorical variables</strong></a></li>
   </ul></li>
-  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis"><strong>4 Exploratory Data Analysis</strong></a>
+  <li><a href="#exploratory-data-analysis-and-statistical-visualisations" id="toc-exploratory-data-analysis-and-statistical-visualisations" class="nav-link" data-scroll-target="#exploratory-data-analysis-and-statistical-visualisations"><strong>4 Exploratory Data Analysis and Statistical Visualisations</strong></a>
   <ul>
-  <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis"><strong>4.1 Univariate Analysis</strong></a></li>
-  <li><a href="#association-of-heart-attack-with-hypertension" id="toc-association-of-heart-attack-with-hypertension" class="nav-link" data-scroll-target="#association-of-heart-attack-with-hypertension"><strong>4.2 Association of Heart Attack with Hypertension</strong></a></li>
-  <li><a href="#association-of-heart-attack-with-age-gender-and-bmi" id="toc-association-of-heart-attack-with-age-gender-and-bmi" class="nav-link" data-scroll-target="#association-of-heart-attack-with-age-gender-and-bmi"><strong>4.3 Association of Heart Attack with Age, Gender and BMI</strong></a></li>
-  <li><a href="#cholesterol-level" id="toc-cholesterol-level" class="nav-link" data-scroll-target="#cholesterol-level"><strong>4.4 Cholesterol level</strong></a></li>
-  <li><a href="#association-of-heart-attack-with-medical-conditions-and-history" id="toc-association-of-heart-attack-with-medical-conditions-and-history" class="nav-link" data-scroll-target="#association-of-heart-attack-with-medical-conditions-and-history"><strong>4.5 Association of Heart Attack with Medical Conditions and History</strong></a></li>
-  <li><a href="#eda-6" id="toc-eda-6" class="nav-link" data-scroll-target="#eda-6"><strong>4.6 EDA 6:</strong></a></li>
-  <li><a href="#eda-7" id="toc-eda-7" class="nav-link" data-scroll-target="#eda-7"><strong>4.7 EDA 7:</strong></a></li>
+  <li><a href="#gender-age-group-and-heart-attack-occurrence" id="toc-gender-age-group-and-heart-attack-occurrence" class="nav-link" data-scroll-target="#gender-age-group-and-heart-attack-occurrence"><strong>4.1 Gender, Age Group and Heart Attack Occurrence</strong></a></li>
+  </ul></li>
+  <li><a href="#bmi-and-heart-attack-occurrrence" id="toc-bmi-and-heart-attack-occurrrence" class="nav-link" data-scroll-target="#bmi-and-heart-attack-occurrrence"><strong>4.2 BMI and Heart Attack Occurrrence</strong></a>
+  <ul>
+  <li><a href="#association-of-heart-attack-with-hypertension-and-cholesterol" id="toc-association-of-heart-attack-with-hypertension-and-cholesterol" class="nav-link" data-scroll-target="#association-of-heart-attack-with-hypertension-and-cholesterol"><strong>4.3 Association of Heart Attack with Hypertension and Cholesterol</strong></a></li>
+  <li><a href="#association-of-heart-attack-with-medical-history" id="toc-association-of-heart-attack-with-medical-history" class="nav-link" data-scroll-target="#association-of-heart-attack-with-medical-history"><strong>4.4 Association of Heart Attack with Medical History</strong></a></li>
+  <li><a href="#lifestyle-factors-and-heart-attack-occurrence" id="toc-lifestyle-factors-and-heart-attack-occurrence" class="nav-link" data-scroll-target="#lifestyle-factors-and-heart-attack-occurrence"><strong>4.5 Lifestyle Factors and Heart Attack Occurrence</strong></a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><strong>5 Conclusion</strong></a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><strong>6 References</strong></a></li>
@@ -308,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 8, 2025</p>
+      <p class="date-modified">February 9, 2025</p>
     </div>
   </div>
     
@@ -331,11 +332,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="objectives" class="level4">
 <h4 class="anchored" data-anchor-id="objectives"><strong>1.3 Objectives</strong></h4>
-<p>As part of an international media company that publishes weekly content on digital platforms, we will Use the Japan heart attack dataset to perform Exploratory Data Analysis (EDA) and generate visualisations for an article, covering insights on:</p>
+<p>As part of an international media company that publishes weekly content on digital platforms, we will Use the Japan heart attack dataset to perform Exploratory Data Analysis and generate statistical visualisations for an article, covering insights on:</p>
 <ol type="1">
 <li>The general profile of Japan population</li>
-<li>Trends in heart attack occurrence in the Japan populations</li>
-<li>Correlations between ??</li>
+<li>Trends and associations of heart attack occurrence with demographic, lifestyle factors and medical history in the Japan populations.</li>
+<li>Age-specific factors for heart attack occurrence</li>
 </ol>
 </section>
 </section>
@@ -343,8 +344,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="getting-started"><strong>2 Getting Started</strong></h3>
 <section id="loading-packages" class="level4">
 <h4 class="anchored" data-anchor-id="loading-packages"><strong>2.1 Loading Packages</strong></h4>
+<p>The R packages used in this exercise includes:</p>
+<ul>
+<li>tidyverse (i.e.&nbsp;readr, tidyr, dplyr, ggplot2) for performing data science tasks such as importing, tidying, and wrangling data, as well as creating graphs</li>
+<li>knitr for displaying tables</li>
+<li>patchwork for preparing composite figure created using ggplot2</li>
+<li>ggstats for creating diverging barplots</li>
+<li>ggdist for visualising distributions and uncertainty</li>
+<li>ggmosaic for creating mosaic plots</li>
+<li>ggstatsplot for visualising significant test of association using stacked barplots</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,knitr, patchwork,ggpubr, plotly,ggridges,ggdist,ggmosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,knitr, patchwork,ggstats, ggdist,ggmosaic, ggstatsplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="importing-data" class="level4">
@@ -648,7 +659,7 @@ $ Extra_Column_15         &lt;dbl&gt; 0.061632229, 0.617825340, 0.974455410, 0.2
 </div>
 </div>
 </div>
-<p>To facilitate comparison of profiles of younger versus older heart attack patients, we can create a new variable named <em>Age_Group</em> to bin the records into different age groups:</p>
+<p>To facilitate comparison of profiles of younger versus older heart attack patients, we can create a new variable named <em>Age_Group</em> to bin the records into different age groups using <code>ifelse</code> statements:</p>
 <ol type="1">
 <li>Young Adults: 18-39</li>
 <li>Middle-aged Adults: 40-65</li>
@@ -738,31 +749,47 @@ $ Extra_Column_15         &lt;dbl&gt; 0.061632229, 0.617825340, 0.974455410, 0.2
 <span id="cb16-4"><a href="#cb16-4"></a>                                            ( df<span class="sc">$</span>Diastolic_BP<span class="sc">&lt;</span><span class="dv">90</span> <span class="sc">&amp;</span> df<span class="sc">$</span>Diastolic_BP<span class="sc">&gt;=</span><span class="dv">80</span>), <span class="st">"Hypertension I"</span>, <span class="st">"Hypertension II"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="recode-cholesterol-level" class="level4">
+<h4 class="anchored" data-anchor-id="recode-cholesterol-level"><strong>3.6 Recode Cholesterol Level</strong></h4>
+<p>Total Cholesterol Level can also be further categorised according to the criterion below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3010395143.png" class="img-fluid figure-img"></p>
+<figcaption>Source: Singapore Heart Foundation</figcaption>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>df<span class="sc">$</span>Cholesterol_Category <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(df<span class="sc">$</span>Cholesterol_Level<span class="sc">&lt;</span><span class="dv">200</span>, <span class="st">"Normal"</span>, <span class="fu">ifelse</span>(df<span class="sc">$</span>Cholesterol_Level<span class="sc">&lt;</span><span class="dv">240</span>, <span class="st">"Borderline High"</span>, <span class="st">"High"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 <section id="ordering-levels-for-ordinal-categorical-variables" class="level4">
-<h4 class="anchored" data-anchor-id="ordering-levels-for-ordinal-categorical-variables"><strong>3.6 Ordering levels for ordinal categorical variables</strong></h4>
+<h4 class="anchored" data-anchor-id="ordering-levels-for-ordinal-categorical-variables"><strong>3.7 Ordering levels for ordinal categorical variables</strong></h4>
 <p>For ordinal categorical variables, we will order the different levels in an ascending order using <code>factor()</code>, so that the results will be displayed according to the order we have set in the graphs we will plot subsequently in our analysis.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>df<span class="sc">$</span>Physical_Activity <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Physical_Activity, </span>
-<span id="cb17-2"><a href="#cb17-2"></a>                               <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Moderate"</span>, <span class="st">"High"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span> )</span>
-<span id="cb17-3"><a href="#cb17-3"></a></span>
-<span id="cb17-4"><a href="#cb17-4"></a>df<span class="sc">$</span>Diet_Quality <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Diet_Quality, </span>
-<span id="cb17-5"><a href="#cb17-5"></a>                          <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Poor"</span>, <span class="st">"Average"</span>, <span class="st">"Good"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-6"><a href="#cb17-6"></a></span>
-<span id="cb17-7"><a href="#cb17-7"></a>df<span class="sc">$</span>Alcohol_Consumption <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Alcohol_Consumption, </span>
-<span id="cb17-8"><a href="#cb17-8"></a>                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"None"</span>, <span class="st">"Low"</span>, <span class="st">"Moderate"</span>, <span class="st">"High"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-9"><a href="#cb17-9"></a></span>
-<span id="cb17-10"><a href="#cb17-10"></a>df<span class="sc">$</span>Age_Groups <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Age_Groups, </span>
-<span id="cb17-11"><a href="#cb17-11"></a>                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Young"</span>, <span class="st">"Middle-aged"</span>, <span class="st">"Old"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-12"><a href="#cb17-12"></a></span>
-<span id="cb17-13"><a href="#cb17-13"></a>df<span class="sc">$</span>BMI_Category <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>BMI_Category, </span>
-<span id="cb17-14"><a href="#cb17-14"></a>                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Underweight"</span>, <span class="st">"Normal"</span>, <span class="st">"Overweight"</span>, <span class="st">"Obese"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-15"><a href="#cb17-15"></a></span>
-<span id="cb17-16"><a href="#cb17-16"></a>df<span class="sc">$</span>Blood_Pressure <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Blood_Pressure, </span>
-<span id="cb17-17"><a href="#cb17-17"></a>                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Normal"</span>, <span class="st">"Elevated"</span>, <span class="st">"Hypertension I"</span>, <span class="st">"Hypertension II"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>df<span class="sc">$</span>Physical_Activity <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Physical_Activity, </span>
+<span id="cb18-2"><a href="#cb18-2"></a>                               <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Moderate"</span>, <span class="st">"High"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span> )</span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a>df<span class="sc">$</span>Diet_Quality <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Diet_Quality, </span>
+<span id="cb18-5"><a href="#cb18-5"></a>                          <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Poor"</span>, <span class="st">"Average"</span>, <span class="st">"Good"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-6"><a href="#cb18-6"></a></span>
+<span id="cb18-7"><a href="#cb18-7"></a>df<span class="sc">$</span>Alcohol_Consumption <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Alcohol_Consumption, </span>
+<span id="cb18-8"><a href="#cb18-8"></a>                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"None"</span>, <span class="st">"Low"</span>, <span class="st">"Moderate"</span>, <span class="st">"High"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-9"><a href="#cb18-9"></a></span>
+<span id="cb18-10"><a href="#cb18-10"></a>df<span class="sc">$</span>Age_Groups <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Age_Groups, </span>
+<span id="cb18-11"><a href="#cb18-11"></a>                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Young"</span>, <span class="st">"Middle-aged"</span>, <span class="st">"Old"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-12"><a href="#cb18-12"></a></span>
+<span id="cb18-13"><a href="#cb18-13"></a>df<span class="sc">$</span>BMI_Category <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>BMI_Category, </span>
+<span id="cb18-14"><a href="#cb18-14"></a>                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Underweight"</span>, <span class="st">"Normal"</span>, <span class="st">"Overweight"</span>, <span class="st">"Obese"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-15"><a href="#cb18-15"></a></span>
+<span id="cb18-16"><a href="#cb18-16"></a>df<span class="sc">$</span>Blood_Pressure <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Blood_Pressure, </span>
+<span id="cb18-17"><a href="#cb18-17"></a>                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Normal"</span>, <span class="st">"Elevated"</span>, <span class="st">"Hypertension I"</span>, <span class="st">"Hypertension II"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-18"><a href="#cb18-18"></a></span>
+<span id="cb18-19"><a href="#cb18-19"></a>df<span class="sc">$</span>Cholesterol_Category <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Cholesterol_Category, </span>
+<span id="cb18-20"><a href="#cb18-20"></a>                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Normal"</span>, <span class="st">"Borderline High"</span>, <span class="st">"High"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The first 5 results of the final dataset are displayed below using <code>kable()</code> of the knitr package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(df, <span class="at">n=</span><span class="dv">5</span>), <span class="at">caption =</span> <span class="st">"Heart Attack in Japan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(df, <span class="at">n=</span><span class="dv">5</span>), <span class="at">caption =</span> <span class="st">"Heart Attack in Japan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Heart Attack in Japan</caption>
@@ -771,22 +798,23 @@ $ Extra_Column_15         &lt;dbl&gt; 0.061632229, 0.617825340, 0.974455410, 0.2
 <col style="width: 2%">
 <col style="width: 2%">
 <col style="width: 5%">
+<col style="width: 5%">
 <col style="width: 6%">
-<col style="width: 7%">
-<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 4%">
 <col style="width: 6%">
 <col style="width: 4%">
-<col style="width: 7%">
-<col style="width: 5%">
+<col style="width: 2%">
 <col style="width: 3%">
 <col style="width: 3%">
 <col style="width: 4%">
 <col style="width: 4%">
-<col style="width: 5%">
-<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 3%">
 <col style="width: 4%">
-<col style="width: 4%">
 <col style="width: 5%">
+<col style="width: 6%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -810,6 +838,7 @@ $ Extra_Column_15         &lt;dbl&gt; 0.061632229, 0.617825340, 0.974455410, 0.2
 <th style="text-align: left;">Age_Groups</th>
 <th style="text-align: left;">BMI_Category</th>
 <th style="text-align: left;">Blood_Pressure</th>
+<th style="text-align: left;">Cholesterol_Category</th>
 </tr>
 </thead>
 <tbody>
@@ -834,6 +863,7 @@ $ Extra_Column_15         &lt;dbl&gt; 0.061632229, 0.617825340, 0.974455410, 0.2
 <td style="text-align: left;">Middle-aged</td>
 <td style="text-align: left;">Obese</td>
 <td style="text-align: left;">Hypertension I</td>
+<td style="text-align: left;">Normal</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">69</td>
@@ -856,6 +886,7 @@ $ Extra_Column_15         &lt;dbl&gt; 0.061632229, 0.617825340, 0.974455410, 0.2
 <td style="text-align: left;">Old</td>
 <td style="text-align: left;">Overweight</td>
 <td style="text-align: left;">Elevated</td>
+<td style="text-align: left;">Normal</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">46</td>
@@ -878,6 +909,7 @@ $ Extra_Column_15         &lt;dbl&gt; 0.061632229, 0.617825340, 0.974455410, 0.2
 <td style="text-align: left;">Middle-aged</td>
 <td style="text-align: left;">Overweight</td>
 <td style="text-align: left;">Hypertension II</td>
+<td style="text-align: left;">Borderline High</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">32</td>
@@ -900,6 +932,7 @@ $ Extra_Column_15         &lt;dbl&gt; 0.061632229, 0.617825340, 0.974455410, 0.2
 <td style="text-align: left;">Young</td>
 <td style="text-align: left;">Normal</td>
 <td style="text-align: left;">Hypertension I</td>
+<td style="text-align: left;">Borderline High</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">60</td>
@@ -922,6 +955,7 @@ $ Extra_Column_15         &lt;dbl&gt; 0.061632229, 0.617825340, 0.974455410, 0.2
 <td style="text-align: left;">Middle-aged</td>
 <td style="text-align: left;">Normal</td>
 <td style="text-align: left;">Hypertension II</td>
+<td style="text-align: left;">Borderline High</td>
 </tr>
 </tbody>
 </table>
@@ -929,130 +963,85 @@ $ Extra_Column_15         &lt;dbl&gt; 0.061632229, 0.617825340, 0.974455410, 0.2
 </div>
 </section>
 </section>
-<section id="exploratory-data-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="exploratory-data-analysis"><strong>4 Exploratory Data Analysis</strong></h3>
+<section id="exploratory-data-analysis-and-statistical-visualisations" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-data-analysis-and-statistical-visualisations"><strong>4 Exploratory Data Analysis and Statistical Visualisations</strong></h3>
 <p>In this section, we will be conducting Exploratory Data Analysis on the processed dataset named <em>df</em>.</p>
-<section id="univariate-analysis" class="level4">
-<h4 class="anchored" data-anchor-id="univariate-analysis"><strong>4.1 Univariate Analysis</strong></h4>
-<p>Before diving into multivariate analysis, we first take a look at the distribution of some of the key variables closely-linked to heart attack in the Japan population: Age group, Blood Pressure, BMI category and heart attack occurrence.</p>
+<p>Before diving into the analysis, we first take a look at the distribution of some of the key variables closely-linked to heart attack in the Japan population: Age group, Cholesterol Level, Blood Pressure, BMI category and heart attack occurrence.</p>
+<p>The <code>ggplot()</code> and <code>geom_bar()</code> functions from the <em>ggplot2</em> package was used to generate the bar charts. <code>stat = 'count'</code> argument and <code>geom_text()</code> was used to add percentage annotations onto the bar chart. The bar chart colors were set using <code>scale_fill_manual()</code>. The axis labels were defined using <code>labs()</code>. The aesthetics of the bar charts were further customised using <code>theme()</code>. Individual plots were combined using <em>patchwork</em> package.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>Age_Groups, <span class="at">fill=</span>Age_Groups))<span class="sc">+</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>,<span class="st">"thistle"</span>))<span class="sc">+</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb19-5"><a href="#cb19-5"></a>    <span class="fu">aes</span>(</span>
-<span id="cb19-6"><a href="#cb19-6"></a>      <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..count..<span class="sc">/</span><span class="fu">sum</span>(..count..), <span class="at">accuracy =</span> <span class="fl">0.1</span>)  <span class="co"># Calculate percentage using sum of counts</span></span>
-<span id="cb19-7"><a href="#cb19-7"></a>    ),</span>
-<span id="cb19-8"><a href="#cb19-8"></a>    <span class="at">stat =</span> <span class="st">"count"</span>,</span>
-<span id="cb19-9"><a href="#cb19-9"></a>    <span class="at">vjust =</span> <span class="fl">1.5</span>,  <span class="co"># Adjust text placement </span></span>
-<span id="cb19-10"><a href="#cb19-10"></a>    <span class="at">size=</span><span class="dv">3</span></span>
-<span id="cb19-11"><a href="#cb19-11"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-12"><a href="#cb19-12"></a>  <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"None"</span>)<span class="sc">+</span></span>
-<span id="cb19-13"><a href="#cb19-13"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age Group"</span>, <span class="at">fill=</span><span class="st">"Age Group"</span>)</span>
-<span id="cb19-14"><a href="#cb19-14"></a></span>
-<span id="cb19-15"><a href="#cb19-15"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>Blood_Pressure, <span class="at">fill=</span>Blood_Pressure))<span class="sc">+</span></span>
-<span id="cb19-16"><a href="#cb19-16"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
-<span id="cb19-17"><a href="#cb19-17"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>,<span class="st">"thistle"</span>,<span class="st">"rosybrown2"</span> ))<span class="sc">+</span></span>
-<span id="cb19-18"><a href="#cb19-18"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb19-19"><a href="#cb19-19"></a>    <span class="fu">aes</span>(</span>
-<span id="cb19-20"><a href="#cb19-20"></a>      <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..count..<span class="sc">/</span><span class="fu">sum</span>(..count..), <span class="at">accuracy =</span> <span class="fl">0.1</span>)  <span class="co"># Calculate percentage using sum of counts</span></span>
-<span id="cb19-21"><a href="#cb19-21"></a>    ),</span>
-<span id="cb19-22"><a href="#cb19-22"></a>    <span class="at">stat =</span> <span class="st">"count"</span>,</span>
-<span id="cb19-23"><a href="#cb19-23"></a>    <span class="at">vjust =</span> <span class="fl">1.5</span>,  <span class="co"># Adjust text placement </span></span>
-<span id="cb19-24"><a href="#cb19-24"></a>    <span class="at">size=</span><span class="dv">3</span></span>
-<span id="cb19-25"><a href="#cb19-25"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-26"><a href="#cb19-26"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"None"</span> )<span class="sc">+</span></span>
-<span id="cb19-27"><a href="#cb19-27"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Blood Pressure"</span>, <span class="at">fill=</span><span class="st">"Blood Pressure"</span>)</span>
-<span id="cb19-28"><a href="#cb19-28"></a></span>
-<span id="cb19-29"><a href="#cb19-29"></a>p3<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>Heart_Attack_Occurrence, <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
-<span id="cb19-30"><a href="#cb19-30"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
-<span id="cb19-31"><a href="#cb19-31"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"thistle"</span> ))<span class="sc">+</span></span>
-<span id="cb19-32"><a href="#cb19-32"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb19-33"><a href="#cb19-33"></a>    <span class="fu">aes</span>(</span>
-<span id="cb19-34"><a href="#cb19-34"></a>      <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..count..<span class="sc">/</span><span class="fu">sum</span>(..count..), <span class="at">accuracy =</span> <span class="fl">0.1</span>)  <span class="co"># Calculate percentage using sum of counts</span></span>
-<span id="cb19-35"><a href="#cb19-35"></a>    ),</span>
-<span id="cb19-36"><a href="#cb19-36"></a>    <span class="at">stat =</span> <span class="st">"count"</span>,</span>
-<span id="cb19-37"><a href="#cb19-37"></a>    <span class="at">vjust =</span> <span class="fl">1.5</span>,  <span class="co"># Adjust text placement </span></span>
-<span id="cb19-38"><a href="#cb19-38"></a>    <span class="at">size=</span><span class="dv">3</span></span>
-<span id="cb19-39"><a href="#cb19-39"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-40"><a href="#cb19-40"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"None"</span> )<span class="sc">+</span></span>
-<span id="cb19-41"><a href="#cb19-41"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Heart Attack Occurrence"</span>, <span class="at">fill=</span><span class="st">"Heart Attack"</span>)</span>
-<span id="cb19-42"><a href="#cb19-42"></a></span>
-<span id="cb19-43"><a href="#cb19-43"></a>p4<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>BMI_Category, <span class="at">fill=</span>BMI_Category))<span class="sc">+</span></span>
-<span id="cb19-44"><a href="#cb19-44"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
-<span id="cb19-45"><a href="#cb19-45"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>,<span class="st">"thistle"</span>,<span class="st">"rosybrown2"</span> ))<span class="sc">+</span></span>
-<span id="cb19-46"><a href="#cb19-46"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb19-47"><a href="#cb19-47"></a>    <span class="fu">aes</span>(</span>
-<span id="cb19-48"><a href="#cb19-48"></a>      <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..count..<span class="sc">/</span><span class="fu">sum</span>(..count..), <span class="at">accuracy =</span> <span class="fl">0.1</span>)  <span class="co"># Calculate percentage using sum of counts</span></span>
-<span id="cb19-49"><a href="#cb19-49"></a>    ),</span>
-<span id="cb19-50"><a href="#cb19-50"></a>    <span class="at">stat =</span> <span class="st">"count"</span>,</span>
-<span id="cb19-51"><a href="#cb19-51"></a>    <span class="at">vjust =</span> <span class="fl">1.5</span>,  <span class="co"># Adjust text placement </span></span>
-<span id="cb19-52"><a href="#cb19-52"></a>    <span class="at">size=</span><span class="dv">3</span></span>
-<span id="cb19-53"><a href="#cb19-53"></a>  ) <span class="sc">+</span></span>
-<span id="cb19-54"><a href="#cb19-54"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"None"</span> )<span class="sc">+</span></span>
-<span id="cb19-55"><a href="#cb19-55"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"BMI Category"</span>, <span class="at">fill=</span><span class="st">"BMI"</span>)</span>
-<span id="cb19-56"><a href="#cb19-56"></a></span>
-<span id="cb19-57"><a href="#cb19-57"></a>p1<span class="sc">+</span>p2<span class="sc">+</span>p3<span class="sc">+</span>p4<span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span> <span class="st">"Overview of Japan Population Profile"</span>, <span class="at">tag_levels =</span> <span class="st">'I'</span>)<span class="sc">+</span></span>
-<span id="cb19-58"><a href="#cb19-58"></a>  <span class="fu">plot_layout</span>(<span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Take-home_Ex01_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Insights
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>The majority of the study population are Middle-aged (40-65), followed by Young adults (18-39) and Old adults (&gt;65).</li>
-<li>About 10% of the population has had heart attack, indicating high prevalence of heart attack in Japan and underscores importance of addressing cardiovascular health.</li>
-<li>Alarmingly, only 25.2% of the population has normal blood pressure, with almost 2/3 (62.6%) suffering from hypertension. Prolonged hypertension is a well-documented contributor to cardiovascular diseases, including heart attacks and strokes.</li>
-<li>Nearly half of the population (49.8%) are either overweight or obese, which is known to be a significant risk factor for heart attack occurrence and correlates with other comorbidities such as diabetes and high cholesterol, exacerbating health conditions.</li>
-<li>The high incidence of hypertension, overweight and obesity highlights a need for targeted public health campaigns to increase awareness to promote healthy lifestyles and targeted preventive measures such as early detections and lifestyle modifications.</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="association-of-heart-attack-with-hypertension" class="level4">
-<h4 class="anchored" data-anchor-id="association-of-heart-attack-with-hypertension"><strong>4.2 Association of Heart Attack with Hypertension</strong></h4>
-<p>Next, we delve into bivariate analyses to understand correlation of heart attack with various factors. Given the high incidence of hypertension observed in the previous section, we will investigate whether hypertension is associated with an increased risk of heart attack.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df) <span class="sc">+</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence,Blood_Pressure), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>) <span class="sc">+</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Blood Pressure"</span>,</span>
-<span id="cb20-5"><a href="#cb20-5"></a>       <span class="at">y =</span> <span class="st">"Heart Attack"</span>)<span class="sc">+</span></span>
-<span id="cb20-6"><a href="#cb20-6"></a><span class="fu">scale_fill_manual</span>(<span class="st">"Heart Attack"</span>,<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>, <span class="st">"thistle"</span>))<span class="sc">+</span></span>
-<span id="cb20-7"><a href="#cb20-7"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
-<span id="cb20-8"><a href="#cb20-8"></a></span>
-<span id="cb20-9"><a href="#cb20-9"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">y=</span>Heart_Attack_Occurrence, <span class="at">x=</span>Systolic_BP, <span class="at">fill=</span>Heart_Attack_Occurrence)) <span class="sc">+</span></span>
-<span id="cb20-10"><a href="#cb20-10"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">quantile_lines=</span><span class="cn">TRUE</span>, <span class="at">quantiles =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb20-11"><a href="#cb20-11"></a><span class="fu">scale_fill_manual</span>(<span class="st">"Heart Attack"</span>,<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>,<span class="st">"thistle"</span>))<span class="sc">+</span></span>
-<span id="cb20-12"><a href="#cb20-12"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"None"</span>)<span class="sc">+</span></span>
-<span id="cb20-13"><a href="#cb20-13"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Heart Attack"</span>,</span>
-<span id="cb20-14"><a href="#cb20-14"></a>       <span class="at">x =</span> <span class="st">"Systolic BP"</span>)</span>
-<span id="cb20-15"><a href="#cb20-15"></a></span>
-<span id="cb20-16"><a href="#cb20-16"></a>p3<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">y=</span>Heart_Attack_Occurrence, <span class="at">x=</span>Diastolic_BP, <span class="at">fill=</span>Heart_Attack_Occurrence)) <span class="sc">+</span></span>
-<span id="cb20-17"><a href="#cb20-17"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">quantile_lines=</span><span class="cn">TRUE</span>, <span class="at">quantiles =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
-<span id="cb20-18"><a href="#cb20-18"></a><span class="fu">scale_fill_manual</span>(<span class="st">"Heart Attack"</span>,<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>,<span class="st">"thistle"</span>))<span class="sc">+</span></span>
-<span id="cb20-19"><a href="#cb20-19"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"None"</span>, <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>())<span class="sc">+</span></span>
-<span id="cb20-20"><a href="#cb20-20"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Diastolic BP"</span>)</span>
-<span id="cb20-21"><a href="#cb20-21"></a></span>
-<span id="cb20-22"><a href="#cb20-22"></a>p1<span class="sc">/</span>(p2<span class="sc">+</span>p3) <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">axis_titles =</span> <span class="st">"collect"</span>)<span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span> <span class="st">"Heart Attack is not significantly associated with Hypertension"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>Age_Groups, <span class="at">fill=</span>Age_Groups))<span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>,<span class="st">"thistle"</span>))<span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb20-5"><a href="#cb20-5"></a>    <span class="fu">aes</span>(</span>
+<span id="cb20-6"><a href="#cb20-6"></a>      <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..count..<span class="sc">/</span><span class="fu">sum</span>(..count..), <span class="at">accuracy =</span> <span class="fl">0.1</span>)  <span class="co"># Calculate percentage using sum of counts</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a>    ),</span>
+<span id="cb20-8"><a href="#cb20-8"></a>    <span class="at">stat =</span> <span class="st">"count"</span>,</span>
+<span id="cb20-9"><a href="#cb20-9"></a>    <span class="at">vjust =</span> <span class="fl">1.25</span>,  <span class="co"># Adjust text placement </span></span>
+<span id="cb20-10"><a href="#cb20-10"></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a>  <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"None"</span>)<span class="sc">+</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age Group"</span>)</span>
+<span id="cb20-14"><a href="#cb20-14"></a></span>
+<span id="cb20-15"><a href="#cb20-15"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>Blood_Pressure, <span class="at">fill=</span>Blood_Pressure))<span class="sc">+</span></span>
+<span id="cb20-16"><a href="#cb20-16"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
+<span id="cb20-17"><a href="#cb20-17"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>,<span class="st">"thistle"</span>,<span class="st">"rosybrown2"</span> ))<span class="sc">+</span></span>
+<span id="cb20-18"><a href="#cb20-18"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb20-19"><a href="#cb20-19"></a>    <span class="fu">aes</span>(</span>
+<span id="cb20-20"><a href="#cb20-20"></a>      <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..count..<span class="sc">/</span><span class="fu">sum</span>(..count..), <span class="at">accuracy =</span> <span class="fl">0.1</span>)  <span class="co"># Calculate percentage using sum of counts</span></span>
+<span id="cb20-21"><a href="#cb20-21"></a>    ),</span>
+<span id="cb20-22"><a href="#cb20-22"></a>    <span class="at">stat =</span> <span class="st">"count"</span>,</span>
+<span id="cb20-23"><a href="#cb20-23"></a>    <span class="at">vjust =</span> <span class="fl">1.25</span>,  <span class="co"># Adjust text placement </span></span>
+<span id="cb20-24"><a href="#cb20-24"></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb20-25"><a href="#cb20-25"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-26"><a href="#cb20-26"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"None"</span> )<span class="sc">+</span></span>
+<span id="cb20-27"><a href="#cb20-27"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Blood Pressure"</span>)</span>
+<span id="cb20-28"><a href="#cb20-28"></a></span>
+<span id="cb20-29"><a href="#cb20-29"></a>p3<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>Heart_Attack_Occurrence, <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
+<span id="cb20-30"><a href="#cb20-30"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
+<span id="cb20-31"><a href="#cb20-31"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"thistle"</span> ))<span class="sc">+</span></span>
+<span id="cb20-32"><a href="#cb20-32"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb20-33"><a href="#cb20-33"></a>    <span class="fu">aes</span>(</span>
+<span id="cb20-34"><a href="#cb20-34"></a>      <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..count..<span class="sc">/</span><span class="fu">sum</span>(..count..), <span class="at">accuracy =</span> <span class="fl">0.1</span>)  <span class="co"># Calculate percentage using sum of counts</span></span>
+<span id="cb20-35"><a href="#cb20-35"></a>    ),</span>
+<span id="cb20-36"><a href="#cb20-36"></a>    <span class="at">stat =</span> <span class="st">"count"</span>,</span>
+<span id="cb20-37"><a href="#cb20-37"></a>    <span class="at">vjust =</span> <span class="fl">1.05</span>,  <span class="co"># Adjust text placement </span></span>
+<span id="cb20-38"><a href="#cb20-38"></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb20-39"><a href="#cb20-39"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-40"><a href="#cb20-40"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"None"</span> )<span class="sc">+</span></span>
+<span id="cb20-41"><a href="#cb20-41"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Heart Attack Occurrence"</span>)</span>
+<span id="cb20-42"><a href="#cb20-42"></a></span>
+<span id="cb20-43"><a href="#cb20-43"></a>p4<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>BMI_Category, <span class="at">fill=</span>BMI_Category))<span class="sc">+</span></span>
+<span id="cb20-44"><a href="#cb20-44"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
+<span id="cb20-45"><a href="#cb20-45"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>,<span class="st">"thistle"</span>,<span class="st">"rosybrown2"</span> ))<span class="sc">+</span></span>
+<span id="cb20-46"><a href="#cb20-46"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb20-47"><a href="#cb20-47"></a>    <span class="fu">aes</span>(</span>
+<span id="cb20-48"><a href="#cb20-48"></a>      <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..count..<span class="sc">/</span><span class="fu">sum</span>(..count..), <span class="at">accuracy =</span> <span class="fl">0.1</span>)  <span class="co"># Calculate percentage using sum of counts</span></span>
+<span id="cb20-49"><a href="#cb20-49"></a>    ),</span>
+<span id="cb20-50"><a href="#cb20-50"></a>    <span class="at">stat =</span> <span class="st">"count"</span>,</span>
+<span id="cb20-51"><a href="#cb20-51"></a>    <span class="at">vjust =</span> <span class="fl">1.25</span>,  <span class="co"># Adjust text placement </span></span>
+<span id="cb20-52"><a href="#cb20-52"></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb20-53"><a href="#cb20-53"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-54"><a href="#cb20-54"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"None"</span> )<span class="sc">+</span></span>
+<span id="cb20-55"><a href="#cb20-55"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"BMI Category"</span>, <span class="at">fill=</span><span class="st">"BMI"</span>)</span>
+<span id="cb20-56"><a href="#cb20-56"></a></span>
+<span id="cb20-57"><a href="#cb20-57"></a>p5<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data=</span>df,<span class="fu">aes</span>(<span class="at">x=</span>Cholesterol_Category, <span class="at">fill=</span>Cholesterol_Category))<span class="sc">+</span></span>
+<span id="cb20-58"><a href="#cb20-58"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
+<span id="cb20-59"><a href="#cb20-59"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>,<span class="st">"thistle"</span>))<span class="sc">+</span></span>
+<span id="cb20-60"><a href="#cb20-60"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb20-61"><a href="#cb20-61"></a>    <span class="fu">aes</span>(</span>
+<span id="cb20-62"><a href="#cb20-62"></a>      <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..count..<span class="sc">/</span><span class="fu">sum</span>(..count..), <span class="at">accuracy =</span> <span class="fl">0.1</span>)  <span class="co"># Calculate percentage using sum of counts</span></span>
+<span id="cb20-63"><a href="#cb20-63"></a>    ),</span>
+<span id="cb20-64"><a href="#cb20-64"></a>    <span class="at">stat =</span> <span class="st">"count"</span>,</span>
+<span id="cb20-65"><a href="#cb20-65"></a>    <span class="at">vjust =</span> <span class="fl">1.25</span>,  <span class="co"># Adjust text placement </span></span>
+<span id="cb20-66"><a href="#cb20-66"></a>    <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb20-67"><a href="#cb20-67"></a>  ) <span class="sc">+</span></span>
+<span id="cb20-68"><a href="#cb20-68"></a>  <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"None"</span>)<span class="sc">+</span></span>
+<span id="cb20-69"><a href="#cb20-69"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Cholesterol Level"</span>)</span>
+<span id="cb20-70"><a href="#cb20-70"></a></span>
+<span id="cb20-71"><a href="#cb20-71"></a>(p1<span class="sc">+</span>p5)<span class="sc">/</span>(p3<span class="sc">+</span>p4)<span class="sc">/</span>p2<span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span> <span class="st">"Overview of Japan Population Profile"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1073,41 +1062,37 @@ Insights
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Heart attack does not</li>
+<li>The study population primarily consist of Middle-aged (40-65), followed by Young adults (18-39) and Old adults (&gt;65).</li>
+<li>About 10% have experienced heart attack, indicating high prevalence of heart attack in Japan and underscores importance of addressing cardiovascular health.</li>
+<li>Alarmingly, only 25.2% have normal blood pressure, with 62.6% suffering from hypertension. Prolonged hypertension is a well-documented contributor to cardiovascular diseases, including heart attacks and strokes.</li>
+<li>Nearly half of the population (49.8%) are either overweight or obese, which is known to be a significant risk factor for heart attack occurrence and correlates with other comorbidities such as diabetes and high cholesterol, exacerbating health conditions.</li>
+<li>Similarly, approximately half of the population have elevated cholesterol levels.</li>
+<li>The high incidence of hypertension, overweight/obesity and high cholesterol highlights a need for targeted public health campaigns to increase awareness to promote healthy lifestyles and targeted preventive measures.</li>
 </ul>
 </div>
 </div>
-</section>
-<section id="association-of-heart-attack-with-age-gender-and-bmi" class="level4">
-<h4 class="anchored" data-anchor-id="association-of-heart-attack-with-age-gender-and-bmi"><strong>4.3 Association of Heart Attack with Age, Gender and BMI</strong></h4>
-<p>In this section, we will examine if biological factors like aging and gender are correlated with heart attack.</p>
+<section id="gender-age-group-and-heart-attack-occurrence" class="level4">
+<h4 class="anchored" data-anchor-id="gender-age-group-and-heart-attack-occurrence"><strong>4.1 Gender, Age Group and Heart Attack Occurrence</strong></h4>
+<p>Next, we delve into bivariate analyses to understand correlation of heart attack with various factors. In this section, we will examine if biological factors like aging and gender are associated with heart attack. The figures below show the heart attack occurrence by Gender and Age Groups.</p>
+<p>Mosaic plots were created using <code>geom_mosaic()</code> from the <em>ggmosaic</em> package and <code>ggplot()</code> from the <em>ggplot2</em> package. <code>labs()</code>, <code>theme()</code> and <code>scale_fill_manual</code> from <em>ggplot2</em> package were used to change the axis labels, theme and color of the graphs. <code>scale_y_continuous()</code> from <em>ggplot2</em> was used to display the percentages.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(df, </span>
-<span id="cb21-2"><a href="#cb21-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Heart_Attack_Occurrence, </span>
-<span id="cb21-3"><a href="#cb21-3"></a>           <span class="at">fill=</span>Gender))<span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>)<span class="sc">+</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"#DF9999"</span>,<span class="st">"#99AEDF"</span>))<span class="sc">+</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a>  <span class="fu">geom_text</span>(</span>
-<span id="cb21-7"><a href="#cb21-7"></a>    <span class="fu">aes</span>(</span>
-<span id="cb21-8"><a href="#cb21-8"></a>      <span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(..count..<span class="sc">/</span><span class="fu">sum</span>(..count..), <span class="at">accuracy =</span> <span class="fl">0.1</span>)  <span class="co"># Calculate percentage using sum of counts</span></span>
-<span id="cb21-9"><a href="#cb21-9"></a>    ),</span>
-<span id="cb21-10"><a href="#cb21-10"></a>    <span class="at">stat =</span> <span class="st">"count"</span>,</span>
-<span id="cb21-11"><a href="#cb21-11"></a>    <span class="at">position =</span> <span class="fu">position_stack</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>),  <span class="co"># Adjust text placement </span></span>
-<span id="cb21-12"><a href="#cb21-12"></a>    <span class="at">size=</span><span class="dv">3</span></span>
-<span id="cb21-13"><a href="#cb21-13"></a>  ) <span class="sc">+</span></span>
-<span id="cb21-14"><a href="#cb21-14"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"bottom"</span> )<span class="sc">+</span></span>
-<span id="cb21-15"><a href="#cb21-15"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Heart Attack Occurrence"</span>, <span class="at">fill=</span><span class="st">"Gender"</span>)</span>
-<span id="cb21-16"><a href="#cb21-16"></a></span>
-<span id="cb21-17"><a href="#cb21-17"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(df)<span class="sc">+</span></span>
-<span id="cb21-18"><a href="#cb21-18"></a>    <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence, Age_Groups), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
-<span id="cb21-19"><a href="#cb21-19"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"thistle"</span>)) <span class="sc">+</span></span>
-<span id="cb21-20"><a href="#cb21-20"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"bottom"</span> )<span class="sc">+</span></span>
-<span id="cb21-21"><a href="#cb21-21"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age Group"</span>, <span class="at">y=</span> <span class="st">"Heart Attack Occurrence"</span>, <span class="at">fill=</span><span class="st">"Heart Attack"</span>)<span class="sc">+</span> </span>
-<span id="cb21-22"><a href="#cb21-22"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
-<span id="cb21-23"><a href="#cb21-23"></a></span>
-<span id="cb21-24"><a href="#cb21-24"></a>p1<span class="sc">+</span>p2<span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span> <span class="st">"Heart attack occurrence is similar across Gender and Age groups"</span>, <span class="at">tag_levels =</span> <span class="st">'I'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(df)<span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>    <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence, Gender), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"#DF9999"</span>,<span class="st">"#99AEDF"</span>)) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"bottom"</span> )<span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gender"</span>, <span class="at">y=</span> <span class="st">"Heart Attack"</span>, <span class="at">fill=</span><span class="st">"Heart Attack"</span>)<span class="sc">+</span> </span>
+<span id="cb21-6"><a href="#cb21-6"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
+<span id="cb21-7"><a href="#cb21-7"></a></span>
+<span id="cb21-8"><a href="#cb21-8"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(df)<span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>    <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence, Age_Groups), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"thistle"</span>)) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"bottom"</span> )<span class="sc">+</span></span>
+<span id="cb21-12"><a href="#cb21-12"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age Group"</span>, <span class="at">y=</span> <span class="st">"Heart Attack"</span>, <span class="at">fill=</span><span class="st">"Heart Attack"</span>)<span class="sc">+</span> </span>
+<span id="cb21-13"><a href="#cb21-13"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
+<span id="cb21-14"><a href="#cb21-14"></a></span>
+<span id="cb21-15"><a href="#cb21-15"></a>(p1<span class="sc">+</span>p2)<span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span> <span class="st">"Heart attack occurrence is not significantly associated with Gender and Age groups"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1128,11 +1113,23 @@ Insights
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Based on the stacked bar chart above, the chances of having heart attack is similar for both genders. This suggests that gender is not be a significant differentiator for heart attack occurrence in this study population.</li>
-<li>Surprisingly, the proportion of Young adults having heart attack is comparable to that of Middle-aged and Old adults. This finding is in disaccordance with common assumptions of heart attack occurring predominantly in older adults, signifying that heart attack may become more common in young adults in the future. Understanding causes and risk factors for heart attack in young adults is therefore pertinent, for the development of effective prevention strategies and government-initiated public health interventions.</li>
+<li><p>Based on the stacked bar chart above, the chances of having heart attack is similar for both genders. This suggests that gender is not be a significant differentiator for heart attack occurrence in this study population.</p></li>
+<li><p>Surprisingly, the proportion of Young adults having heart attack is comparable to that of Middle-aged and Old adults. This finding is in disaccordance with common assumptions of heart attack occurring predominantly in older adults, signifying that heart attack may become more common in young adults in the future. Understanding causes and risk factors for heart attack in young adults is therefore pertinent, for the development of effective prevention strategies and government-initiated public health interventions.</p></li>
 </ul>
 </div>
 </div>
+</section>
+</section>
+<section id="bmi-and-heart-attack-occurrrence" class="level3">
+<h3 class="anchored" data-anchor-id="bmi-and-heart-attack-occurrrence"><strong>4.2 BMI and Heart Attack Occurrrence</strong></h3>
+<p>Next, we examine BMI distribution by age and gender, before investigating association of BMI categories with heart attack occurrence.</p>
+<p>The <code>ggplot()</code>, <code>geom_boxplot()</code> and <code>coord_flip()</code> functions in the <em>ggplot2</em> package are used to create the boxplot for BMI grouped by Age groups, colored by gender and change the orientation of the plot. The <code>stat_halfeye()</code> function from the <em>ggdist</em> package is used to show the BMI distributions for each Age group, by gender. The <code>theme()</code> and <code>lab()</code> functions in the <em>ggplot2</em> package are then used to change axis labels and dictate legend position.</p>
+<p>The <code>ggbarstats()</code> and <code>grouped_ggbarstats()</code> functions from <em>ggstatsplot</em> package are used to create the stacked bar charts with Chi-square test statistics. <code>digits.perc</code>, <code>label.args</code>, <code>sample.size.label.args</code>, <code>label.args</code>,ggplot.component` were used to specify the label size, color and axis labels.</p>
+<p>The <code>table()</code> function is used to create contingency table before applying the chisq.test()` function from base R to compute the Chi-square results to extract the Chi-square residuals data.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Total Population</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Grouped by age</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Chi-squared Test</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -1152,30 +1149,22 @@ Insights
 <span id="cb22-14"><a href="#cb22-14"></a>       <span class="at">y =</span> <span class="st">"BMI"</span>) <span class="sc">+</span>   </span>
 <span id="cb22-15"><a href="#cb22-15"></a>  <span class="fu">theme</span>(</span>
 <span id="cb22-16"><a href="#cb22-16"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
-<span id="cb22-17"><a href="#cb22-17"></a>    <span class="co">#panel.grid.major = element_blank(),</span></span>
-<span id="cb22-18"><a href="#cb22-18"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">angle=</span><span class="dv">0</span>)) <span class="sc">+</span></span>
-<span id="cb22-19"><a href="#cb22-19"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
-<span id="cb22-20"><a href="#cb22-20"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">alpha</span>(<span class="fu">c</span>(<span class="st">"thistle"</span>, <span class="st">"lightsteelblue"</span>),<span class="fl">0.35</span>))</span>
-<span id="cb22-21"><a href="#cb22-21"></a></span>
-<span id="cb22-22"><a href="#cb22-22"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">x=</span>Heart_Attack_Occurrence, <span class="at">y=</span>BMI, <span class="at">fill=</span>Heart_Attack_Occurrence)) <span class="sc">+</span></span>
-<span id="cb22-23"><a href="#cb22-23"></a>  <span class="fu">geom_violin</span>()<span class="sc">+</span></span>
-<span id="cb22-24"><a href="#cb22-24"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.1</span>,<span class="at">alpha=</span><span class="fl">0.2</span>, <span class="at">fill=</span><span class="st">"white"</span>)<span class="sc">+</span></span>
-<span id="cb22-25"><a href="#cb22-25"></a><span class="fu">scale_fill_manual</span>(<span class="st">"Heart Attack"</span>,<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>,<span class="st">"thistle"</span>))<span class="sc">+</span></span>
-<span id="cb22-26"><a href="#cb22-26"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>)<span class="sc">+</span></span>
-<span id="cb22-27"><a href="#cb22-27"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Heart Attack"</span>,</span>
-<span id="cb22-28"><a href="#cb22-28"></a>       <span class="at">y =</span> <span class="st">"BMI"</span>)<span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="sc">-</span><span class="dv">14</span>))</span>
-<span id="cb22-29"><a href="#cb22-29"></a></span>
-<span id="cb22-30"><a href="#cb22-30"></a>p3<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df) <span class="sc">+</span></span>
-<span id="cb22-31"><a href="#cb22-31"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence,BMI_Category), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
-<span id="cb22-32"><a href="#cb22-32"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"None"</span>) <span class="sc">+</span></span>
-<span id="cb22-33"><a href="#cb22-33"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"BMI"</span>,</span>
-<span id="cb22-34"><a href="#cb22-34"></a>       <span class="at">y =</span> <span class="st">"Heart Attack"</span>)<span class="sc">+</span></span>
-<span id="cb22-35"><a href="#cb22-35"></a><span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>, <span class="st">"thistle"</span>))<span class="sc">+</span></span>
-<span id="cb22-36"><a href="#cb22-36"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
-<span id="cb22-37"><a href="#cb22-37"></a></span>
-<span id="cb22-38"><a href="#cb22-38"></a>cmb<span class="ot">&lt;-</span>p2<span class="sc">+</span>p3<span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>)<span class="sc">+</span></span>
-<span id="cb22-39"><a href="#cb22-39"></a>  <span class="fu">plot_layout</span>(<span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb22-40"><a href="#cb22-40"></a>p1<span class="sc">/</span>cmb<span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span> <span class="st">"Heart attack occurrence is similar across BMI categories"</span>, <span class="at">tag_levels =</span> <span class="st">'I'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-17"><a href="#cb22-17"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">angle=</span><span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb22-18"><a href="#cb22-18"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb22-19"><a href="#cb22-19"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">alpha</span>(<span class="fu">c</span>(<span class="st">"thistle"</span>, <span class="st">"lightsteelblue"</span>),<span class="fl">0.35</span>))</span>
+<span id="cb22-20"><a href="#cb22-20"></a></span>
+<span id="cb22-21"><a href="#cb22-21"></a>p2<span class="ot">&lt;-</span><span class="fu">ggbarstats</span>(df, </span>
+<span id="cb22-22"><a href="#cb22-22"></a>           <span class="at">y =</span> Heart_Attack_Occurrence, </span>
+<span id="cb22-23"><a href="#cb22-23"></a>           <span class="at">x =</span> BMI_Category,</span>
+<span id="cb22-24"><a href="#cb22-24"></a>           <span class="at">digits.perc =</span> <span class="dv">1</span>,</span>
+<span id="cb22-25"><a href="#cb22-25"></a>           <span class="at">label.args =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">fill =</span> <span class="st">"white"</span>),</span>
+<span id="cb22-26"><a href="#cb22-26"></a>  <span class="at">sample.size.label.args =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="fl">2.5</span>),</span>
+<span id="cb22-27"><a href="#cb22-27"></a>  <span class="at">legend.title =</span> <span class="st">"BMI"</span>,</span>
+<span id="cb22-28"><a href="#cb22-28"></a>  <span class="at">xlab=</span><span class="st">"Heart Attack"</span>,</span>
+<span id="cb22-29"><a href="#cb22-29"></a>  <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>( <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>()), <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"rosybrown2"</span>,<span class="st">"thistle"</span>,<span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>))</span>
+<span id="cb22-30"><a href="#cb22-30"></a>           ))</span>
+<span id="cb22-31"><a href="#cb22-31"></a></span>
+<span id="cb22-32"><a href="#cb22-32"></a>p1<span class="sc">/</span>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -1185,6 +1174,71 @@ Insights
 </div>
 </div>
 </div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>p<span class="ot">&lt;-</span><span class="fu">grouped_ggbarstats</span>(df, </span>
+<span id="cb23-2"><a href="#cb23-2"></a>           <span class="at">y =</span> Heart_Attack_Occurrence, </span>
+<span id="cb23-3"><a href="#cb23-3"></a>           <span class="at">x =</span> BMI_Category,</span>
+<span id="cb23-4"><a href="#cb23-4"></a>           <span class="at">digits.perc =</span> <span class="dv">1</span>, </span>
+<span id="cb23-5"><a href="#cb23-5"></a>           <span class="at">grouping.var =</span> Age_Groups, </span>
+<span id="cb23-6"><a href="#cb23-6"></a>           <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">ncol =</span> <span class="dv">2</span>),</span>
+<span id="cb23-7"><a href="#cb23-7"></a>           <span class="at">sample.size.label.args =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="fl">2.5</span>),</span>
+<span id="cb23-8"><a href="#cb23-8"></a>           <span class="at">label.args =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">fill =</span> <span class="st">"white"</span>), </span>
+<span id="cb23-9"><a href="#cb23-9"></a>           <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>()), <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"rosybrown2"</span>,<span class="st">"thistle"</span>,<span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>))),</span>
+<span id="cb23-10"><a href="#cb23-10"></a>           <span class="at">legend.title =</span> <span class="st">"BMI"</span>,</span>
+<span id="cb23-11"><a href="#cb23-11"></a>            <span class="at">xlab=</span><span class="st">"Heart Attack"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><img src="images/clipboard-2307200117.png" class="img-fluid"></p>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<p>Chi-square test residual table for whole population</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co">#Create contingency table</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>contingency_table <span class="ot">&lt;-</span> <span class="fu">table</span>(df<span class="sc">$</span>BMI_Category, df<span class="sc">$</span>Heart_Attack_Occurrence)</span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="co"># Perform chi-square test</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>chi_square_test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(contingency_table)</span>
+<span id="cb24-6"><a href="#cb24-6"></a></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="co"># View the results</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a>pearson_residuals <span class="ot">&lt;-</span> chi_square_test<span class="sc">$</span>residuals</span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="fu">print</span>(pearson_residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             
+                      No        Yes
+  Underweight  0.4921282 -1.4863132
+  Normal      -0.5867653  1.7721340
+  Overweight  -0.1104517  0.3335834
+  Obese        0.7163291 -2.1634392</code></pre>
+</div>
+</div>
+<p>Chi-square test residual table for Young Adults</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">#Create contingency table</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>subset_df<span class="ot">&lt;-</span>df[df<span class="sc">$</span>Age_Groups<span class="sc">==</span><span class="st">'Young'</span>,]</span>
+<span id="cb26-3"><a href="#cb26-3"></a>contingency_table <span class="ot">&lt;-</span> <span class="fu">table</span>(subset_df<span class="sc">$</span>BMI_Category, subset_df<span class="sc">$</span>Heart_Attack_Occurrence)</span>
+<span id="cb26-4"><a href="#cb26-4"></a></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="co"># Perform chi-square test</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a>chi_square_test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(contingency_table)</span>
+<span id="cb26-7"><a href="#cb26-7"></a></span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="co"># View the results</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a>pearson_residuals <span class="ot">&lt;-</span> chi_square_test<span class="sc">$</span>residuals</span>
+<span id="cb26-10"><a href="#cb26-10"></a><span class="fu">print</span>(pearson_residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             
+                      No        Yes
+  Underweight  0.2641421 -0.8146029
+  Normal      -0.4873117  1.5028483
+  Overweight  -0.1114740  0.3437812
+  Obese        0.7150849 -2.2052912</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1196,42 +1250,42 @@ Insights
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Distribution of BMI is consistent across age group and gender, resembing a normal distribution. This indicates that BMI is not associated with gender or age in the population.</li>
-<li>Interestingly, heart attack occurrence does not show significant variation across BMI categories. This suggests that BMI is not a strong differentiator for heart attack occurrence in this study population and that other factors, such as underlying medical conditions or lifestyle behaviors, may be a better predictor of heart attack occurrence than BMI alone.</li>
+<li><p>Distribution of BMI is consistent across age group and gender, resembing a normal distribution. This indicates that BMI is not associated with gender or age in the population.</p></li>
+<li><p>BMI category is associated with heart attack occurrence (Chi-square p-value&lt;0.05). Interestingly, there were significantly less obese individuals experiencing heart attack than expected, based on the large negative Chi-square residual value (-2.16). However, when stratified by age groups, this association remained significant for young adults only. This suggests that the association may be age-specific and that the effect of BMI on heart attack occurrence might be more pronounced in younger individuals, who may not have developed other comorbidities yet (e.g., hypertension, high cholesterol).</p></li>
 </ul>
 </div>
 </div>
-</section>
-<section id="cholesterol-level" class="level4">
-<h4 class="anchored" data-anchor-id="cholesterol-level"><strong>4.4 Cholesterol level</strong></h4>
-</section>
-<section id="association-of-heart-attack-with-medical-conditions-and-history" class="level4">
-<h4 class="anchored" data-anchor-id="association-of-heart-attack-with-medical-conditions-and-history"><strong>4.5 Association of Heart Attack with Medical Conditions and History</strong></h4>
-<p>Heart attack is typically caused by a combination of various interrelated risk factors. Therefore, it is essential to examine other factors such as underlying medical conditions, family history, and lifestyle choices. These factors may interact in complex ways, increasing the likelihood of heart attacks.</p>
-<p>In this section, we will investigate if Diabetes History, Family History and Cholesterol level increases tendency of heart attack occurrence.</p>
+<section id="association-of-heart-attack-with-hypertension-and-cholesterol" class="level4">
+<h4 class="anchored" data-anchor-id="association-of-heart-attack-with-hypertension-and-cholesterol"><strong>4.3 Association of Heart Attack with Hypertension and Cholesterol</strong></h4>
+<p>Given the high incidence of hypertension observed in the earlier section, we will investigate whether hypertension is associated with an increased risk of heart attack.</p>
+<p>Mosaic plots were created using <code>geom_mosaic()</code> from the <em>ggmosaic</em> package and <code>ggplot()</code> from the <em>ggplot2</em> package. <code>labs()</code>, <code>theme()</code> and <code>scale_fill_manual</code> from <em>ggplot2</em> package were used to change the axis labels, theme and color of the graphs. <code>facet_wrap()</code> was used to facet the mosaic plots by Age Group. <code>scale_y_continuous()</code> from <em>ggplot2</em> was used to display the percentages.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df) <span class="sc">+</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence,Diabetes_History), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>) <span class="sc">+</span></span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Diabetes History"</span>,</span>
-<span id="cb23-5"><a href="#cb23-5"></a>       <span class="at">y =</span> <span class="st">"Heart Attack Occurrence"</span>)<span class="sc">+</span></span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="fu">scale_fill_manual</span>(<span class="st">"Heart Attack"</span>,<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>, <span class="st">"thistle"</span>))<span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Age_Groups) <span class="sc">+</span> </span>
-<span id="cb23-8"><a href="#cb23-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
-<span id="cb23-9"><a href="#cb23-9"></a></span>
-<span id="cb23-10"><a href="#cb23-10"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df) <span class="sc">+</span></span>
-<span id="cb23-11"><a href="#cb23-11"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence,Family_History), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
-<span id="cb23-12"><a href="#cb23-12"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>) <span class="sc">+</span></span>
-<span id="cb23-13"><a href="#cb23-13"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Family History"</span>,</span>
-<span id="cb23-14"><a href="#cb23-14"></a>       <span class="at">y =</span> <span class="st">"Heart Attack Occurrence"</span>)<span class="sc">+</span></span>
-<span id="cb23-15"><a href="#cb23-15"></a><span class="fu">scale_fill_manual</span>(<span class="st">"Heart Attack"</span>,<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>, <span class="st">"thistle"</span>))<span class="sc">+</span></span>
-<span id="cb23-16"><a href="#cb23-16"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Age_Groups) <span class="sc">+</span> </span>
-<span id="cb23-17"><a href="#cb23-17"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
-<span id="cb23-18"><a href="#cb23-18"></a>p2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Blood_Pressure,Heart_Attack_Occurrence), <span class="at">fill=</span>Blood_Pressure))<span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>) <span class="sc">+</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Blood Pressure"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5"></a>       <span class="at">x =</span> <span class="st">"Heart Attack"</span>)<span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="fu">scale_fill_manual</span>(<span class="st">"Heart Attack"</span>,<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>, <span class="st">"thistle"</span>,<span class="st">"rosybrown2"</span>))<span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)<span class="sc">+</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Age_Groups)</span>
+<span id="cb28-9"><a href="#cb28-9"></a></span>
+<span id="cb28-10"><a href="#cb28-10"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df) <span class="sc">+</span></span>
+<span id="cb28-11"><a href="#cb28-11"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Cholesterol_Category,Heart_Attack_Occurrence), <span class="at">fill=</span>Cholesterol_Category))<span class="sc">+</span></span>
+<span id="cb28-12"><a href="#cb28-12"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>) <span class="sc">+</span></span>
+<span id="cb28-13"><a href="#cb28-13"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Cholesterol Level"</span>,</span>
+<span id="cb28-14"><a href="#cb28-14"></a>       <span class="at">x =</span> <span class="st">"Heart Attack Occurrence"</span>)<span class="sc">+</span></span>
+<span id="cb28-15"><a href="#cb28-15"></a><span class="fu">scale_fill_manual</span>(<span class="st">"Heart Attack"</span>,<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>,<span class="st">"lightcyan3"</span>, <span class="st">"thistle"</span>))<span class="sc">+</span></span>
+<span id="cb28-16"><a href="#cb28-16"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Age_Groups) <span class="sc">+</span> </span>
+<span id="cb28-17"><a href="#cb28-17"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
+<span id="cb28-18"><a href="#cb28-18"></a></span>
+<span id="cb28-19"><a href="#cb28-19"></a>p1<span class="sc">/</span>p2 <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">axis_titles =</span> <span class="st">"collect"</span>)<span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span> <span class="st">"Heart Attack is not significantly associated with Hypertension and Cholesterol Level"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Take-home_Ex01_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Take-home_Ex01_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1247,24 +1301,205 @@ Insights
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Based on the figure, we can observe that heart attack occurrence is relatively similar in middle-aged and old adults with or without diabetes history. However, percentage of young adults with heart attack was slightly higher in those with diabetes history compared to without.</li>
-<li>Percentage of individuals with heart attack did not differ significantly between groups with or without family history, across the age groups.</li>
+<li><p>Heart attack occurrence does not significantly increase in groups with hypertension or elevated blood pressure, compared to normal blood pressure, across all age groups.</p></li>
+<li><p>Similarly, individuals with elevated cholesterol levels do not have increased risk of heart attack occurrence regardless of age groups.</p></li>
+<li><p>The findings suggests that high blood pressure or cholesterol levels alone may only have a small impact on heart attack risk or that medication adherence and lifestyle modifications could play a role in mitigating the associated risks. The overall heart attack risk for an individual may only become more pronounced when multiple factors are accounted for, as presence of multiple risk factors simultaneously compounds the overall risks since each condition can exacerbate the others.</p></li>
 </ul>
 </div>
 </div>
 </section>
-<section id="eda-6" class="level4">
-<h4 class="anchored" data-anchor-id="eda-6"><strong>4.6 EDA 6:</strong></h4>
+<section id="association-of-heart-attack-with-medical-history" class="level4">
+<h4 class="anchored" data-anchor-id="association-of-heart-attack-with-medical-history"><strong>4.4 Association of Heart Attack with Medical History</strong></h4>
+<p>Heart attack is typically caused by a combination of various interrelated risk factors. Therefore, it is essential to examine other factors such as underlying medical conditions, family history, and lifestyle choices. These factors may interact in complex ways, increasing the likelihood of heart attacks.</p>
+<p>In this section, we will investigate if Diabetes History and Family History increases tendency of heart attack occurrence.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Family history &amp; Diabetes Mosaic Plot</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Diabetes by Age Group</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Chi-square test</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df) <span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence,Diabetes_History), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>) <span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Diabetes History"</span>,</span>
+<span id="cb29-5"><a href="#cb29-5"></a>       <span class="at">y =</span> <span class="st">"Heart Attack Occurrence"</span>)<span class="sc">+</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="fu">scale_fill_manual</span>(<span class="st">"Heart Attack"</span>,<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>, <span class="st">"thistle"</span>))<span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
+<span id="cb29-8"><a href="#cb29-8"></a></span>
+<span id="cb29-9"><a href="#cb29-9"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(<span class="at">data=</span>df) <span class="sc">+</span></span>
+<span id="cb29-10"><a href="#cb29-10"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence,Family_History), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">"right"</span>) <span class="sc">+</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Family History"</span>,</span>
+<span id="cb29-13"><a href="#cb29-13"></a>       <span class="at">y =</span> <span class="st">"Heart Attack Occurrence"</span>)<span class="sc">+</span></span>
+<span id="cb29-14"><a href="#cb29-14"></a><span class="fu">scale_fill_manual</span>(<span class="st">"Heart Attack"</span>,<span class="at">values=</span><span class="fu">c</span>( <span class="st">"lightsteelblue"</span>, <span class="st">"thistle"</span>))<span class="sc">+</span></span>
+<span id="cb29-15"><a href="#cb29-15"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Age_Groups) <span class="sc">+</span> </span>
+<span id="cb29-16"><a href="#cb29-16"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
+<span id="cb29-17"><a href="#cb29-17"></a>p2<span class="sc">/</span>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex01_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">grouped_ggbarstats</span>(df, </span>
+<span id="cb30-2"><a href="#cb30-2"></a>           <span class="at">y =</span> Heart_Attack_Occurrence, </span>
+<span id="cb30-3"><a href="#cb30-3"></a>           <span class="at">x =</span> Diabetes_History,</span>
+<span id="cb30-4"><a href="#cb30-4"></a>           <span class="at">digits.perc =</span> <span class="dv">1</span>, </span>
+<span id="cb30-5"><a href="#cb30-5"></a>           <span class="at">grouping.var =</span> Age_Groups, </span>
+<span id="cb30-6"><a href="#cb30-6"></a>           <span class="at">plotgrid.args =</span> <span class="fu">list</span>(<span class="at">ncol =</span> <span class="dv">2</span>),</span>
+<span id="cb30-7"><a href="#cb30-7"></a>           <span class="at">sample.size.label.args =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="fl">2.5</span>),</span>
+<span id="cb30-8"><a href="#cb30-8"></a>           <span class="at">label.args =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">fill =</span> <span class="st">"white"</span>), </span>
+<span id="cb30-9"><a href="#cb30-9"></a>           <span class="at">legend.title =</span> <span class="st">"Diabetes History"</span>,</span>
+<span id="cb30-10"><a href="#cb30-10"></a>           <span class="at">xlab=</span><span class="st">"Heart Attack"</span>,</span>
+<span id="cb30-11"><a href="#cb30-11"></a>           <span class="at">ggplot.component =</span> <span class="fu">list</span>(<span class="fu">theme</span>(<span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>()),<span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"thistle"</span>,<span class="st">"lightsteelblue"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex01_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><img src="images/clipboard-4138769921.png" class="img-fluid"></p>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<p>Chi-square test residual table for Young Adults</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co">#Create contingency table</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>subset_df<span class="ot">&lt;-</span>df[df<span class="sc">$</span>Age_Groups<span class="sc">==</span><span class="st">'Young'</span>,]</span>
+<span id="cb31-3"><a href="#cb31-3"></a>contingency_table <span class="ot">&lt;-</span> <span class="fu">table</span>(subset_df<span class="sc">$</span>Diabetes_History, subset_df<span class="sc">$</span>Heart_Attack_Occurrence)</span>
+<span id="cb31-4"><a href="#cb31-4"></a></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="co"># Perform chi-square test</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a>chi_square_test <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(contingency_table)</span>
+<span id="cb31-7"><a href="#cb31-7"></a></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="co"># View the results</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a>pearson_residuals <span class="ot">&lt;-</span> chi_square_test<span class="sc">$</span>residuals</span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="fu">print</span>(pearson_residuals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     
+              No        Yes
+  No   0.3881721 -1.1971061
+  Yes -0.7609653  2.3467842</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Insights
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Proportion of individuals with heart attack did not differ significantly between groups with or without family history, across the age groups.</p></li>
+<li><p>Interestingly, proportion of individuals who have experienced heart attack was similar for individuals with or without diabetes history for the overall population but heart attack occurrence is associated with diabetes history in Young Adults (Chi-square p-value&lt;0.05) when the data is age-stratified. There is increased tendency of young adults with diabetes history experiencing heart attack compared to young adults without diabetes history, based on the large positive Chi-square residual value of 2.34.</p></li>
+</ul>
+</div>
+</div>
 </section>
-<section id="eda-7" class="level4">
-<h4 class="anchored" data-anchor-id="eda-7"><strong>4.7 EDA 7:</strong></h4>
+<section id="lifestyle-factors-and-heart-attack-occurrence" class="level4">
+<h4 class="anchored" data-anchor-id="lifestyle-factors-and-heart-attack-occurrence"><strong>4.5 Lifestyle Factors and Heart Attack Occurrence</strong></h4>
+<p>In this section, we will investigate if lifestyle factors like physical activity, diet quality and alcohol consumption are associated with heart attack.</p>
+<p>The <code>gglikert()</code> function from <em>ggstats</em> package is used to create the diverging bar charts. <code>scale_fill_brewer()</code>, <code>theme()</code> and <code>labs()</code> from *ggplot2` package is used to set the color palette, change axis labels and ticks.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Create the subset data for "Yes" and "No" heart attack occurrences</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>HA_y <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Heart_Attack_Occurrence <span class="sc">==</span> <span class="st">"Yes"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Physical_Activity, Diet_Quality, Alcohol_Consumption)</span>
+<span id="cb33-3"><a href="#cb33-3"></a>HA_n <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Heart_Attack_Occurrence <span class="sc">==</span> <span class="st">"No"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Physical_Activity, Diet_Quality, Alcohol_Consumption)</span>
+<span id="cb33-4"><a href="#cb33-4"></a></span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="co"># Find the maximum length of the two subsets</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a>max_len <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">nrow</span>(HA_y), <span class="fu">nrow</span>(HA_n))</span>
+<span id="cb33-7"><a href="#cb33-7"></a></span>
+<span id="cb33-8"><a href="#cb33-8"></a><span class="co"># Pad the shorter dataframe with NAs</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a>HA_y <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(HA_y, <span class="fu">data.frame</span>(<span class="at">Physical_Activity =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, max_len <span class="sc">-</span> <span class="fu">nrow</span>(HA_y)), <span class="at">Diet_Quality =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, max_len <span class="sc">-</span> <span class="fu">nrow</span>(HA_y)),<span class="at">Alcohol_Consumption =</span> <span class="fu">rep</span>(<span class="cn">NA</span>, max_len <span class="sc">-</span> <span class="fu">nrow</span>(HA_y))))</span>
+<span id="cb33-10"><a href="#cb33-10"></a></span>
+<span id="cb33-11"><a href="#cb33-11"></a>PA<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">Yes=</span>HA_y<span class="sc">$</span>Physical_Activity, <span class="at">No=</span>HA_n<span class="sc">$</span>Physical_Activity)</span>
+<span id="cb33-12"><a href="#cb33-12"></a></span>
+<span id="cb33-13"><a href="#cb33-13"></a>DQ<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">Yes=</span>HA_y<span class="sc">$</span>Diet_Quality, <span class="at">No=</span>HA_n<span class="sc">$</span>Diet_Quality)</span>
+<span id="cb33-14"><a href="#cb33-14"></a></span>
+<span id="cb33-15"><a href="#cb33-15"></a>AC<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">Yes=</span>HA_y<span class="sc">$</span>Alcohol_Consumption, <span class="at">No=</span>HA_n<span class="sc">$</span>Alcohol_Consumption)</span>
+<span id="cb33-16"><a href="#cb33-16"></a></span>
+<span id="cb33-17"><a href="#cb33-17"></a>p1<span class="ot">&lt;-</span><span class="fu">gglikert</span>(PA) <span class="sc">+</span> </span>
+<span id="cb33-18"><a href="#cb33-18"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Blues"</span>) <span class="sc">+</span></span>
+<span id="cb33-19"><a href="#cb33-19"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Physical Activity"</span>, <span class="at">y=</span><span class="st">"Heart Attack"</span>)<span class="sc">+</span></span>
+<span id="cb33-20"><a href="#cb33-20"></a>  <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb33-21"><a href="#cb33-21"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb33-22"><a href="#cb33-22"></a>        <span class="at">axis.text.x=</span><span class="fu">element_blank</span>())</span>
+<span id="cb33-23"><a href="#cb33-23"></a></span>
+<span id="cb33-24"><a href="#cb33-24"></a>p2<span class="ot">&lt;-</span><span class="fu">gglikert</span>(DQ) <span class="sc">+</span> </span>
+<span id="cb33-25"><a href="#cb33-25"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Set1"</span>) <span class="sc">+</span></span>
+<span id="cb33-26"><a href="#cb33-26"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Diet Quality"</span>, <span class="at">y=</span><span class="st">"Heart Attack"</span>)<span class="sc">+</span></span>
+<span id="cb33-27"><a href="#cb33-27"></a>  <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb33-28"><a href="#cb33-28"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb33-29"><a href="#cb33-29"></a>        <span class="at">axis.text.x=</span><span class="fu">element_blank</span>())</span>
+<span id="cb33-30"><a href="#cb33-30"></a></span>
+<span id="cb33-31"><a href="#cb33-31"></a></span>
+<span id="cb33-32"><a href="#cb33-32"></a>p3<span class="ot">&lt;-</span><span class="fu">gglikert</span>(AC) <span class="sc">+</span> </span>
+<span id="cb33-33"><a href="#cb33-33"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Blues"</span>) <span class="sc">+</span></span>
+<span id="cb33-34"><a href="#cb33-34"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Alcohol Consumption"</span>, <span class="at">y=</span><span class="st">"Heart Attack"</span>)<span class="sc">+</span></span>
+<span id="cb33-35"><a href="#cb33-35"></a>  <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb33-36"><a href="#cb33-36"></a>        <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb33-37"><a href="#cb33-37"></a>        <span class="at">axis.text.x=</span><span class="fu">element_blank</span>())</span>
+<span id="cb33-38"><a href="#cb33-38"></a></span>
+<span id="cb33-39"><a href="#cb33-39"></a>(p1<span class="sc">+</span>p2)<span class="sc">/</span>p3<span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span><span class="st">"Heart attack is not associated with Physical Activity, Diet Quality</span><span class="sc">\n</span><span class="st">&amp;Alcohol consumption"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex01_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Insights
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Heart attack occurrence does not vary significantly with Physical Activity, Diet Quality and Alcohol Consumption. This suggests that lifestyle factors may a secondary or insignificant role in heart attack risk for the study population. However, the data for these variables are measured on a likert scale which may be prone to biases, leading to potential inaccuracies and weaken the observed relationship between lifestyle factors and heart attack occurrence.</li>
+</ul>
+</div>
+</div>
 </section>
 </section>
 <section id="conclusion" class="level3">
 <h3 class="anchored" data-anchor-id="conclusion"><strong>5 Conclusion</strong></h3>
+<p>Our analyses reveals a high prevalence of heart attack occurrence in the Japanese population, with approximately 10% affected, raising a cause for concern and emphasizes a pressing need for targeted cardiovascular health initiatives. Furthermore, significant portions of the population suffers from hypertension, elevated cholesterol levels, and/or are overweight or obese, all of which are well-known risk factors for heart disease.</p>
+<p>More importantly, heart attack incidence is comparable between young adults (18-39) and adults aged 40 and above, highlighting an emerging concern for cardiovascular health in younger populations. In our analyses, BMI category was found to be associated with heart attack occurrence, particularly in young adults, suggesting age-specific effects. Diabetes history was additionally associated with heart attack in young adults.</p>
+<p>On the other hand, hypertension, elevated cholesterol levels, family history, physical activity, diet quality, and alcohol consumption did not show a significant relationship with heart attack occurrence in this population.</p>
+<p>These findings underscore the need for more comprehensive studies to identify heart attack risk factors among younger adults. Future research and analyses could focus on exploring the complex interactions between risk factors to provide a clearer understanding of the risk profiles for heart attack in different demographic groups.</p>
 </section>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references"><strong>6 References</strong></h3>
+<ul>
+<li><a href="https://www.sciencedaily.com/releases/2019/03/190307081026.htm">Heart Attack Research</a></li>
+<li><a href="https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings">Blood Pressure Categories</a></li>
+<li><a href="https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html">BMI Categories</a></li>
+<li><a href="https://www.myheart.org.sg/heart-news/cholesterol-levels/">Cholesterol Level Categories</a></li>
+<li><a href="https://www.datacamp.com/tutorial/chi-square-test-r">Chi-square test</a></li>
+</ul>
 
 
 </section>
