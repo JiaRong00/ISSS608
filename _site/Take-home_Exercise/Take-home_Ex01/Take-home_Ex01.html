@@ -268,9 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exploratory-data-analysis-and-statistical-visualisations" id="toc-exploratory-data-analysis-and-statistical-visualisations" class="nav-link" data-scroll-target="#exploratory-data-analysis-and-statistical-visualisations"><strong>4 Exploratory Data Analysis and Statistical Visualisations</strong></a>
   <ul>
   <li><a href="#gender-age-group-and-heart-attack-occurrence" id="toc-gender-age-group-and-heart-attack-occurrence" class="nav-link" data-scroll-target="#gender-age-group-and-heart-attack-occurrence"><strong>4.1 Gender, Age Group and Heart Attack Occurrence</strong></a></li>
-  </ul></li>
-  <li><a href="#bmi-and-heart-attack-occurrrence" id="toc-bmi-and-heart-attack-occurrrence" class="nav-link" data-scroll-target="#bmi-and-heart-attack-occurrrence"><strong>4.2 BMI and Heart Attack Occurrrence</strong></a>
-  <ul>
+  <li><a href="#bmi-and-heart-attack-occurrrence" id="toc-bmi-and-heart-attack-occurrrence" class="nav-link" data-scroll-target="#bmi-and-heart-attack-occurrrence"><strong>4.2 BMI and Heart Attack Occurrrence</strong></a></li>
   <li><a href="#association-of-heart-attack-with-hypertension-and-cholesterol" id="toc-association-of-heart-attack-with-hypertension-and-cholesterol" class="nav-link" data-scroll-target="#association-of-heart-attack-with-hypertension-and-cholesterol"><strong>4.3 Association of Heart Attack with Hypertension and Cholesterol</strong></a></li>
   <li><a href="#association-of-heart-attack-with-medical-history" id="toc-association-of-heart-attack-with-medical-history" class="nav-link" data-scroll-target="#association-of-heart-attack-with-medical-history"><strong>4.4 Association of Heart Attack with Medical History</strong></a></li>
   <li><a href="#lifestyle-factors-and-heart-attack-occurrence" id="toc-lifestyle-factors-and-heart-attack-occurrence" class="nav-link" data-scroll-target="#lifestyle-factors-and-heart-attack-occurrence"><strong>4.5 Lifestyle Factors and Heart Attack Occurrence</strong></a></li>
@@ -1119,9 +1117,8 @@ Insights
 </div>
 </div>
 </section>
-</section>
-<section id="bmi-and-heart-attack-occurrrence" class="level3">
-<h3 class="anchored" data-anchor-id="bmi-and-heart-attack-occurrrence"><strong>4.2 BMI and Heart Attack Occurrrence</strong></h3>
+<section id="bmi-and-heart-attack-occurrrence" class="level4">
+<h4 class="anchored" data-anchor-id="bmi-and-heart-attack-occurrrence"><strong>4.2 BMI and Heart Attack Occurrrence</strong></h4>
 <p>Next, we examine BMI distribution by age and gender, before investigating association of BMI categories with heart attack occurrence.</p>
 <p>The <code>ggplot()</code>, <code>geom_boxplot()</code> and <code>coord_flip()</code> functions in the <em>ggplot2</em> package are used to create the boxplot for BMI grouped by Age groups, colored by gender and change the orientation of the plot. The <code>stat_halfeye()</code> function from the <em>ggdist</em> package is used to show the BMI distributions for each Age group, by gender. The <code>theme()</code> and <code>lab()</code> functions in the <em>ggplot2</em> package are then used to change axis labels and dictate legend position.</p>
 <p>The <code>ggbarstats()</code> and <code>grouped_ggbarstats()</code> functions from <em>ggstatsplot</em> package are used to create the stacked bar charts with Chi-square test statistics. <code>digits.perc</code>, <code>label.args</code>, <code>sample.size.label.args</code>, <code>label.args</code>,ggplot.component` were used to specify the label size, color and axis labels.</p>
@@ -1255,6 +1252,7 @@ Insights
 </ul>
 </div>
 </div>
+</section>
 <section id="association-of-heart-attack-with-hypertension-and-cholesterol" class="level4">
 <h4 class="anchored" data-anchor-id="association-of-heart-attack-with-hypertension-and-cholesterol"><strong>4.3 Association of Heart Attack with Hypertension and Cholesterol</strong></h4>
 <p>Given the high incidence of hypertension observed in the earlier section, we will investigate whether hypertension is associated with an increased risk of heart attack.</p>

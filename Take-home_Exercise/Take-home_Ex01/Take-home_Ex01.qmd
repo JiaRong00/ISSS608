@@ -430,7 +430,7 @@ p2<-ggplot(df)+
 -   Surprisingly, the proportion of Young adults having heart attack is comparable to that of Middle-aged and Old adults. This finding is in disaccordance with common assumptions of heart attack occurring predominantly in older adults, signifying that heart attack may become more common in young adults in the future. Understanding causes and risk factors for heart attack in young adults is therefore pertinent, for the development of effective prevention strategies and government-initiated public health interventions.
 :::
 
-### **4.2 BMI and Heart Attack Occurrrence**
+#### **4.2 BMI and Heart Attack Occurrrence**
 
 Next, we examine BMI distribution by age and gender, before investigating association of BMI categories with heart attack occurrence.
 
