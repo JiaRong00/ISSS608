@@ -413,19 +413,27 @@ Mosaic plots were created using `geom_mosaic()` from the *ggmosaic* package and 
 #| code-summary: "Show the code"
 
 p1<-ggplot(df)+
-    geom_mosaic(aes(x = product(Heart_Attack_Occurrence, Gender), fill=Heart_Attack_Occurrence))+
+    geom_mosaic(aes(x = product(Gender), fill=Heart_Attack_Occurrence))+
   scale_fill_manual(values=c("#DF9999","#99AEDF")) +
   theme( axis.ticks.x = element_blank(), legend.position = "bottom" )+
-  labs(x = "Gender", y= "Heart Attack", fill="Heart Attack")+ 
+  labs(x = "Gender", y= "Heart Attack", fill="Heart Attack")+
   scale_y_continuous(labels = scales::percent)
 
+p1<-p1+geom_label(data = ggplot_build(p1)$data[[1]] %>% 
+                group_by(x__Gender) %>%
+                mutate(pct = .wt/sum(.wt)*100), 
+              aes(x = (xmin+xmax)/2, y = (ymin+ymax)/2, label=round(pct, 2)))
+
 p2<-ggplot(df)+
-    geom_mosaic(aes(x = product(Heart_Attack_Occurrence, Age_Groups), fill=Heart_Attack_Occurrence))+
+    geom_mosaic(aes(x = product(Age_Groups), fill=Heart_Attack_Occurrence))+
   scale_fill_manual(values=c("lightsteelblue","thistle")) +
   theme( axis.ticks.x = element_blank(), legend.position = "bottom" )+
   labs(x = "Age Group", y= "Heart Attack", fill="Heart Attack")+ 
   scale_y_continuous(labels = scales::percent)
-
+p2<-p2+geom_label(data = ggplot_build(p2)$data[[1]] %>% 
+                group_by(x__Age_Groups) %>%
+                mutate(pct = .wt/sum(.wt)*100), 
+              aes(x = (xmin+xmax)/2, y = (ymin+ymax)/2, label=round(pct, 2)))
 (p1+p2)+ plot_annotation(title= "Heart attack occurrence is not significantly associated with Gender and Age groups")
 ```
 
@@ -564,13 +572,18 @@ Mosaic plots were created using `geom_mosaic()` from the *ggmosaic* package and 
 #| fig-width: 8
 #| fig-height: 12
 p1<-ggplot(data=df) +
-  geom_mosaic(aes(x = product(Blood_Pressure,Heart_Attack_Occurrence), fill=Blood_Pressure))+
+  geom_mosaic(aes(x = product(Heart_Attack_Occurrence), fill=Blood_Pressure))+
   theme(legend.position="right") +
   labs(y = "Blood Pressure",
        x = "Heart Attack")+
 scale_fill_manual("Heart Attack",values=c( "lightsteelblue","lightcyan3", "thistle","rosybrown2"))+
   scale_y_continuous(labels = scales::percent)+
   facet_wrap(~Age_Groups)
+
+p1<-p1+geom_label(data = ggplot_build(p1)$data[[1]] %>% 
+                group_by(PANEL,x__Heart_Attack_Occurrence) %>%
+                mutate(pct = .wt/sum(.wt)*100), 
+              aes(x = (xmin+xmax)/2, y = (ymin+ymax)/2, label=round(pct, 2)))
 
 p2<-ggplot(data=df) +
   geom_mosaic(aes(x = product(Cholesterol_Category,Heart_Attack_Occurrence), fill=Cholesterol_Category))+

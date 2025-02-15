@@ -307,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 14, 2025</p>
+      <p class="date-modified">February 15, 2025</p>
     </div>
   </div>
     
@@ -1078,20 +1078,28 @@ Insights
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(df)<span class="sc">+</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>    <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence, Gender), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>    <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Gender), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"#DF9999"</span>,<span class="st">"#99AEDF"</span>)) <span class="sc">+</span></span>
 <span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"bottom"</span> )<span class="sc">+</span></span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gender"</span>, <span class="at">y=</span> <span class="st">"Heart Attack"</span>, <span class="at">fill=</span><span class="st">"Heart Attack"</span>)<span class="sc">+</span> </span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Gender"</span>, <span class="at">y=</span> <span class="st">"Heart Attack"</span>, <span class="at">fill=</span><span class="st">"Heart Attack"</span>)<span class="sc">+</span></span>
 <span id="cb21-6"><a href="#cb21-6"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
 <span id="cb21-7"><a href="#cb21-7"></a></span>
-<span id="cb21-8"><a href="#cb21-8"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(df)<span class="sc">+</span></span>
-<span id="cb21-9"><a href="#cb21-9"></a>    <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence, Age_Groups), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
-<span id="cb21-10"><a href="#cb21-10"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"thistle"</span>)) <span class="sc">+</span></span>
-<span id="cb21-11"><a href="#cb21-11"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"bottom"</span> )<span class="sc">+</span></span>
-<span id="cb21-12"><a href="#cb21-12"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age Group"</span>, <span class="at">y=</span> <span class="st">"Heart Attack"</span>, <span class="at">fill=</span><span class="st">"Heart Attack"</span>)<span class="sc">+</span> </span>
-<span id="cb21-13"><a href="#cb21-13"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
-<span id="cb21-14"><a href="#cb21-14"></a></span>
-<span id="cb21-15"><a href="#cb21-15"></a>(p1<span class="sc">+</span>p2)<span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span> <span class="st">"Heart attack occurrence is not significantly associated with Gender and Age groups"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-8"><a href="#cb21-8"></a>p1<span class="ot">&lt;-</span>p1<span class="sc">+</span><span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">ggplot_build</span>(p1)<span class="sc">$</span>data[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb21-9"><a href="#cb21-9"></a>                <span class="fu">group_by</span>(x__Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>                <span class="fu">mutate</span>(<span class="at">pct =</span> .wt<span class="sc">/</span><span class="fu">sum</span>(.wt)<span class="sc">*</span><span class="dv">100</span>), </span>
+<span id="cb21-11"><a href="#cb21-11"></a>              <span class="fu">aes</span>(<span class="at">x =</span> (xmin<span class="sc">+</span>xmax)<span class="sc">/</span><span class="dv">2</span>, <span class="at">y =</span> (ymin<span class="sc">+</span>ymax)<span class="sc">/</span><span class="dv">2</span>, <span class="at">label=</span><span class="fu">round</span>(pct, <span class="dv">2</span>)))</span>
+<span id="cb21-12"><a href="#cb21-12"></a></span>
+<span id="cb21-13"><a href="#cb21-13"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(df)<span class="sc">+</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a>    <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(Heart_Attack_Occurrence, Age_Groups), <span class="at">fill=</span>Heart_Attack_Occurrence))<span class="sc">+</span></span>
+<span id="cb21-15"><a href="#cb21-15"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>,<span class="st">"thistle"</span>)) <span class="sc">+</span></span>
+<span id="cb21-16"><a href="#cb21-16"></a>  <span class="fu">theme</span>( <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), <span class="at">legend.position =</span> <span class="st">"bottom"</span> )<span class="sc">+</span></span>
+<span id="cb21-17"><a href="#cb21-17"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age Group"</span>, <span class="at">y=</span> <span class="st">"Heart Attack"</span>, <span class="at">fill=</span><span class="st">"Heart Attack"</span>)<span class="sc">+</span> </span>
+<span id="cb21-18"><a href="#cb21-18"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
+<span id="cb21-19"><a href="#cb21-19"></a>p2<span class="ot">&lt;-</span>p2<span class="sc">+</span><span class="fu">geom_label</span>(<span class="at">data =</span> <span class="fu">ggplot_build</span>(p1)<span class="sc">$</span>data[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb21-20"><a href="#cb21-20"></a>                <span class="fu">group_by</span>(x__Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb21-21"><a href="#cb21-21"></a>                <span class="fu">mutate</span>(<span class="at">pct =</span> .wt<span class="sc">/</span><span class="fu">sum</span>(.wt)<span class="sc">*</span><span class="dv">100</span>), </span>
+<span id="cb21-22"><a href="#cb21-22"></a>              <span class="fu">aes</span>(<span class="at">x =</span> (xmin<span class="sc">+</span>xmax)<span class="sc">/</span><span class="dv">2</span>, <span class="at">y =</span> (ymin<span class="sc">+</span>ymax)<span class="sc">/</span><span class="dv">2</span>, <span class="at">label=</span><span class="fu">round</span>(pct, <span class="dv">2</span>)),<span class="at">position=</span><span class="fu">position_nudge</span>(<span class="at">x =</span> <span class="fl">0.13</span>, <span class="at">y =</span> <span class="dv">0</span>))</span>
+<span id="cb21-23"><a href="#cb21-23"></a>(p1<span class="sc">+</span>p2)<span class="sc">+</span> <span class="fu">plot_annotation</span>(<span class="at">title=</span> <span class="st">"Heart attack occurrence is not significantly associated with Gender and Age groups"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
