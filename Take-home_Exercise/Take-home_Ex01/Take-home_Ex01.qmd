@@ -45,9 +45,10 @@ The R packages used in this exercise includes:
 -   ggdist for visualising distributions and uncertainty
 -   ggmosaic for creating mosaic plots
 -   ggstatsplot for visualising significant test of association using stacked barplots
+-   ggpubr for adding t-test statistics
 
 ```{r}
-pacman::p_load(tidyverse,knitr, patchwork,ggstats, ggdist,ggmosaic, ggstatsplot)
+pacman::p_load(tidyverse,knitr, patchwork,ggstats, ggdist,ggmosaic, ggstatsplot, ggpubr)
 ```
 
 #### **2.2 Importing Data**
@@ -408,6 +409,11 @@ Next, we delve into bivariate analyses to understand correlation of heart attack
 
 Mosaic plots were created using `geom_mosaic()` from the *ggmosaic* package and `ggplot()` from the *ggplot2* package. `labs()`, `theme()` and `scale_fill_manual` from *ggplot2* package were used to change the axis labels, theme and color of the graphs. `scale_y_continuous()` from *ggplot2* was used to display the percentages.
 
+The `table()` function is used to create contingency table before applying the `chisq.test()` function from base R to compute the Chi-square results, which were subsequently extracted and annotations were added to the mosaic plots.
+
+::: panel-tabset
+## Plot
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -415,8 +421,8 @@ Mosaic plots were created using `geom_mosaic()` from the *ggmosaic* package and 
 p1<-ggplot(df)+
     geom_mosaic(aes(x = product(Gender), fill=Heart_Attack_Occurrence))+
   scale_fill_manual(values=c("#DF9999","#99AEDF")) +
-  theme( axis.ticks.x = element_blank(), legend.position = "bottom" )+
-  labs(x = "Gender", y= "Heart Attack", fill="Heart Attack")+
+  theme( axis.ticks.x = element_blank(), legend.position = "bottom", plot.title = element_text(size=10, hjust=0.5) )+
+  labs(x = "Gender", y=NULL, fill="Heart Attack", title = "𝒳²(1)=3.152, p=0.076" )+
   scale_y_continuous(labels = scales::percent)
 
 p1<-p1+geom_label(data = ggplot_build(p1)$data[[1]] %>% 
@@ -427,8 +433,8 @@ p1<-p1+geom_label(data = ggplot_build(p1)$data[[1]] %>%
 p2<-ggplot(df)+
     geom_mosaic(aes(x = product(Age_Groups), fill=Heart_Attack_Occurrence))+
   scale_fill_manual(values=c("lightsteelblue","thistle")) +
-  theme( axis.ticks.x = element_blank(), legend.position = "bottom" )+
-  labs(x = "Age Group", y= "Heart Attack", fill="Heart Attack")+ 
+  theme( axis.ticks.x = element_blank(), legend.position = "bottom", plot.title = element_text(size=10, hjust=0.5)  )+
+  labs(x = "Age Group",y=NULL, fill="Heart Attack", title="𝒳²(1)=0.273, p=0.601")+ 
   scale_y_continuous(labels = scales::percent)
 p2<-p2+geom_label(data = ggplot_build(p2)$data[[1]] %>% 
                 group_by(x__Age_Groups) %>%
@@ -437,23 +443,52 @@ p2<-p2+geom_label(data = ggplot_build(p2)$data[[1]] %>%
 (p1+p2)+ plot_annotation(title= "Heart attack occurrence is not significantly associated with Gender and Age groups")
 ```
 
+## Chi-square Test
+
+For Gender and Heart Attack Occurrence:
+
+```{r}
+#Create contingency table
+contingency_table <- table(df$Gender, df$Heart_Attack_Occurrence)
+
+# Perform chi-square test
+chi_square_test <- chisq.test(contingency_table)
+
+# View the results
+print(chi_square_test )
+```
+
+For Age Groups and Heart Attack Occurrence:
+
+```{r}
+#Create contingency table
+contingency_table <- table(df$Age_Groups, df$Heart_Attack_Occurrence)
+
+# Perform chi-square test
+chi_square_test <- chisq.test(contingency_table)
+
+# View the results
+print(chi_square_test )
+```
+:::
+
 ::: {.callout-note icon="false"}
 ## Insights
 
 -   Based on the stacked bar chart above, the chances of having heart attack is similar for both genders. This suggests that gender is not be a significant differentiator for heart attack occurrence in this study population.
 
--   Surprisingly, the proportion of Young adults having heart attack is comparable to that of Old adults. This finding is in discordance with common assumptions of heart attack occurring predominantly in older adults, signifying that heart attack may become more common in young adults in the future. Understanding causes and risk factors for heart attack in young adults is therefore pertinent, for the development of effective prevention strategies and government-initiated public health interventions.
+-   Surprisingly, the proportion of young adults having heart attack is comparable to that of old adults. This finding is in discordance with common assumptions of heart attack occurring predominantly in older adults, signifying that heart attack may become more common in young adults in the future. Understanding causes and risk factors for heart attack in young adults is therefore pertinent, for the development of effective prevention strategies and government-initiated public health interventions.
 :::
 
 #### **4.2 BMI and Heart Attack Occurrrence**
 
 Next, we examine BMI distribution by age and gender, before investigating association of BMI categories with heart attack occurrence.
 
-The `ggplot()`, `geom_boxplot()` and `coord_flip()` functions in the *ggplot2* package are used to create the boxplot for BMI grouped by Age groups, colored by gender and change the orientation of the plot. The `stat_halfeye()` function from the *ggdist* package is used to show the BMI distributions for each Age group, by gender. The `theme()` and `lab()` functions in the *ggplot2* package are then used to change axis labels and dictate legend position.
+The `ggplot()`, `geom_boxplot()` and `coord_flip()` functions in the *ggplot2* package are used to create the boxplot for BMI grouped by Age groups, colored by gender and change the orientation of the plot. The `stat_halfeye()` function from the *ggdist* package is used to show the BMI distributions for each Age group, by gender. The `geom_pwc()` function from *ggpubr* package is used to add the t-test results. The `theme()` and `lab()` functions in the *ggplot2* package are then used to change axis labels and dictate legend position.
 
-The `ggbarstats()` and `grouped_ggbarstats()` functions from *ggstatsplot* package are used to create the stacked bar charts with Chi-square test statistics. `digits.perc`, `label.args`, `sample.size.label.args`, `label.args`,ggplot.component\` were used to specify the label size, color and axis labels.
+The `ggbarstats()` and `grouped_ggbarstats()` functions from *ggstatsplot* package are used to create the stacked bar charts with Chi-square test statistics. `digits.perc`, `label.args`, `sample.size.label.args`, `label.args`, `ggplot.component` were used to specify the label size, color and axis labels.
 
-The `table()` function is used to create contingency table before applying the chisq.test()\` function from base R to compute the Chi-square results to extract the Chi-square residuals data.
+The `table()` function is used to create contingency table before applying the `chisq.test()` function from base R to compute the Chi-square results to extract the Chi-square residuals data.
 
 ::: panel-tabset
 ## Total Population
@@ -473,6 +508,11 @@ p1<-ggplot(df,
   geom_boxplot(width = .2,
                position = position_dodge(0.3),
                outlier.shape = NA) +
+  geom_pwc(
+  aes(group = Gender),
+  method = "t_test", label = "p.format", bracket.nudge.y = -0.1,
+  bracket.shorten = 0.1
+)+
   labs(x = "",
        y = "BMI") +   
   theme(
@@ -561,38 +601,35 @@ print(pearson_residuals)
 
 Given the high incidence of hypertension observed in the earlier section, we will investigate whether hypertension is associated with an increased risk of heart attack.
 
-Mosaic plots were created using `geom_mosaic()` from the *ggmosaic* package and `ggplot()` from the *ggplot2* package. `labs()`, `theme()` and `scale_fill_manual` from *ggplot2* package were used to change the axis labels, theme and color of the graphs. `facet_wrap()` was used to facet the mosaic plots by Age Group. `scale_y_continuous()` from *ggplot2* was used to display the percentages.
-
-::: panel-tabset
-## Plot
-
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-#| fig-width: 8
+#| fig-width: 11
 #| fig-height: 12
-p1<-ggplot(data=df) +
-  geom_mosaic(aes(x = product(Heart_Attack_Occurrence), fill=Blood_Pressure))+
-  theme(legend.position="right") +
-  labs(y = "Blood Pressure",
-       x = "Heart Attack")+
-scale_fill_manual("Heart Attack",values=c( "lightsteelblue","lightcyan3", "thistle","rosybrown2"))+
-  scale_y_continuous(labels = scales::percent)+
-  facet_wrap(~Age_Groups)
 
-p1<-p1+geom_label(data = ggplot_build(p1)$data[[1]] %>% 
-                group_by(PANEL,x__Heart_Attack_Occurrence) %>%
-                mutate(pct = .wt/sum(.wt)*100), 
-              aes(x = (xmin+xmax)/2, y = (ymin+ymax)/2, label=round(pct, 2)))
+p1<-grouped_ggbarstats(df, 
+           y = Heart_Attack_Occurrence, 
+           x = Blood_Pressure,
+           digits.perc = 1, 
+           grouping.var = Age_Groups, 
+           plotgrid.args = list(ncol = 2),
+           sample.size.label.args = list(size = 2.5),
+           label.args = list(size = 2.5, fill = "white"), 
+           ggplot.component = list(theme(plot.subtitle = element_text(size = 8), axis.ticks.x=element_blank()), scale_fill_manual(values=c("rosybrown2","thistle","lightsteelblue","lightcyan3"))),
+           legend.title = "Blood Pressure",
+            xlab="Heart Attack")
 
-p2<-ggplot(data=df) +
-  geom_mosaic(aes(x = product(Cholesterol_Category,Heart_Attack_Occurrence), fill=Cholesterol_Category))+
-  theme(legend.position="right") +
-  labs(y = "Cholesterol Level",
-       x = "Heart Attack Occurrence")+
-scale_fill_manual("Heart Attack",values=c( "lightsteelblue","lightcyan3", "thistle"))+
-  facet_wrap(~Age_Groups) + 
-  scale_y_continuous(labels = scales::percent)
+p2<-grouped_ggbarstats(df, 
+           y = Heart_Attack_Occurrence, 
+           x = Cholesterol_Category,
+           digits.perc = 1, 
+           grouping.var = Age_Groups, 
+           plotgrid.args = list(ncol = 2),
+           sample.size.label.args = list(size = 2.5),
+           label.args = list(size = 2.5, fill = "white"), 
+           ggplot.component = list(theme(plot.subtitle = element_text(size = 8), axis.ticks.x=element_blank()), scale_fill_manual(values=c("rosybrown2","thistle","lightsteelblue","lightcyan3"))),
+           legend.title = "Cholesterol Level",
+            xlab="Heart Attack")
 
 p3<-ggplot(df, 
        aes(x = Age_Groups, 
@@ -606,6 +643,11 @@ p3<-ggplot(df,
   geom_boxplot(width = .2,
                position = position_dodge(0.3),
                outlier.shape = NA) +
+  geom_pwc(
+  aes(group = Heart_Attack_Occurrence),
+  method = "t_test", label = "p.format", bracket.nudge.y = -0.1,
+  bracket.shorten = 0.12
+)+
   labs(x = "",
        y = "BMI") +   
   theme(
@@ -617,67 +659,6 @@ p3<-ggplot(df,
 p1/p3/p2 + plot_layout(axis_titles = "collect")+ plot_annotation(title= "Heart Attack is not significantly associated with Hypertension and Cholesterol Level")
 
 ```
-
-## Chi-square: BP
-
-For Young adults:
-
-```{r}
-#Create contingency table
-subset_df<-df[df$Age_Groups=='Young',]
-contingency_table <- table(subset_df$Blood_Pressure, subset_df$Heart_Attack_Occurrence)
-
-# Perform chi-square test
-chi_square_test <- chisq.test(contingency_table)
-
-# View the results
-print(chi_square_test)
-```
-
-For Old adults:
-
-```{r}
-#Create contingency table
-subset_df<-df[df$Age_Groups=='Old',]
-contingency_table <- table(subset_df$Blood_Pressure, subset_df$Heart_Attack_Occurrence)
-
-# Perform chi-square test
-chi_square_test <- chisq.test(contingency_table)
-
-# View the results
-print(chi_square_test)
-```
-
-## Chi-square: Cholesterol
-
-For Young adults:
-
-```{r}
-#Create contingency table
-subset_df<-df[df$Age_Groups=='Young',]
-contingency_table <- table(subset_df$Cholesterol_Category, subset_df$Heart_Attack_Occurrence)
-
-# Perform chi-square test
-chi_square_test <- chisq.test(contingency_table)
-
-# View the results
-print(chi_square_test)
-```
-
-For Old adults:
-
-```{r}
-#Create contingency table
-subset_df<-df[df$Age_Groups=='Old',]
-contingency_table <- table(subset_df$Cholesterol_Category, subset_df$Heart_Attack_Occurrence)
-
-# Perform chi-square test
-chi_square_test <- chisq.test(contingency_table)
-
-# View the results
-print(chi_square_test)
-```
-:::
 
 ::: {.callout-note icon="false"}
 ## Insights
@@ -695,6 +676,8 @@ Heart attack is typically caused by a combination of various interrelated risk f
 
 In this section, we will investigate if Diabetes History and Family History increases tendency of heart attack occurrence.
 
+Mosaic plots were created using `geom_mosaic()` from the *ggmosaic* package and `ggplot()` from the *ggplot2* package. `labs()`, `theme()` and `scale_fill_manual` from *ggplot2* package were used to change the axis labels, theme and color of the graphs. `facet_wrap()` was used to facet the mosaic plots by Age Group. `scale_y_continuous()` from *ggplot2* was used to display the percentages.
+
 ::: panel-tabset
 ## Family history & Diabetes Mosaic Plot
 
@@ -702,19 +685,19 @@ In this section, we will investigate if Diabetes History and Family History incr
 #| code-fold: true
 #| code-summary: "Show the code"
 p1<-ggplot(data=df) +
-  geom_mosaic(aes(x = product(Heart_Attack_Occurrence,Diabetes_History), fill=Heart_Attack_Occurrence))+
-  theme(legend.position="right") +
-  labs(x = "Diabetes History",
-       y = "Heart Attack Occurrence")+
-scale_fill_manual("Heart Attack",values=c( "lightsteelblue", "thistle"))+
+  geom_mosaic(aes(x = product(Diabetes_History), fill=Heart_Attack_Occurrence))+
+  theme(legend.position="right", plot.title = element_text(size=10, hjust=0.5)) +
+  labs(x = "Diabetes History",y=NULL,
+       title= "𝒳²(1)=2.403, p=0.121                        𝒳²(1)=0.005, p=0.946")+
+scale_fill_manual("Heart Attack", values=c( "lightsteelblue", "thistle"))+
   facet_wrap(~Age_Groups) + 
   scale_y_continuous(labels = scales::percent)
 
 p2<-ggplot(data=df) +
-  geom_mosaic(aes(x = product(Heart_Attack_Occurrence,Family_History), fill=Heart_Attack_Occurrence))+
-  theme(legend.position="right") +
-  labs(x = "Family History",
-       y = "Heart Attack Occurrence")+
+  geom_mosaic(aes(x = product(Family_History), fill=Heart_Attack_Occurrence))+
+  theme(legend.position="right", plot.title = element_text(size=10, hjust=0.5)) +
+  labs(x = "Family History",y=NULL,
+       title="𝒳²(1)=0.077, p=0.781                        𝒳²(1)=0.006, p=0.940")+
 scale_fill_manual("Heart Attack",values=c( "lightsteelblue", "thistle"))+
   facet_wrap(~Age_Groups) + 
   scale_y_continuous(labels = scales::percent)
