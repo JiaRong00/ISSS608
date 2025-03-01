@@ -10,7 +10,23 @@
 <atom:link href="https://www.jiarong-visual-analytics.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Mon, 17 Feb 2025 16:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 28 Feb 2025 16:00:00 GMT</lastBuildDate>
+<item>
+  <title>In-Class Exercise 07: A Layered Grammar of Graphics - ggplot2 methods</title>
+  <dc:creator>Moo Jia Rong</dc:creator>
+  <link>https://www.jiarong-visual-analytics.netlify.app/In-Class_Exercise/In-Class_Ex07.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+ ]]></description>
+  <guid>https://www.jiarong-visual-analytics.netlify.app/In-Class_Exercise/In-Class_Ex07.html</guid>
+  <pubDate>Fri, 28 Feb 2025 16:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Hands-on Exercise 07: Visualising and Analysing Time-oriented Data</title>
   <dc:creator>Moo Jia Rong</dc:creator>
