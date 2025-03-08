@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -68,6 +102,24 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="../../site_libs/plotly-binding-4.10.4/plotly.js"></script>
+
+<script src="../../site_libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="../../site_libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="../../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="../../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+<link href="../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="../../site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -187,6 +239,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../../Take-home_Exercise/Take-home_Ex01/Take-home_Ex01.html">
  <span class="dropdown-text">Take-home Exercise 1</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Exercise/Take-home_Ex02/Take-home_Ex02.html">
+ <span class="dropdown-text">Take-home Exercise 2</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -228,9 +284,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#total-merchandise-trade-at-current-prices-2020---2024" id="toc-total-merchandise-trade-at-current-prices-2020---2024" class="nav-link" data-scroll-target="#total-merchandise-trade-at-current-prices-2020---2024"><strong>3.1 TOTAL MERCHANDISE TRADE AT CURRENT PRICES, 2020 - 2024</strong></a></li>
   <li><a href="#merchandise-trade-performance-with-major-trading-partners-2024" id="toc-merchandise-trade-performance-with-major-trading-partners-2024" class="nav-link" data-scroll-target="#merchandise-trade-performance-with-major-trading-partners-2024"><strong>3.2 MERCHANDISE TRADE PERFORMANCE WITH MAJOR TRADING PARTNERS, 2024</strong></a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><strong>3.3 </strong></a></li>
+  <li><a href="#exports-of-services-by-services-category-2024" id="toc-exports-of-services-by-services-category-2024" class="nav-link" data-scroll-target="#exports-of-services-by-services-category-2024"><strong>3.3 EXPORTS OF SERVICES BY SERVICES CATEGORY, 2024</strong></a></li>
   </ul></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><strong>4 </strong></a></li>
+  <li><a href="#time-series-analysis" id="toc-time-series-analysis" class="nav-link" data-scroll-target="#time-series-analysis"><strong>4 Time Series Analysis</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -263,7 +319,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">February 24, 2025</p>
+      <p class="date-modified">March 5, 2025</p>
     </div>
   </div>
     
@@ -276,7 +332,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="overview" class="level3">
 <h3 class="anchored" data-anchor-id="overview"><strong>1 Overview</strong></h3>
-<p>Singapore is a major global trading hub. In this exercise, we will be examining the changing trends and patterns of Singapore’s international trade since 2015.</p>
+<p>Singapore is a major global trading hub. In this exercise, we will be examining the changing trends and patterns of Singapore’s international trade since 2015, using the trade data obtained from Department of Statistics Singapore.</p>
 <p>The main objective of this exercise will be to:</p>
 <ul>
 <li>critique on the visualisations prepared by Department of Statistics Singapore and provide sketches of makeover</li>
@@ -290,10 +346,24 @@ ul.task-list li input[type="checkbox"] {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Loading Packages</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Importing Dataset</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-
+<p>The following packages will be used in this exercise:</p>
+<ul>
+<li>tidyverse for manipulating the dataset</li>
+<li>plotly for making interactive plots</li>
+<li>tsibble, feasts, fable and seasonal for time series forecasting</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, plotly, tsibble, feasts, fable, seasonal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-
+<p>Merchandise Trade by Region/Market and Trade In Services By Services Category data was downloaded from <a href="https://www.singstat.gov.sg/">Department of Statistics Singapore</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>import_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Import.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>export_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Export.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>re_export_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/Reexport.csv"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>service_data <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"data/Services.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -324,11 +394,127 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-
+<p><img src="images/clipboard-311301653.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-<p>MAKEOVER DESCRIPTION</p>
+<p>To revamp the plot, the dataset first needs to be re-organised to extract the relavnt data. <code>pivot_longer()</code> is used to re-arrange the import, export and re-export data into the long format.Subsequently, a new column containing just the year of the trade data is created, using <code>substr</code> and <code>paste0</code>. The import, epxport, re-export data are then merged into a single table, using <code>merge</code>. New columns containing the total exports and total trade amounts are subsequently created.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#Wrangling data</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>import_pivot<span class="ot">&lt;-</span>import_data <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"2"</span>), </span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="at">names_to =</span> <span class="st">"Date"</span>, </span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="at">values_to =</span> <span class="st">"Import"</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>  )</span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a>import_pivot<span class="sc">$</span>Year <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">paste0</span>(<span class="fu">substr</span>(import_pivot<span class="sc">$</span>Date,<span class="dv">1</span>,<span class="dv">4</span>)))</span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a>export_pivot<span class="ot">&lt;-</span>export_data <span class="sc">%&gt;%</span> </span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"2"</span>), </span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="at">names_to =</span> <span class="st">"Date"</span>, </span>
+<span id="cb3-15"><a href="#cb3-15"></a>    <span class="at">values_to =</span> <span class="st">"Export"</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>  )</span>
+<span id="cb3-17"><a href="#cb3-17"></a></span>
+<span id="cb3-18"><a href="#cb3-18"></a>export_pivot<span class="sc">$</span>Year <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">paste0</span>(<span class="fu">substr</span>(export_pivot<span class="sc">$</span>Date,<span class="dv">1</span>,<span class="dv">4</span>)))</span>
+<span id="cb3-19"><a href="#cb3-19"></a></span>
+<span id="cb3-20"><a href="#cb3-20"></a>re_export_pivot<span class="ot">&lt;-</span>re_export_data <span class="sc">%&gt;%</span> </span>
+<span id="cb3-21"><a href="#cb3-21"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb3-22"><a href="#cb3-22"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"2"</span>), </span>
+<span id="cb3-23"><a href="#cb3-23"></a>    <span class="at">names_to =</span> <span class="st">"Date"</span>, </span>
+<span id="cb3-24"><a href="#cb3-24"></a>    <span class="at">values_to =</span> <span class="st">"Re_export"</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a>  )</span>
+<span id="cb3-26"><a href="#cb3-26"></a></span>
+<span id="cb3-27"><a href="#cb3-27"></a>re_export_pivot<span class="sc">$</span>Year <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">paste0</span>(<span class="fu">substr</span>(re_export_pivot<span class="sc">$</span>Date,<span class="dv">1</span>,<span class="dv">4</span>)))</span>
+<span id="cb3-28"><a href="#cb3-28"></a></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="co">#Merge the tables</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a>df<span class="ot">&lt;-</span> <span class="fu">merge</span>(import_pivot, export_pivot, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Data Series"</span>,<span class="st">"Date"</span>, <span class="st">"Year"</span>), <span class="at">all =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb3-31"><a href="#cb3-31"></a>df<span class="ot">&lt;-</span> <span class="fu">merge</span>(df, re_export_pivot, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Data Series"</span>,<span class="st">"Date"</span>, <span class="st">"Year"</span>), <span class="at">all =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb3-32"><a href="#cb3-32"></a></span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="co">#Combining exports</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a>df<span class="sc">$</span>Total_export<span class="ot">&lt;-</span>df<span class="sc">$</span>Export<span class="sc">+</span>df<span class="sc">$</span>Re_export</span>
+<span id="cb3-35"><a href="#cb3-35"></a>df<span class="sc">$</span>Total_trade<span class="ot">&lt;-</span>df<span class="sc">$</span>Import<span class="sc">+</span>df<span class="sc">$</span>Total_export</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, only the import, total export and total trade data for the total merchandise trade from 2020 to 2024 are extracted, using <code>filter</code>. Subsequently, <code>pivot_longer</code> is used to change the data into the long format. <code>group_by</code> and <code>summarise</code> are used to sum up the trade values by the year and the trade type. The trade values are also converted into billions by dividing by 1000.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#Extracting relevant data</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>df_1 <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="st">"Data Series"</span>, <span class="st">"Year"</span>, <span class="st">"Import"</span>, <span class="st">"Total_export"</span>, <span class="st">"Total_trade"</span>)] <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a> <span class="fu">filter</span>(Year<span class="sc">&gt;=</span> <span class="dv">2020</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;=</span> <span class="dv">2024</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Data Series</span><span class="st">`</span><span class="sc">==</span><span class="st">"Total All Markets"</span>)<span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    <span class="at">cols =</span><span class="fu">c</span>(<span class="st">"Import"</span>, <span class="st">"Total_export"</span>, <span class="st">"Total_trade"</span>), </span>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="at">names_to =</span> <span class="st">"Trade"</span>, </span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="at">values_to =</span> <span class="st">"Value"</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  )</span>
+<span id="cb4-9"><a href="#cb4-9"></a>df_1<span class="ot">&lt;-</span>  df_1[,<span class="fu">c</span>(<span class="st">"Year"</span>, <span class="st">"Trade"</span>, <span class="st">"Value"</span>)] <span class="sc">%&gt;%</span> </span>
+<span id="cb4-10"><a href="#cb4-10"></a>  <span class="fu">group_by</span>( Year, Trade) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), sum),</span>
+<span id="cb4-12"><a href="#cb4-12"></a>            <span class="at">.groups =</span> <span class="st">'drop'</span>)  </span>
+<span id="cb4-13"><a href="#cb4-13"></a>df_1<span class="sc">$</span>Value<span class="ot">&lt;-</span>df_1<span class="sc">$</span>Value<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>df_1<span class="sc">$</span>Trade<span class="ot">&lt;-</span><span class="fu">factor</span>(df_1<span class="sc">$</span>Trade, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Import"</span>, <span class="st">"Total_export"</span>, <span class="st">"Total_trade"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To revamp the chart, we will create a bar chart for the import and total exports. We will color the bars according to the trade category. In addition, we overlay the bar chart with line graphs to display the change in trade value for import, export and total trade, across the years.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#Plotting bar chart</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">ggplot</span>(<span class="at">data=</span>df_1[df_1<span class="sc">$</span>Trade<span class="sc">!=</span><span class="st">"Total_trade"</span>,], <span class="fu">aes</span>(<span class="at">x=</span>Year,<span class="at">y=</span>Value, <span class="at">fill=</span>Trade))<span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">geom_col</span>(<span class="at">position=</span><span class="st">'dodge'</span>)<span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"lightsteelblue"</span>, <span class="st">"thistle"</span>, <span class="st">"grey"</span>),</span>
+<span id="cb5-5"><a href="#cb5-5"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Imports"</span>, <span class="st">"Exports"</span>, <span class="st">"Total Trade"</span>))<span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>   <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(Year, <span class="at">label =</span><span class="fu">sprintf</span>(<span class="st">"%.1f"</span>, Value),<span class="at">y =</span> Value <span class="sc">*</span> <span class="fl">0.02</span>),</span>
+<span id="cb5-8"><a href="#cb5-8"></a>            <span class="at">position =</span> <span class="fu">position_dodge2</span>(<span class="at">width =</span> <span class="fl">0.9</span>),</span>
+<span id="cb5-9"><a href="#cb5-9"></a>            <span class="at">fill=</span><span class="st">"white"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10"></a>            <span class="at">hjust=</span><span class="dv">0</span>,</span>
+<span id="cb5-11"><a href="#cb5-11"></a>            <span class="at">size=</span><span class="dv">3</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>            )<span class="sc">+</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>  </span>
+<span id="cb5-14"><a href="#cb5-14"></a>  <span class="co">#Line for total trade</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a> <span class="fu">geom_line</span>(<span class="at">data =</span> df_1[df_1<span class="sc">$</span>Trade <span class="sc">==</span> <span class="st">"Total_trade"</span>,], </span>
+<span id="cb5-16"><a href="#cb5-16"></a>            <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Value, <span class="at">group =</span> <span class="dv">1</span>),  </span>
+<span id="cb5-17"><a href="#cb5-17"></a>            <span class="at">color =</span> <span class="st">"#698B69"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> df_1[df_1<span class="sc">$</span>Trade <span class="sc">==</span> <span class="st">"Total_trade"</span>,],  </span>
+<span id="cb5-19"><a href="#cb5-19"></a>             <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Value), </span>
+<span id="cb5-20"><a href="#cb5-20"></a>             <span class="at">color =</span> <span class="st">"#008B00"</span>, <span class="at">size =</span> <span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> df_1[df_1<span class="sc">$</span>Trade <span class="sc">==</span> <span class="st">"Total_trade"</span>,], </span>
+<span id="cb5-22"><a href="#cb5-22"></a>             <span class="fu">aes</span>(<span class="at">x =</span> Year<span class="fl">+0.3</span>, <span class="at">y =</span> Value, <span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.1f"</span>, Value)),</span>
+<span id="cb5-23"><a href="#cb5-23"></a>             <span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">nudge_y =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a>  </span>
+<span id="cb5-25"><a href="#cb5-25"></a>   <span class="co"># Line for Import</span></span>
+<span id="cb5-26"><a href="#cb5-26"></a>  <span class="fu">geom_path</span>(<span class="at">data =</span> df_1[df_1<span class="sc">$</span>Trade <span class="sc">==</span> <span class="st">"Import"</span>,], </span>
+<span id="cb5-27"><a href="#cb5-27"></a>            <span class="fu">aes</span>(<span class="at">x =</span> Year<span class="fl">-0.22</span>, <span class="at">y =</span> Value, <span class="at">group =</span> Trade),  </span>
+<span id="cb5-28"><a href="#cb5-28"></a>            <span class="at">color =</span> <span class="st">"#607B8B"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> df_1[df_1<span class="sc">$</span>Trade <span class="sc">==</span> <span class="st">"Import"</span>,],  </span>
+<span id="cb5-30"><a href="#cb5-30"></a>             <span class="fu">aes</span>(<span class="at">x =</span> Year<span class="fl">-0.22</span>, <span class="at">y =</span> Value), </span>
+<span id="cb5-31"><a href="#cb5-31"></a>             <span class="at">color =</span> <span class="st">"#104E8B"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb5-32"><a href="#cb5-32"></a></span>
+<span id="cb5-33"><a href="#cb5-33"></a>  <span class="co"># Line for Total Export</span></span>
+<span id="cb5-34"><a href="#cb5-34"></a>  <span class="fu">geom_path</span>(<span class="at">data =</span> df_1[df_1<span class="sc">$</span>Trade <span class="sc">==</span> <span class="st">"Total_export"</span>,], </span>
+<span id="cb5-35"><a href="#cb5-35"></a>            <span class="fu">aes</span>(<span class="at">x =</span> Year<span class="fl">+0.22</span>, <span class="at">y =</span> Value, <span class="at">group =</span> Trade),  </span>
+<span id="cb5-36"><a href="#cb5-36"></a>            <span class="at">color =</span> <span class="st">"#8B2500"</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb5-37"><a href="#cb5-37"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> df_1[df_1<span class="sc">$</span>Trade <span class="sc">==</span> <span class="st">"Total_export"</span>,],  </span>
+<span id="cb5-38"><a href="#cb5-38"></a>             <span class="fu">aes</span>(<span class="at">x =</span> Year<span class="fl">+0.22</span>, <span class="at">y =</span> Value), </span>
+<span id="cb5-39"><a href="#cb5-39"></a>             <span class="at">color =</span> <span class="st">"#8B0000"</span>, <span class="at">size =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb5-40"><a href="#cb5-40"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">max</span>(df_1<span class="sc">$</span>Value), <span class="at">by =</span> <span class="dv">200</span>),</span>
+<span id="cb5-41"><a href="#cb5-41"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(df_1<span class="sc">$</span>Value) <span class="sc">+</span> <span class="dv">100</span>))<span class="sc">+</span></span>
+<span id="cb5-42"><a href="#cb5-42"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Merchandise Trade (Billions)"</span>, <span class="at">title=</span><span class="st">"TOTAL MERCHANDISE TRADE</span></span>
+<span id="cb5-43"><a href="#cb5-43"></a><span class="st">AT CURRENT PRICES, 2020 - 2024"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex02_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Changes made:</p>
+<ul>
+<li>Instead of coloring by year, we colour by the type of trade and place the year labels at the y axis. This reduces unnecessary repetition of labels.</li>
+<li>Colors used are also vastly different and prevents any confusion. - Axis tick labels added for merchandise trade to enable readers to easily read the graph.</li>
+<li>Line graph showing the total trade is added to enable easier visualisation of total trade value changes.</li>
+</ul>
 </section>
 <section id="merchandise-trade-performance-with-major-trading-partners-2024" class="level4">
 <h4 class="anchored" data-anchor-id="merchandise-trade-performance-with-major-trading-partners-2024"><strong>3.2 MERCHANDISE TRADE PERFORMANCE WITH MAJOR TRADING PARTNERS, 2024</strong></h4>
@@ -336,7 +522,7 @@ ul.task-list li input[type="checkbox"] {
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Original</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Areas for improvement</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Makeover Sketch</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
-<p><img src="images/clipboard-1674553566.png" class="img-fluid"></p>
+<p><img src="images/clipboard-2464575684.png" class="img-fluid"></p>
 <ul>
 <li><p>There is a partition separating the countries who have greater imports from Singapore than exports, from countries who have greater export from Singapore than imports. This allows easy identification of the 2 groups.</p></li>
 <li><p>The data points are varied in size, with the size representing Singapore’s total merchandise trade value with the trading partner, making it easy to differentiate countries with small merchandise trade value from countries with large merchandise trade value at one glance.</p></li>
@@ -352,32 +538,247 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 </div>
 <div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
-
+<p><img src="images/clipboard-1024237469.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-<p>MAKEOVER DESCRIPTION</p>
+<p>To revamp the graph, we first consolidate the list of major trading partners in 2024 and rename all countries in EU as EU, ‘China’ as “Mainland China”, “Korea, Rep Of” as “Republic of Korea” using <code>ifelse</code> statements.</p>
+<p>The trade data for the major trading partners in 2024 are then aggregated using <code>filter</code>, group_by<code>and</code>summarise`. Trade values are also converted into billions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>EU<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Austria"</span>, <span class="st">"Belgium"</span>, <span class="st">"Bulgaria"</span>, <span class="st">"Croatia"</span>, <span class="st">"Cyprus"</span>, <span class="st">"Czech Rep"</span>, <span class="st">"Denmark"</span>, <span class="st">"Estonia"</span>, <span class="st">"Finland"</span>, <span class="st">"France"</span>, <span class="st">"Germany"</span>, <span class="st">"Greece"</span>, <span class="st">"Hungary"</span>, <span class="st">"Ireland"</span>, <span class="st">"Italy"</span>, <span class="st">"Latvia"</span>, <span class="st">"Lithuania"</span>, <span class="st">"Luxembourg"</span>, <span class="st">"Malta"</span>, <span class="st">"Netherlands"</span>, <span class="st">"Poland"</span>, <span class="st">"Portugal"</span>, <span class="st">"Romania"</span>, <span class="st">"Slovakia"</span>, <span class="st">"Slovenia"</span>, <span class="st">"Spain"</span>, <span class="st">"Sweden"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a>TP_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"Mainland China"</span>, <span class="st">"Hong Kong"</span>, <span class="st">"Indonesia"</span>, <span class="st">"Japan"</span>, <span class="st">"Republic of Korea"</span>, <span class="st">"Malaysia"</span>, <span class="st">"Taiwan"</span>, <span class="st">"Thailand"</span>, <span class="st">"EU"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a>df_2 <span class="ot">&lt;-</span> df[,<span class="fu">c</span>(<span class="st">"Data Series"</span>, <span class="st">"Year"</span>, <span class="st">"Import"</span>, <span class="st">"Total_export"</span>, <span class="st">"Total_trade"</span>)] </span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a>df_2<span class="sc">$</span><span class="st">`</span><span class="at">Data Series</span><span class="st">`</span><span class="ot">&lt;-</span><span class="fu">ifelse</span>(df_2<span class="sc">$</span><span class="st">`</span><span class="at">Data Series</span><span class="st">`</span><span class="sc">%in%</span> EU, <span class="st">"EU"</span>, <span class="fu">ifelse</span>(df_2<span class="sc">$</span><span class="st">`</span><span class="at">Data Series</span><span class="st">`</span><span class="sc">==</span><span class="st">"China"</span>, <span class="st">"Mainland China"</span>, <span class="fu">ifelse</span>(df_2<span class="sc">$</span><span class="st">`</span><span class="at">Data Series</span><span class="st">`</span><span class="sc">==</span><span class="st">"Korea, Rep Of"</span>, <span class="st">"Republic of Korea"</span>, df_2<span class="sc">$</span><span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>)))</span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a>df_2<span class="ot">&lt;-</span> df_2 <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a> <span class="fu">filter</span>(Year<span class="sc">==</span> <span class="dv">2024</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Data Series</span><span class="st">`</span><span class="sc">%in%</span> TP_names)</span>
+<span id="cb6-11"><a href="#cb6-11"></a>  </span>
+<span id="cb6-12"><a href="#cb6-12"></a>df_2<span class="ot">&lt;-</span>  df_2[,<span class="fu">c</span>(<span class="st">"Data Series"</span>, <span class="st">"Import"</span>, <span class="st">"Total_export"</span>, <span class="st">"Total_trade"</span>)] <span class="sc">%&gt;%</span> </span>
+<span id="cb6-13"><a href="#cb6-13"></a>  <span class="fu">group_by</span>( <span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-14"><a href="#cb6-14"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), sum),</span>
+<span id="cb6-15"><a href="#cb6-15"></a>            <span class="at">.groups =</span> <span class="st">'drop'</span>)  </span>
+<span id="cb6-16"><a href="#cb6-16"></a>df_2<span class="sc">$</span>Import<span class="ot">&lt;-</span>df_2<span class="sc">$</span>Import<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a>df_2<span class="sc">$</span>Total_export<span class="ot">&lt;-</span>df_2<span class="sc">$</span>Total_export<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb6-18"><a href="#cb6-18"></a>df_2<span class="sc">$</span>Total_trade<span class="ot">&lt;-</span>df_2<span class="sc">$</span>Total_trade<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a>df_2<span class="sc">$</span>Net<span class="ot">&lt;-</span><span class="fu">ifelse</span>(df_2<span class="sc">$</span>Import<span class="sc">&gt;</span>df_2<span class="sc">$</span>Total_export, <span class="st">"Import&gt;Export"</span>,<span class="st">"Export&gt;Import"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, a bubble plot is created using <code>plotly</code>. The changes made are:</p>
+<ul>
+<li>Tooltip is used to display the import, export and total trade values.</li>
+<li>Both size and the color of the marker is set to vary by the total trade amount.</li>
+<li>Axis labels are set to the middle of the axis, avoids confusion.</li>
+<li>The shape of the marker is used to differentiate between trading partners with more import than export and trading partners with more export than import. This enables easier identification of the 2 different groups of trading partners compared to the position of the marker.</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>p<span class="ot">&lt;-</span><span class="fu">plot_ly</span>(df_2, <span class="at">x =</span> <span class="sc">~</span>Total_export, <span class="at">y =</span> <span class="sc">~</span>Import, <span class="at">type =</span> <span class="st">'scatter'</span>, <span class="at">mode =</span> <span class="st">'markers'</span>, <span class="at">color =</span> <span class="sc">~</span>Total_trade, <span class="at">colors =</span> <span class="st">"Reds"</span>, <span class="at">size =</span> <span class="sc">~</span>Total_trade, <span class="at">hoverinfo =</span> <span class="st">"text"</span>,<span class="at">symbol =</span> <span class="sc">~</span>Net,       </span>
+<span id="cb7-2"><a href="#cb7-2"></a>             <span class="at">symbols =</span> <span class="fu">c</span>(<span class="st">"circle"</span>, <span class="st">"square"</span>),</span>
+<span id="cb7-3"><a href="#cb7-3"></a>        <span class="at">marker =</span> <span class="fu">list</span>( <span class="at">sizemode =</span> <span class="st">'diameter'</span>,</span>
+<span id="cb7-4"><a href="#cb7-4"></a>                      <span class="at">line =</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">'black'</span>, <span class="at">opacity=</span><span class="fl">0.7</span>)), <span class="at">text =</span> <span class="sc">~</span><span class="fu">paste</span>(<span class="st">'&lt;b&gt;Import:&lt;/b&gt;'</span>, <span class="fu">sprintf</span>(<span class="st">"%.1f"</span>, Import), <span class="st">'&lt;br&gt;&lt;b&gt;Export:&lt;/b&gt;'</span>, <span class="fu">sprintf</span>(<span class="st">"%.1f"</span>, Total_export), <span class="st">'&lt;br&gt;&lt;b&gt;Total Trade:&lt;/b&gt;'</span>, <span class="fu">sprintf</span>(<span class="st">"%.1f"</span>, Total_trade)))</span>
+<span id="cb7-5"><a href="#cb7-5"></a>p <span class="ot">&lt;-</span> p <span class="sc">%&gt;%</span> <span class="fu">layout</span>(<span class="at">title =</span> <span class="fu">list</span>(<span class="at">text =</span> <span class="st">'&lt;b&gt;Merchandise Trade Performance with Major Trading Partners, 2024&lt;/b&gt;'</span>, </span>
+<span id="cb7-6"><a href="#cb7-6"></a>                      <span class="at">x =</span> <span class="fl">0.5</span>),  </span>
+<span id="cb7-7"><a href="#cb7-7"></a>         <span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'&lt;b&gt;Export (in billions)&lt;/b&gt;'</span>, </span>
+<span id="cb7-8"><a href="#cb7-8"></a>                      <span class="at">showgrid =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb7-9"><a href="#cb7-9"></a>                      <span class="at">zeroline =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb7-10"><a href="#cb7-10"></a>                      <span class="at">titlefont =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb7-11"><a href="#cb7-11"></a>                      <span class="at">dtick =</span> <span class="dv">20</span>),</span>
+<span id="cb7-12"><a href="#cb7-12"></a>         <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">'&lt;b&gt;Import (in billions)&lt;/b&gt;'</span>, </span>
+<span id="cb7-13"><a href="#cb7-13"></a>                      <span class="at">showgrid =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb7-14"><a href="#cb7-14"></a>                      <span class="at">zeroline =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb7-15"><a href="#cb7-15"></a>                      <span class="at">titlefont =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">14</span>)),</span>
+<span id="cb7-16"><a href="#cb7-16"></a>         <span class="at">margin =</span> <span class="fu">list</span>(<span class="at">l =</span> <span class="dv">80</span>, <span class="at">r =</span> <span class="dv">50</span>, <span class="at">t =</span> <span class="dv">60</span>, <span class="at">b =</span> <span class="dv">60</span>))  </span>
+<span id="cb7-17"><a href="#cb7-17"></a>p<span class="ot">&lt;-</span> p <span class="sc">%&gt;%</span> <span class="fu">add_annotations</span>(<span class="at">x =</span> df_2<span class="sc">$</span>Total_export,</span>
+<span id="cb7-18"><a href="#cb7-18"></a>                  <span class="at">y =</span> df_2<span class="sc">$</span>Import,</span>
+<span id="cb7-19"><a href="#cb7-19"></a>                  <span class="at">text =</span> df_2<span class="sc">$</span><span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>,</span>
+<span id="cb7-20"><a href="#cb7-20"></a>                  <span class="at">xref =</span> <span class="st">"x"</span>,</span>
+<span id="cb7-21"><a href="#cb7-21"></a>                  <span class="at">yref =</span> <span class="st">"y"</span>,</span>
+<span id="cb7-22"><a href="#cb7-22"></a>                 <span class="at">showarrow =</span> F</span>
+<span id="cb7-23"><a href="#cb7-23"></a>                 )</span>
+<span id="cb7-24"><a href="#cb7-24"></a>p<span class="ot">&lt;-</span> p <span class="sc">%&gt;%</span><span class="fu">colorbar</span>(<span class="at">title =</span> <span class="st">"Total Trade (Billions)"</span>)</span>
+<span id="cb7-25"><a href="#cb7-25"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-ecad88d78cfe868f9ff9" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-ecad88d78cfe868f9ff9">{"x":{"visdat":{"2494bbb454f":["function () ","plotlyVisDat"]},"cur_data":"2494bbb454f","attrs":{"2494bbb454f":{"x":{},"y":{},"mode":"markers","hoverinfo":"text","marker":{"sizemode":"diameter","line":{"width":1,"color":"black","opacity":0.69999999999999996}},"text":{},"color":{},"size":{},"symbol":{},"colors":"Reds","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"symbols":["circle","square"],"type":"scatter"}},"layout":{"margin":{"b":60,"l":80,"t":60,"r":50},"title":{"text":"<b>Merchandise Trade Performance with Major Trading Partners, 2024<\/b>","x":0.5},"xaxis":{"domain":[0,1],"automargin":true,"title":"<b>Export (in billions)<\/b>","showgrid":false,"zeroline":false,"titlefont":{"size":14},"dtick":20},"yaxis":{"domain":[0,1],"automargin":true,"title":"<b>Import (in billions)<\/b>","showgrid":false,"zeroline":false,"titlefont":{"size":14}},"annotations":[{"text":"EU","x":41.222999999999999,"y":59.5413,"xref":"x","yref":"y","showarrow":false},{"text":"Hong Kong","x":73.878600000000006,"y":4.7436000000000007,"xref":"x","yref":"y","showarrow":false},{"text":"Indonesia","x":53.216500000000003,"y":20.938400000000001,"xref":"x","yref":"y","showarrow":false},{"text":"Japan","x":23.706799999999998,"y":29.695499999999999,"xref":"x","yref":"y","showarrow":false},{"text":"Mainland China","x":94.442700000000002,"y":75.73960000000001,"xref":"x","yref":"y","showarrow":false},{"text":"Malaysia","x":69.935600000000008,"y":68.707899999999995,"xref":"x","yref":"y","showarrow":false},{"text":"Republic of Korea","x":28.422799999999999,"y":38.395300000000006,"xref":"x","yref":"y","showarrow":false},{"text":"Taiwan","x":32.469499999999996,"y":84.318399999999997,"xref":"x","yref":"y","showarrow":false},{"text":"Thailand","x":29.297900000000002,"y":15.177100000000001,"xref":"x","yref":"y","showarrow":false},{"text":"United States","x":57.621199999999995,"y":74.368100000000013,"xref":"x","yref":"y","showarrow":false}],"hovermode":"closest","showlegend":true,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[73.878600000000006,53.216500000000003,94.442700000000002,69.935600000000008,29.297900000000002],"y":[4.7436000000000007,20.938400000000001,75.73960000000001,68.707899999999995,15.177100000000001],"mode":"markers","hoverinfo":["text","text","text","text","text"],"marker":{"colorbar":{"title":"Total_trade","ticklen":2},"cmin":44.475000000000001,"cmax":170.1823,"colorscale":[["0","rgba(255,245,240,1)"],["0.0416666666666667","rgba(255,238,230,1)"],["0.0833333333333333","rgba(255,231,220,1)"],["0.125","rgba(254,224,210,1)"],["0.166666666666667","rgba(254,212,193,1)"],["0.208333333333333","rgba(253,199,177,1)"],["0.25","rgba(252,187,161,1)"],["0.291666666666667","rgba(253,174,145,1)"],["0.333333333333333","rgba(253,160,129,1)"],["0.375","rgba(252,146,114,1)"],["0.416666666666667","rgba(252,133,101,1)"],["0.458333333333333","rgba(252,120,87,1)"],["0.5","rgba(251,106,74,1)"],["0.541666666666667","rgba(247,92,64,1)"],["0.583333333333333","rgba(243,77,54,1)"],["0.625","rgba(239,59,44,1)"],["0.666666666666667","rgba(227,49,39,1)"],["0.708333333333333","rgba(215,37,34,1)"],["0.75","rgba(203,24,29,1)"],["0.791666666666667","rgba(190,21,26,1)"],["0.833333333333333","rgba(178,18,24,1)"],["0.875","rgba(165,15,21,1)"],["0.916666666666667","rgba(144,9,19,1)"],["0.958333333333333","rgba(123,3,16,1)"],["1","rgba(103,0,13,1)"]],"showscale":false,"color":[78.622199999999992,74.154899999999998,170.1823,138.64349999999999,44.475000000000001],"size":[34.447649420518928,31.249291011739171,100,77.419831624734599,10],"sizemode":"diameter","symbol":["circle","circle","circle","circle","circle"],"line":{"colorbar":{"title":"","ticklen":2},"cmin":44.475000000000001,"cmax":170.1823,"colorscale":[["0","rgba(255,245,240,1)"],["0.0416666666666667","rgba(255,238,230,1)"],["0.0833333333333333","rgba(255,231,220,1)"],["0.125","rgba(254,224,210,1)"],["0.166666666666667","rgba(254,212,193,1)"],["0.208333333333333","rgba(253,199,177,1)"],["0.25","rgba(252,187,161,1)"],["0.291666666666667","rgba(253,174,145,1)"],["0.333333333333333","rgba(253,160,129,1)"],["0.375","rgba(252,146,114,1)"],["0.416666666666667","rgba(252,133,101,1)"],["0.458333333333333","rgba(252,120,87,1)"],["0.5","rgba(251,106,74,1)"],["0.541666666666667","rgba(247,92,64,1)"],["0.583333333333333","rgba(243,77,54,1)"],["0.625","rgba(239,59,44,1)"],["0.666666666666667","rgba(227,49,39,1)"],["0.708333333333333","rgba(215,37,34,1)"],["0.75","rgba(203,24,29,1)"],["0.791666666666667","rgba(190,21,26,1)"],["0.833333333333333","rgba(178,18,24,1)"],["0.875","rgba(165,15,21,1)"],["0.916666666666667","rgba(144,9,19,1)"],["0.958333333333333","rgba(123,3,16,1)"],["1","rgba(103,0,13,1)"]],"showscale":false,"color":"black","width":1,"opacity":0.69999999999999996}},"text":["<b>Import:<\/b> 4.7 <br><b>Export:<\/b> 73.9 <br><b>Total Trade:<\/b> 78.6","<b>Import:<\/b> 20.9 <br><b>Export:<\/b> 53.2 <br><b>Total Trade:<\/b> 74.2","<b>Import:<\/b> 75.7 <br><b>Export:<\/b> 94.4 <br><b>Total Trade:<\/b> 170.2","<b>Import:<\/b> 68.7 <br><b>Export:<\/b> 69.9 <br><b>Total Trade:<\/b> 138.6","<b>Import:<\/b> 15.2 <br><b>Export:<\/b> 29.3 <br><b>Total Trade:<\/b> 44.5"],"type":"scatter","name":"Export>Import","textfont":{"size":[34.447649420518928,31.249291011739171,100,77.419831624734599,10]},"error_y":{"width":[]},"error_x":{"width":[]},"xaxis":"x","yaxis":"y","frame":null},{"x":[41.222999999999999,23.706799999999998,28.422799999999999,32.469499999999996,57.621199999999995],"y":[59.5413,29.695499999999999,38.395300000000006,84.318399999999997,74.368100000000013],"mode":"markers","hoverinfo":["text","text","text","text","text"],"marker":{"colorbar":{"title":"Total_trade","ticklen":2},"cmin":44.475000000000001,"cmax":170.1823,"colorscale":[["0","rgba(255,245,240,1)"],["0.0416666666666667","rgba(255,238,230,1)"],["0.0833333333333333","rgba(255,231,220,1)"],["0.125","rgba(254,224,210,1)"],["0.166666666666667","rgba(254,212,193,1)"],["0.208333333333333","rgba(253,199,177,1)"],["0.25","rgba(252,187,161,1)"],["0.291666666666667","rgba(253,174,145,1)"],["0.333333333333333","rgba(253,160,129,1)"],["0.375","rgba(252,146,114,1)"],["0.416666666666667","rgba(252,133,101,1)"],["0.458333333333333","rgba(252,120,87,1)"],["0.5","rgba(251,106,74,1)"],["0.541666666666667","rgba(247,92,64,1)"],["0.583333333333333","rgba(243,77,54,1)"],["0.625","rgba(239,59,44,1)"],["0.666666666666667","rgba(227,49,39,1)"],["0.708333333333333","rgba(215,37,34,1)"],["0.75","rgba(203,24,29,1)"],["0.791666666666667","rgba(190,21,26,1)"],["0.833333333333333","rgba(178,18,24,1)"],["0.875","rgba(165,15,21,1)"],["0.916666666666667","rgba(144,9,19,1)"],["0.958333333333333","rgba(123,3,16,1)"],["1","rgba(103,0,13,1)"]],"showscale":false,"color":[100.76430000000001,53.402300000000004,66.818100000000001,116.78789999999999,131.98929999999999],"size":[50.300261003139838,16.391490390772852,25.996517306473052,61.772339394768629,72.655764621465892],"sizemode":"diameter","symbol":"square","line":{"colorbar":{"title":"","ticklen":2},"cmin":44.475000000000001,"cmax":170.1823,"colorscale":[["0","rgba(255,245,240,1)"],["0.0416666666666667","rgba(255,238,230,1)"],["0.0833333333333333","rgba(255,231,220,1)"],["0.125","rgba(254,224,210,1)"],["0.166666666666667","rgba(254,212,193,1)"],["0.208333333333333","rgba(253,199,177,1)"],["0.25","rgba(252,187,161,1)"],["0.291666666666667","rgba(253,174,145,1)"],["0.333333333333333","rgba(253,160,129,1)"],["0.375","rgba(252,146,114,1)"],["0.416666666666667","rgba(252,133,101,1)"],["0.458333333333333","rgba(252,120,87,1)"],["0.5","rgba(251,106,74,1)"],["0.541666666666667","rgba(247,92,64,1)"],["0.583333333333333","rgba(243,77,54,1)"],["0.625","rgba(239,59,44,1)"],["0.666666666666667","rgba(227,49,39,1)"],["0.708333333333333","rgba(215,37,34,1)"],["0.75","rgba(203,24,29,1)"],["0.791666666666667","rgba(190,21,26,1)"],["0.833333333333333","rgba(178,18,24,1)"],["0.875","rgba(165,15,21,1)"],["0.916666666666667","rgba(144,9,19,1)"],["0.958333333333333","rgba(123,3,16,1)"],["1","rgba(103,0,13,1)"]],"showscale":false,"color":"black","width":1,"opacity":0.69999999999999996}},"text":["<b>Import:<\/b> 59.5 <br><b>Export:<\/b> 41.2 <br><b>Total Trade:<\/b> 100.8","<b>Import:<\/b> 29.7 <br><b>Export:<\/b> 23.7 <br><b>Total Trade:<\/b> 53.4","<b>Import:<\/b> 38.4 <br><b>Export:<\/b> 28.4 <br><b>Total Trade:<\/b> 66.8","<b>Import:<\/b> 84.3 <br><b>Export:<\/b> 32.5 <br><b>Total Trade:<\/b> 116.8","<b>Import:<\/b> 74.4 <br><b>Export:<\/b> 57.6 <br><b>Total Trade:<\/b> 132.0"],"type":"scatter","name":"Import>Export","textfont":{"size":[50.300261003139838,16.391490390772852,25.996517306473052,61.772339394768629,72.655764621465892]},"error_y":{"width":[]},"error_x":{"width":[]},"xaxis":"x","yaxis":"y","frame":null},{"x":[23.706799999999998,94.442700000000002],"y":[4.7436000000000007,84.318399999999997],"type":"scatter","mode":"markers","opacity":0,"hoverinfo":"none","showlegend":false,"marker":{"colorbar":{"title":"Total Trade (Billions)","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"cmin":44.475000000000001,"cmax":170.1823,"colorscale":[["0","rgba(255,245,240,1)"],["0.0416666666666667","rgba(255,238,230,1)"],["0.0833333333333333","rgba(255,231,220,1)"],["0.125","rgba(254,224,210,1)"],["0.166666666666667","rgba(254,212,193,1)"],["0.208333333333333","rgba(253,199,177,1)"],["0.25","rgba(252,187,161,1)"],["0.291666666666667","rgba(253,174,145,1)"],["0.333333333333333","rgba(253,160,129,1)"],["0.375","rgba(252,146,114,1)"],["0.416666666666667","rgba(252,133,101,1)"],["0.458333333333333","rgba(252,120,87,1)"],["0.5","rgba(251,106,74,1)"],["0.541666666666667","rgba(247,92,64,1)"],["0.583333333333333","rgba(243,77,54,1)"],["0.625","rgba(239,59,44,1)"],["0.666666666666667","rgba(227,49,39,1)"],["0.708333333333333","rgba(215,37,34,1)"],["0.75","rgba(203,24,29,1)"],["0.791666666666667","rgba(190,21,26,1)"],["0.833333333333333","rgba(178,18,24,1)"],["0.875","rgba(165,15,21,1)"],["0.916666666666667","rgba(144,9,19,1)"],["0.958333333333333","rgba(123,3,16,1)"],["1","rgba(103,0,13,1)"]],"showscale":true,"color":[44.475000000000001,170.1823],"line":{"color":"rgba(44,160,44,1)"}},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 </section>
-<section id="section" class="level4">
-<h4 class="anchored" data-anchor-id="section"><strong>3.3 </strong></h4>
+<section id="exports-of-services-by-services-category-2024" class="level4">
+<h4 class="anchored" data-anchor-id="exports-of-services-by-services-category-2024"><strong>3.3 EXPORTS OF SERVICES BY SERVICES CATEGORY, 2024</strong></h4>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Original</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Areas for improvement</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Makeover Sketch</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
-
+<p><img src="images/clipboard-3207630069.png" class="img-fluid"></p>
+<ul>
+<li><p>Each category of service is clearly labelled, with the service name, the value of the service and the proportion of the service value over the total. The inclusion of both absolute values and percentages helps the audience to have a better understanding of the scale and proportions.</p></li>
+<li><p>In addition, each category has a unique icon to enable readers to quickly associate the service categories with their industries. -Labels are placed outside of the chart, which enhances readability of the chart.</p></li>
+</ul>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
-
+<p><img src="images/clipboard-2915411949.png" class="img-fluid"></p>
+<ol type="1">
+<li><p>Pie charts are not the best for comparing multiple categories as it is difficult for us to visually judge the relative area for each category.A bar chart may be a better visualisation. In addition, the categories are not arranged in descending order to make it easier to interpret the largest to smallest contributions. Furthermore, there are more than 10 categories displayed on the chart, each with its own color. Too many colors may make it harder for the viewer to quickly interpret the chart and identify the key insight from the chart.</p></li>
+<li><p>The chart is very cluttered. The label lines for the consruction and the government goods and services categories are overlapping, which may make it confusing and difficult to read.</p></li>
+<li><p>While the addition of icons add a nice visual touch, they could be reduced in size to minimize distraction from the main message of the chart and to reduce the cluttering of the chart.</p></li>
+</ol>
 </div>
 <div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
-
+<p><img src="images/clipboard-2357722663.png" class="img-fluid"></p>
 </div>
+</div>
+</div>
+<p>To revamp the chart, the 2024 export in services data was extracted. Only data of the service categories plotted in the original chart was retained.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#Wrangling data</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>df_3<span class="ot">&lt;-</span>service_data <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">26</span>) </span>
+<span id="cb8-3"><a href="#cb8-3"></a>df_3<span class="ot">&lt;-</span>df_3[,<span class="fu">c</span>(<span class="st">"Data Series"</span>, <span class="st">"2024"</span>)]</span>
+<span id="cb8-4"><a href="#cb8-4"></a>df_3<span class="sc">$</span><span class="st">`</span><span class="at">2024</span><span class="st">`</span><span class="ot">&lt;-</span>df_3<span class="sc">$</span><span class="st">`</span><span class="at">2024</span><span class="st">`</span> <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co">#removing unnecessary rows</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>df_3 <span class="ot">&lt;-</span> df_3[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>, <span class="dv">14</span>), ]</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co">#Redefine other services category</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>others<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Accounting"</span>, <span class="st">"Advertising And Market Research"</span>, <span class="st">"Architectural"</span>, <span class="st">"Engineering And Technical"</span>, <span class="st">"Legal"</span>, <span class="st">"Research And Development"</span>, <span class="st">"Operating Leasing"</span>, <span class="st">"Others"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11"></a>df_3<span class="sc">$</span><span class="st">`</span><span class="at">Data Series</span><span class="st">`</span><span class="ot">&lt;-</span><span class="fu">ifelse</span>(df_3<span class="sc">$</span><span class="st">`</span><span class="at">Data Series</span><span class="st">`</span> <span class="sc">%in%</span> others, <span class="st">"Other Services"</span>, df_3<span class="sc">$</span><span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>)</span>
+<span id="cb8-12"><a href="#cb8-12"></a>df_3<span class="ot">&lt;-</span>df_3<span class="sc">%&gt;%</span> </span>
+<span id="cb8-13"><a href="#cb8-13"></a>  <span class="fu">group_by</span>( <span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-14"><a href="#cb8-14"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), sum),</span>
+<span id="cb8-15"><a href="#cb8-15"></a>            <span class="at">.groups =</span> <span class="st">'drop'</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, a bar chart is created using <code>ggplot</code> and made interactive using <code>ggplotly</code>. The changes made are as follows:</p>
+<ul>
+<li>Bar chart is created instead of a pie chart to enable better comparison of the categories.</li>
+<li>The bars are colored by the trade value.</li>
+<li>Tooltip is used to provide the description of the trade value and the percentages, reducing clutter on the chart.</li>
+<li>The bar chart is ordered in descending order, enabling readers to identify the services with top trade value easily.</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>df_3<span class="sc">$</span>Percentage <span class="ot">&lt;-</span> df_3<span class="sc">$</span><span class="st">`</span><span class="at">2024</span><span class="st">`</span> <span class="sc">/</span> <span class="fu">sum</span>(df_3<span class="sc">$</span><span class="st">`</span><span class="at">2024</span><span class="st">`</span>) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>p<span class="ot">&lt;-</span><span class="fu">ggplot</span>(df_3, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(<span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>, <span class="st">`</span><span class="at">2024</span><span class="st">`</span>), <span class="at">y=</span><span class="st">`</span><span class="at">2024</span><span class="st">`</span>, <span class="at">fill=</span><span class="st">`</span><span class="at">2024</span><span class="st">`</span>, <span class="at">text =</span> <span class="fu">paste0</span>(<span class="st">"Category: "</span>, <span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>, </span>
+<span id="cb9-3"><a href="#cb9-3"></a>                                                                                     <span class="st">"&lt;br&gt;Trade Value: S$"</span>, <span class="fu">round</span>(<span class="st">`</span><span class="at">2024</span><span class="st">`</span>,<span class="dv">1</span>), <span class="st">"B"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4"></a>                                                                                     <span class="st">"&lt;br&gt;Percentage: "</span>, <span class="fu">round</span>(Percentage, <span class="dv">1</span>), <span class="st">"%"</span>)))<span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="fu">geom_col</span>()<span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low=</span><span class="st">"#B0E2FF"</span>, <span class="at">high=</span><span class="st">"#104E8B"</span>, <span class="at">name=</span><span class="st">"Trade Value (billions)"</span>)<span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Exports of Services (billions)"</span>, <span class="at">x=</span><span class="st">"Service Categories"</span>,</span>
+<span id="cb9-9"><a href="#cb9-9"></a>       <span class="at">title=</span><span class="st">"EXPORTS OF SERVICES BY SERVICES CATEGORY, 2024"</span>)<span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>  <span class="fu">theme</span>(</span>
+<span id="cb9-11"><a href="#cb9-11"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">9</span>),  </span>
+<span id="cb9-12"><a href="#cb9-12"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>)</span>
+<span id="cb9-13"><a href="#cb9-13"></a>  )</span>
+<span id="cb9-14"><a href="#cb9-14"></a></span>
+<span id="cb9-15"><a href="#cb9-15"></a>p<span class="ot">&lt;-</span><span class="fu">ggplotly</span>(p, <span class="at">tooltip =</span> <span class="st">"text"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-16"><a href="#cb9-16"></a>  <span class="fu">layout</span>(<span class="at">yaxis=</span><span class="fu">list</span>(<span class="at">title=</span><span class="fu">list</span>( <span class="at">standoff =</span> <span class="dv">5</span>)))</span>
+<span id="cb9-17"><a href="#cb9-17"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-9ac68b7c5d1397437cc0" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-9ac68b7c5d1397437cc0">{"x":{"data":[{"orientation":"h","width":0.89999999999999991,"base":0,"x":[0.47099999999999997],"y":[1],"text":"Category: Manufacturing Services On Physical Inputs Owned By Others<br>Trade Value: S$0.5B<br>Percentage: 0.1%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(176,226,255,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000013,"base":0,"x":[0.4773],"y":[2],"text":"Category: Government Goods And Services<br>Trade Value: S$0.5B<br>Percentage: 0.1%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(176,226,255,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[2.1008],"y":[3],"text":"Category: Construction<br>Trade Value: S$2.1B<br>Percentage: 0.4%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(175,224,254,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[4.8310000000000004],"y":[4],"text":"Category: Personal, Cultural And Recreational<br>Trade Value: S$4.8B<br>Percentage: 0.9%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(172,222,252,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[10.8201],"y":[5],"text":"Category: Maintenance And Repair Services<br>Trade Value: S$10.8B<br>Percentage: 2%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(167,216,248,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[12.649799999999999],"y":[6],"text":"Category: Insurance<br>Trade Value: S$12.6B<br>Percentage: 2.4%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(166,215,247,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[13.495700000000001],"y":[7],"text":"Category: Trade-Related<br>Trade Value: S$13.5B<br>Percentage: 2.6%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(165,214,246,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999947,"base":0,"x":[26.255800000000001],"y":[8],"text":"Category: Charges For The Use Of Intellectual Property<br>Trade Value: S$26.3B<br>Percentage: 5%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(155,202,237,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[31.8673],"y":[9],"text":"Category: Travel<br>Trade Value: S$31.9B<br>Percentage: 6%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(150,197,233,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[41.149800000000006],"y":[10],"text":"Category: Telecommunications, Computer & Information<br>Trade Value: S$41.1B<br>Percentage: 7.8%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(142,189,227,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[45.8645],"y":[11],"text":"Category: Business Management<br>Trade Value: S$45.9B<br>Percentage: 8.7%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(138,184,224,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[71.582700000000003],"y":[12],"text":"Category: Financial<br>Trade Value: S$71.6B<br>Percentage: 13.5%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(117,162,206,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[94.031400000000005],"y":[13],"text":"Category: Other Services<br>Trade Value: S$94B<br>Percentage: 17.8%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(98,142,191,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[172.97110000000001],"y":[14],"text":"Category: Transport<br>Trade Value: S$173B<br>Percentage: 32.7%","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(16,78,139,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1],"y":[0],"name":"80e9636e790aae6e3e564de900c3efe6","type":"scatter","mode":"markers","opacity":0,"hoverinfo":"skip","showlegend":false,"marker":{"color":[0,1],"colorscale":[[0,"#B0E2FF"],[0.0033444816053511705,"#B0E1FF"],[0.0066889632107023402,"#AFE1FE"],[0.010033444816053512,"#AFE0FE"],[0.013377926421404682,"#AEE0FD"],[0.016722408026755852,"#AEDFFD"],[0.020066889632107024,"#ADDFFD"],[0.023411371237458196,"#ADDEFC"],[0.026755852842809364,"#ACDEFC"],[0.030100334448160536,"#ACDDFB"],[0.033444816053511704,"#ABDDFB"],[0.036789297658862873,"#ABDCFB"],[0.040133779264214048,"#AADCFA"],[0.043478260869565223,"#AADBFA"],[0.046822742474916391,"#A9DAF9"],[0.050167224080267553,"#A9DAF9"],[0.053511705685618728,"#A8D9F9"],[0.056856187290969903,"#A8D9F8"],[0.060200668896321072,"#A7D8F8"],[0.06354515050167224,"#A7D8F7"],[0.066889632107023408,"#A6D7F7"],[0.070234113712374591,"#A6D7F7"],[0.073578595317725745,"#A5D6F6"],[0.076923076923076927,"#A5D6F6"],[0.080267558528428096,"#A4D5F5"],[0.083612040133779264,"#A4D5F5"],[0.086956521739130446,"#A3D4F5"],[0.090301003344481601,"#A3D4F4"],[0.093645484949832783,"#A3D3F4"],[0.096989966555183951,"#A2D2F3"],[0.10033444816053511,"#A2D2F3"],[0.1036789297658863,"#A1D1F3"],[0.10702341137123746,"#A1D1F2"],[0.11036789297658862,"#A0D0F2"],[0.11371237458193981,"#A0D0F1"],[0.11705685618729098,"#9FCFF1"],[0.12040133779264214,"#9FCFF1"],[0.12374581939799331,"#9ECEF0"],[0.12709030100334448,"#9ECEF0"],[0.13043478260869565,"#9DCDEF"],[0.13377926421404682,"#9DCDEF"],[0.13712374581939801,"#9CCCEF"],[0.14046822742474918,"#9CCCEE"],[0.14381270903010032,"#9BCBEE"],[0.14715719063545149,"#9BCBED"],[0.15050167224080269,"#9ACAED"],[0.15384615384615385,"#9AC9ED"],[0.15719063545150502,"#99C9EC"],[0.16053511705685619,"#99C8EC"],[0.16387959866220736,"#98C8EB"],[0.16722408026755853,"#98C7EB"],[0.1705685618729097,"#97C7EB"],[0.17391304347826089,"#97C6EA"],[0.17725752508361203,"#97C6EA"],[0.1806020066889632,"#96C5E9"],[0.18394648829431434,"#96C5E9"],[0.18729096989966557,"#95C4E9"],[0.19063545150501673,"#95C4E8"],[0.1939799331103679,"#94C3E8"],[0.19732441471571907,"#94C3E7"],[0.20066889632107021,"#93C2E7"],[0.20401337792642141,"#93C2E7"],[0.2073578595317726,"#92C1E6"],[0.21070234113712374,"#92C1E6"],[0.21404682274247491,"#91C0E5"],[0.21739130434782611,"#91BFE5"],[0.22073578595317725,"#90BFE5"],[0.22408026755852845,"#90BEE4"],[0.22742474916387961,"#8FBEE4"],[0.23076923076923075,"#8FBDE3"],[0.23411371237458195,"#8EBDE3"],[0.23745819397993309,"#8EBCE3"],[0.24080267558528429,"#8DBCE2"],[0.24414715719063546,"#8DBBE2"],[0.24749163879598662,"#8CBBE1"],[0.25083612040133779,"#8CBAE1"],[0.25418060200668896,"#8CBAE1"],[0.25752508361204013,"#8BB9E0"],[0.2608695652173913,"#8BB9E0"],[0.26421404682274252,"#8AB8DF"],[0.26755852842809363,"#8AB8DF"],[0.2709030100334448,"#89B7DF"],[0.27424749163879603,"#89B7DE"],[0.27759197324414714,"#88B6DE"],[0.28093645484949836,"#88B6DD"],[0.28428093645484948,"#87B5DD"],[0.28762541806020064,"#87B5DD"],[0.29096989966555187,"#86B4DC"],[0.29431438127090298,"#86B4DC"],[0.2976588628762542,"#85B3DB"],[0.30100334448160537,"#85B2DB"],[0.30434782608695654,"#84B2DB"],[0.30769230769230771,"#84B1DA"],[0.31103678929765888,"#83B1DA"],[0.31438127090301005,"#83B0D9"],[0.31772575250836121,"#82B0D9"],[0.32107023411371238,"#82AFD9"],[0.32441471571906355,"#81AFD8"],[0.32775919732441472,"#81AED8"],[0.33110367892976589,"#80AED8"],[0.33444816053511706,"#80ADD7"],[0.33779264214046822,"#80ADD7"],[0.34113712374581939,"#7FACD6"],[0.34448160535117056,"#7FACD6"],[0.34782608695652178,"#7EABD6"],[0.3511705685618729,"#7EABD5"],[0.35451505016722407,"#7DAAD5"],[0.35785953177257529,"#7DAAD4"],[0.3612040133779264,"#7CA9D4"],[0.36454849498327763,"#7CA9D4"],[0.36789297658862874,"#7BA8D3"],[0.37123745819397996,"#7BA8D3"],[0.37458193979933113,"#7AA7D2"],[0.3779264214046823,"#7AA7D2"],[0.38127090301003347,"#79A6D2"],[0.38461538461538458,"#79A6D1"],[0.38795986622073581,"#78A5D1"],[0.39130434782608697,"#78A5D0"],[0.39464882943143814,"#77A4D0"],[0.39799331103678937,"#77A4D0"],[0.40133779264214042,"#76A3CF"],[0.40468227424749165,"#76A3CF"],[0.40802675585284282,"#75A2CF"],[0.41137123745819398,"#75A2CE"],[0.41471571906354521,"#74A1CE"],[0.41806020066889638,"#74A1CD"],[0.42140468227424749,"#74A0CD"],[0.42474916387959866,"#73A0CD"],[0.42809364548494983,"#739FCC"],[0.43143812709030105,"#729FCC"],[0.43478260869565222,"#729ECB"],[0.43812709030100333,"#719ECB"],[0.4414715719063545,"#719DCB"],[0.44481605351170567,"#709DCA"],[0.44816053511705689,"#709CCA"],[0.45150501672240806,"#6F9CC9"],[0.45484949832775923,"#6F9BC9"],[0.45819397993311034,"#6E9BC9"],[0.46153846153846151,"#6E9AC8"],[0.46488294314381273,"#6D9AC8"],[0.4682274247491639,"#6D99C7"],[0.47157190635451507,"#6C99C7"],[0.47491638795986618,"#6C98C7"],[0.47826086956521735,"#6B98C6"],[0.48160535117056857,"#6B97C6"],[0.48494983277591974,"#6A97C6"],[0.48829431438127091,"#6A96C5"],[0.49163879598662213,"#6996C5"],[0.49498327759197325,"#6995C4"],[0.49832775919732442,"#6895C4"],[0.50167224080267558,"#6894C4"],[0.50501672240802675,"#6794C3"],[0.50836120401337792,"#6793C3"],[0.5117056856187292,"#6693C2"],[0.51505016722408026,"#6692C2"],[0.51839464882943143,"#6592C2"],[0.52173913043478259,"#6591C1"],[0.52508361204013376,"#6491C1"],[0.52842809364548504,"#6490C0"],[0.5317725752508361,"#6490C0"],[0.53511705685618727,"#638FC0"],[0.53846153846153844,"#638FBF"],[0.5418060200668896,"#628EBF"],[0.54515050167224088,"#628EBF"],[0.54849498327759205,"#618DBE"],[0.55183946488294311,"#618DBE"],[0.55518394648829428,"#608CBD"],[0.55852842809364545,"#608CBD"],[0.56187290969899673,"#5F8BBD"],[0.56521739130434789,"#5F8BBC"],[0.56856187290969895,"#5E8ABC"],[0.57190635451505012,"#5E8ABB"],[0.57525083612040129,"#5D89BB"],[0.57859531772575257,"#5D89BB"],[0.58193979933110374,"#5C88BA"],[0.5852842809364549,"#5C88BA"],[0.58862876254180596,"#5B87BA"],[0.59197324414715724,"#5B87B9"],[0.59531772575250841,"#5A86B9"],[0.59866220735785958,"#5A86B8"],[0.60200668896321075,"#5985B8"],[0.6053511705685618,"#5985B8"],[0.60869565217391308,"#5884B7"],[0.61204013377926425,"#5884B7"],[0.61538461538461542,"#5783B6"],[0.61872909698996659,"#5783B6"],[0.62207357859531776,"#5682B6"],[0.62541806020066892,"#5682B5"],[0.62876254180602009,"#5581B5"],[0.63210702341137126,"#5581B5"],[0.63545150501672243,"#5480B4"],[0.6387959866220736,"#5480B4"],[0.64214046822742477,"#537FB3"],[0.64548494983277593,"#537FB3"],[0.6488294314381271,"#527FB3"],[0.65217391304347827,"#527EB2"],[0.65551839464882944,"#517EB2"],[0.65886287625418061,"#517DB1"],[0.66220735785953178,"#507DB1"],[0.66555183946488294,"#507CB1"],[0.66889632107023411,"#4F7CB0"],[0.67224080267558528,"#4F7BB0"],[0.67558528428093645,"#4E7BB0"],[0.67892976588628773,"#4E7AAF"],[0.68227424749163879,"#4D7AAF"],[0.68561872909698995,"#4D79AE"],[0.68896321070234112,"#4C79AE"],[0.69230769230769229,"#4C78AE"],[0.69565217391304357,"#4B78AD"],[0.69899665551839463,"#4B77AD"],[0.7023411371237458,"#4A77AC"],[0.70568561872909696,"#4976AC"],[0.70903010033444813,"#4976AC"],[0.71237458193979941,"#4875AB"],[0.71571906354515058,"#4875AB"],[0.71906354515050164,"#4774AB"],[0.72240802675585281,"#4774AA"],[0.72575250836120397,"#4674AA"],[0.72909698996655525,"#4673A9"],[0.73244147157190642,"#4573A9"],[0.73578595317725748,"#4572A9"],[0.73913043478260865,"#4472A8"],[0.74247491638795993,"#4471A8"],[0.7458193979933111,"#4371A8"],[0.74916387959866226,"#4370A7"],[0.75250836120401343,"#4270A7"],[0.7558528428093646,"#426FA6"],[0.75919732441471577,"#416FA6"],[0.76254180602006694,"#416EA6"],[0.76588628762541799,"#406EA5"],[0.76923076923076916,"#3F6DA5"],[0.77257525083612033,"#3F6DA5"],[0.77591973244147161,"#3E6CA4"],[0.77926421404682278,"#3E6CA4"],[0.78260869565217395,"#3D6CA3"],[0.78595317725752512,"#3D6BA3"],[0.78929765886287628,"#3C6BA3"],[0.79264214046822745,"#3C6AA2"],[0.79598662207357873,"#3B6AA2"],[0.7993311036789299,"#3B69A1"],[0.80267558528428085,"#3A69A1"],[0.80602006688963201,"#3968A1"],[0.80936454849498329,"#3968A0"],[0.81270903010033446,"#3867A0"],[0.81605351170568563,"#3867A0"],[0.8193979933110368,"#37669F"],[0.82274247491638797,"#37669F"],[0.82608695652173914,"#36659E"],[0.82943143812709041,"#35659E"],[0.83277591973244158,"#35659E"],[0.83612040133779275,"#34649D"],[0.83946488294314381,"#34649D"],[0.84280936454849498,"#33639D"],[0.84615384615384615,"#33639C"],[0.84949832775919731,"#32629C"],[0.85284280936454848,"#31629B"],[0.85618729096989965,"#31619B"],[0.85953177257525082,"#30619B"],[0.8628762541806021,"#30609A"],[0.86622073578595327,"#2F609A"],[0.86956521739130443,"#2E5F9A"],[0.8729096989966556,"#2E5F99"],[0.87625418060200666,"#2D5F99"],[0.87959866220735783,"#2C5E98"],[0.882943143812709,"#2C5E98"],[0.88628762541806017,"#2B5D98"],[0.88963210702341133,"#2B5D97"],[0.89297658862876261,"#2A5C97"],[0.89632107023411378,"#295C97"],[0.89966555183946495,"#295B96"],[0.90301003344481612,"#285B96"],[0.90635451505016729,"#275A95"],[0.90969899665551845,"#275A95"],[0.91304347826086951,"#265A95"],[0.91638795986622068,"#255994"],[0.91973244147157185,"#255994"],[0.92307692307692302,"#245894"],[0.9264214046822743,"#235893"],[0.92976588628762546,"#225793"],[0.93311036789297663,"#225792"],[0.9364548494983278,"#215692"],[0.93979933110367897,"#205692"],[0.94314381270903014,"#1F5691"],[0.94648829431438142,"#1F5591"],[0.94983277591973236,"#1E5591"],[0.95317725752508353,"#1D5490"],[0.9565217391304347,"#1C5490"],[0.95986622073578598,"#1C538F"],[0.96321070234113715,"#1B538F"],[0.96655518394648832,"#1A528F"],[0.96989966555183948,"#19528E"],[0.97324414715719065,"#18528E"],[0.97658862876254182,"#17518E"],[0.9799331103678931,"#16518D"],[0.98327759197324427,"#15508D"],[0.98662207357859522,"#14508C"],[0.98996655518394649,"#134F8C"],[0.99331103678929766,"#124F8C"],[0.99665551839464883,"#114E8B"],[1,"#104E8B"]],"colorbar":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"thickness":23.039999999999996,"title":"Trade Value (billions)","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":11.955168119551683},"tickmode":"array","ticktext":["50","100","150"],"tickvals":[0.28783405632808323,0.5767227777452496,0.86561149916241586],"tickfont":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"ticklen":2,"len":0.5}},"xaxis":"x","yaxis":"y","frame":null}],"layout":{"margin":{"t":43.762557077625573,"r":7.3059360730593621,"b":37.791614777916152,"l":290.57700290577003},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"EXPORTS OF SERVICES BY SERVICES CATEGORY, 2024","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-8.648555,181.61965499999999],"tickmode":"array","ticktext":["0","50","100","150"],"tickvals":[0,50,100,150],"categoryorder":"array","categoryarray":["0","50","100","150"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":9.2984640929846396},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Exports of Services (billions)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,14.6],"tickmode":"array","ticktext":["Manufacturing Services On Physical Inputs Owned By Others","Government Goods And Services","Construction","Personal, Cultural And Recreational","Maintenance And Repair Services","Insurance","Trade-Related","Charges For The Use Of Intellectual Property","Travel","Telecommunications, Computer & Information","Business Management","Financial","Other Services","Transport"],"tickvals":[1,2,3,3.9999999999999996,5,6,7,7.9999999999999991,9,10,11,12,13,14],"categoryorder":"array","categoryarray":["Manufacturing Services On Physical Inputs Owned By Others","Government Goods And Services","Construction","Personal, Cultural And Recreational","Maintenance And Repair Services","Insurance","Trade-Related","Charges For The Use Of Intellectual Property","Travel","Telecommunications, Computer & Information","Business Management","Financial","Other Services","Transport"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":9.2984640929846396},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Service Categories","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"standoff":5},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"Trade Value (billions)","font":{"color":"rgba(0,0,0,1)","family":"","size":11.955168119551683}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"24946ab825b6":{"x":{},"y":{},"fill":{},"text":{},"type":"bar"}},"cur_data":"24946ab825b6","visdat":{"24946ab825b6":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 </section>
-<section id="section-1" class="level3">
-<h3 class="anchored" data-anchor-id="section-1"><strong>4 </strong></h3>
+<section id="time-series-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="time-series-analysis"><strong>4 Time Series Analysis</strong></h3>
+<p>We will analyse the trends and patterns of Singapore’s international trade since 2015, by examining the total market import values.</p>
+<p>The relevant data are first extracted using <code>filter</code>. Subsequently, the date values are converted from character format into date format using <code>parse_date_time</code> and a new column containing the date in months format is created. A tsibble object is created and the data is separated into 2 categories, ‘Hold-out’ and ‘Training’. All the data from 2015 to 2023 are used as training data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>df_4<span class="ot">&lt;-</span>df <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Year<span class="sc">&gt;=</span> <span class="dv">2015</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Data Series</span><span class="st">`</span> <span class="sc">==</span><span class="st">"Total All Markets"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>df_4<span class="ot">&lt;-</span>df_4[,<span class="fu">c</span>(<span class="st">"Data Series"</span>, <span class="st">"Date"</span>, <span class="st">"Year"</span>, <span class="st">"Import"</span>)]</span>
+<span id="cb10-3"><a href="#cb10-3"></a>df_4<span class="sc">$</span>Date <span class="ot">&lt;-</span> <span class="fu">parse_date_time</span>(df_4<span class="sc">$</span>Date, <span class="at">orders =</span> <span class="st">"Y m"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a>df_4 <span class="ot">&lt;-</span> df_4 <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">mutate</span>(<span class="at">Month =</span> <span class="fu">yearmonth</span>(<span class="st">`</span><span class="at">Date</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">as_tsibble</span>(<span class="at">index =</span> Month, <span class="at">key =</span> <span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>)</span>
+<span id="cb10-7"><a href="#cb10-7"></a>df_4<span class="sc">$</span>Type<span class="ot">&lt;-</span><span class="fu">ifelse</span>(df_4<span class="sc">$</span>Year<span class="sc">&gt;=</span><span class="dv">2024</span>, <span class="st">"Hold-out"</span>, <span class="st">"Training"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">EDA</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">glance</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false">accuracy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-4" role="tab" aria-controls="tabset-5-4" aria-selected="false">Forecast</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>train_data<span class="ot">&lt;-</span>df_4<span class="sc">%&gt;%</span> <span class="fu">filter</span>(Type<span class="sc">==</span><span class="st">"Training"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>train_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">model</span>(<span class="at">stl =</span> <span class="fu">STL</span>(Import)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">components</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">autoplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex02_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>The Total All Markets showed a gradual increase in imports from 2015 to early 2024, with a s-shaped pattern. There was a dip in imports in 2020, possibly due to the COVID-19 pandemic. From 2021 to early 2023, there was a sharp increase in imports, possibly due to recovery from the pandemic. However, imports started to decline from mid 2023 to early 2024.</p></li>
+<li><p>The Total All Markets exhibits a clear yearly cyclical import pattern. The import values usually decline near the end of the year and is at its lowest at the start of the year, before recovering and rising to its peak near the first quarter of the year. This pattern may be attributed to the major holiday seasons (end of year and lunar new year).</p></li>
+</ul>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>model_fit <span class="ot">&lt;-</span> train_data <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">model</span>(</span>
+<span id="cb12-3"><a href="#cb12-3"></a>    <span class="at">ets =</span> <span class="fu">ETS</span>(Import),</span>
+<span id="cb12-4"><a href="#cb12-4"></a>    <span class="at">arima =</span> <span class="fu">ARIMA</span>(Import)</span>
+<span id="cb12-5"><a href="#cb12-5"></a>  )  </span>
+<span id="cb12-6"><a href="#cb12-6"></a>model_fit<span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">glance</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 12
+  `Data Series` .model  sigma2 log_lik   AIC  AICc   BIC     MSE    AMSE     MAE
+  &lt;chr&gt;         &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 Total All Ma… ets    3.64e-3  -1089. 2208. 2213. 2248.  5.51e6  8.68e6  0.0469
+2 Total All Ma… arima  7.99e+6  -1003. 2012. 2012. 2020. NA      NA      NA     
+# ℹ 2 more variables: ar_roots &lt;list&gt;, ma_roots &lt;list&gt;</code></pre>
+</div>
+</div>
+<p>The log-likelihood is higer for the ARIMA model and the AIC, AICc and BIC values for ARIMA model is lower, compared to the values for the ETS model, suggesting that the ARIMA model may be a better fit than ETS model.</p>
+</div>
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>model_fit <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">accuracy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">arrange</span>(<span class="st">`</span><span class="at">Data Series</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 11
+  `Data Series`     .model .type       ME  RMSE   MAE     MPE  MAPE  MASE RMSSE
+  &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Total All Markets ets    Training  98.8 2348. 1940.  0.0309  4.70 0.363 0.352
+2 Total All Markets arima  Training  44.8 2786. 2140. -0.126   5.22 0.400 0.417
+# ℹ 1 more variable: ACF1 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>The ETS model appears to have better accuracy compared to ARIMA model, as it has lower RMSE, MAE, MAPE, MASE, and RMSSE values.</p>
+</div>
+<div id="tabset-5-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-4-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>fc <span class="ot">&lt;-</span> model_fit <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">forecast</span>(<span class="at">h =</span> <span class="st">"12 months"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3"></a></span>
+<span id="cb16-4"><a href="#cb16-4"></a>fc <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">autoplot</span>(df_4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex02_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>Both ARIMA (red) and ETS (blue) models showed slightly different trends from the actual data points. However, the actual data points still fall within the 80% confidence intervals. This suggests that the models could be further improved, or that there may be unexpected shifts that occurred that could not be accounted for in the models.</p></li>
+<li><p>ARIMA shows higher variance, implying that the model accounts for possible large fluctuations in the future. In contrast, ETS has lower variance, meaning it assumes more stable trends.</p></li>
+</ul>
+</div>
+</div>
+</div>
 
 
 </section>
