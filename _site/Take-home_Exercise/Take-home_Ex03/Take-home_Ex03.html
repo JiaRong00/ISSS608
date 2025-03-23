@@ -106,6 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Take-home Exercise 3 – ISSS608">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://www.jiarong-visual-analytics.netlify.app/Take-home_Exercise/Take-home_Ex03/Take-home_Ex03_files/figure-html/unnamed-chunk-7-1.png">
 <meta property="og:site_name" content="ISSS608">
 <meta property="og:image:height" content="960">
@@ -202,6 +203,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../Hands_on_Exercise/Hands-on_Ex08c.html">
  <span class="dropdown-text">Hands-on Exercise 8c</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../Hands_on_Exercise/Hands-on_Ex09.html">
+ <span class="dropdown-text">Hands-on Exercise 9</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -235,6 +240,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../Take-home_Exercise/Take-home_Ex02/Take-home_Ex02.html">
  <span class="dropdown-text">Take-home Exercise 2</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../Take-home_Exercise/Take-home_Ex03/Take-home_Ex03.html">
+ <span class="dropdown-text">Take-home Exercise 3</span></a>
   </li>  
     </ul>
   </li>
@@ -271,7 +280,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started"><strong>2 Getting Started</strong></a></li>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><strong>1 Background</strong></a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><strong>2 Getting Started</strong></a></li>
   <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling"><strong>3 Data Wrangling</strong></a>
   <ul>
   <li><a href="#create-seasons-variable" id="toc-create-seasons-variable" class="nav-link" data-scroll-target="#create-seasons-variable"><strong>3.1 Create Seasons Variable</strong></a></li>
@@ -279,6 +289,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#bin-house-floor" id="toc-bin-house-floor" class="nav-link" data-scroll-target="#bin-house-floor"><strong>3.3 Bin House Floor</strong></a></li>
   <li><a href="#bin-house-construction-year" id="toc-bin-house-construction-year" class="nav-link" data-scroll-target="#bin-house-construction-year"><strong>3.3 Bin House Construction Year</strong></a></li>
   </ul></li>
+  <li><a href="#eda" id="toc-eda" class="nav-link" data-scroll-target="#eda"><strong>4 EDA</strong></a>
+  <ul>
+  <li><a href="#distributions-of-environmental-amenities-and-local-built-environments" id="toc-distributions-of-environmental-amenities-and-local-built-environments" class="nav-link" data-scroll-target="#distributions-of-environmental-amenities-and-local-built-environments"><strong>Distributions of Environmental Amenities and Local Built Environments</strong></a></li>
+  <li><a href="#property-price-and-floor" id="toc-property-price-and-floor" class="nav-link" data-scroll-target="#property-price-and-floor"><strong>Property Price and Floor</strong></a></li>
+  <li><a href="#property-price-and-bus-stops" id="toc-property-price-and-bus-stops" class="nav-link" data-scroll-target="#property-price-and-bus-stops"><strong>Property Price and Bus Stops</strong></a></li>
+  <li><a href="#property-price-and-dist.-green" id="toc-property-price-and-dist.-green" class="nav-link" data-scroll-target="#property-price-and-dist.-green"><strong>Property Price and Dist. Green</strong></a></li>
+  <li><a href="#parallel-coordinates-plot-with-histogram" id="toc-parallel-coordinates-plot-with-histogram" class="nav-link" data-scroll-target="#parallel-coordinates-plot-with-histogram"><strong>Parallel coordinates plot with histogram</strong></a></li>
+  </ul></li>
+  <li><a href="#cda" id="toc-cda" class="nav-link" data-scroll-target="#cda"><strong>5 CDA</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -311,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 18, 2025</p>
+      <p class="date-modified">March 23, 2025</p>
     </div>
   </div>
     
@@ -322,19 +341,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="background" class="level3">
+<h3 class="anchored" data-anchor-id="background"><strong>1 Background</strong></h3>
+<p>In this take-home exercise, I will be prototyping a shiny module for my group project, which aims to investigate how various factors, with a greater focus on the environmental amenities and the built environment factors, influences property prices in Korea.</p>
+<p>THe objectives of this exercise includes:</p>
+<ul>
+<li>To evaluate and determine the necessary R packages needed for the Shiny application are supported in R CRAN,</li>
+<li>To prepare and test the specific R codes can be run and return the correct output as expected,</li>
+<li>To determine the parameters and outputs that should be exposed on the Shiny applications, and</li>
+<li>To select the appropriate Shiny UI components for exposing the parameters determine above.</li>
+</ul>
+<p>Specifically, I will be working on a shiny module to perform Exploratory Data ANalysis (EDA) and Confirmatory Data Analysis (CDA).</p>
+</section>
 <section id="getting-started" class="level3">
 <h3 class="anchored" data-anchor-id="getting-started"><strong>2 Getting Started</strong></h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Loading Libraries</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Importing Dataset</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Glimpse data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">3 Missing data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Duplicated Records</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Loading Libraries</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Importing Dataset</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Glimpse data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Missing data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Duplicated Records</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>We will load the following packages:</p>
 <ul>
 <li>tidyverse to wrangle data</li>
 <li>SmartEDA to explore data</li>
+<li>ggdist for visualising distributions and uncertainty</li>
+<li>parallelPlot for plotting parallel coordinates plot with histogram</li>
+<li>ggstatsplot for correlation heat map</li>
+<li>ggside for adding histograms to scatterplot</li>
+<li>plotly for interactive plots</li>
+<li>ggpubr to add statistical test results</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,  SmartEDA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,  SmartEDA, ggdist, parallelPlot,  ggstatsplot, ggside, plotly, ggpubr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -529,10 +566,379 @@ $ Winter             &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0,
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>Property_data<span class="sc">$</span>Year_binned <span class="ot">&lt;-</span><span class="fu">ifelse</span>(Property_data<span class="sc">$</span>Year<span class="sc">&lt;</span><span class="dv">1980</span>, <span class="st">"1969-1979"</span>,<span class="fu">ifelse</span>(Property_data<span class="sc">$</span>Year<span class="sc">&lt;</span><span class="dv">2000</span>, <span class="st">"1980-1999"</span>, <span class="fu">ifelse</span>(Property_data<span class="sc">$</span>Year<span class="sc">&lt;</span><span class="dv">2010</span>, <span class="st">"2000-2009"</span>, <span class="st">"2010-2019"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>#do binning for bustop, top uni, high school too.</p>
-
-
 </section>
+</section>
+<section id="eda" class="level3">
+<h3 class="anchored" data-anchor-id="eda"><strong>4 EDA</strong></h3>
+<section id="distributions-of-environmental-amenities-and-local-built-environments" class="level4">
+<h4 class="anchored" data-anchor-id="distributions-of-environmental-amenities-and-local-built-environments"><strong>Distributions of Environmental Amenities and Local Built Environments</strong></h4>
+<p>Firstly, we will generate boxplots and display smoothed histogram to visualise the distributions of the continuous variables in the dataset. In particular, we will look at the distributions of the environmental amenities and local built environments as part of the focus of our project. The environmental factors included in our dataset includes:</p>
+<ul>
+<li>Dist. Green: Log-transformed network distance to the nearest park, hill, or mountain in meters</li>
+<li>Dist. Water: Log-transformed network distance to the nearest river, stream, pond, or seashore in meters</li>
+<li>Green Index: Degree of street greenness exposed to pedestrians</li>
+<li>Dist. Subway: Log-transformed network distance to the nearest subway station in meters</li>
+<li>Bus Stop: Number of bus stops within a 400-meter radius of a property</li>
+<li>High School: Number of high schools within a 5-km radius of a property</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Property_data, </span>
+<span id="cb15-2"><a href="#cb15-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Bus Stop</span><span class="st">`</span>, </span>
+<span id="cb15-3"><a href="#cb15-3"></a>          )) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">stat_halfeye</span>(<span class="at">adjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb15-5"><a href="#cb15-5"></a>               <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb15-6"><a href="#cb15-6"></a>               <span class="at">.width =</span> <span class="dv">0</span>,</span>
+<span id="cb15-7"><a href="#cb15-7"></a>               <span class="at">point_colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb15-8"><a href="#cb15-8"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>,</span>
+<span id="cb15-10"><a href="#cb15-10"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>),</span>
+<span id="cb15-11"><a href="#cb15-11"></a>               <span class="at">outlier.shape =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Density"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13"></a></span>
+<span id="cb15-14"><a href="#cb15-14"></a>p2<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Property_data, </span>
+<span id="cb15-15"><a href="#cb15-15"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Dist. Green</span><span class="st">`</span>, </span>
+<span id="cb15-16"><a href="#cb15-16"></a>          )) <span class="sc">+</span></span>
+<span id="cb15-17"><a href="#cb15-17"></a>  <span class="fu">stat_halfeye</span>(<span class="at">adjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb15-18"><a href="#cb15-18"></a>               <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb15-19"><a href="#cb15-19"></a>               <span class="at">.width =</span> <span class="dv">0</span>,</span>
+<span id="cb15-20"><a href="#cb15-20"></a>               <span class="at">point_colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb15-21"><a href="#cb15-21"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb15-22"><a href="#cb15-22"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>,</span>
+<span id="cb15-23"><a href="#cb15-23"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>),</span>
+<span id="cb15-24"><a href="#cb15-24"></a>               <span class="at">outlier.shape =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb15-25"><a href="#cb15-25"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Density"</span>)</span>
+<span id="cb15-26"><a href="#cb15-26"></a></span>
+<span id="cb15-27"><a href="#cb15-27"></a>p3<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Property_data, </span>
+<span id="cb15-28"><a href="#cb15-28"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Dist. Water</span><span class="st">`</span>, </span>
+<span id="cb15-29"><a href="#cb15-29"></a>          )) <span class="sc">+</span></span>
+<span id="cb15-30"><a href="#cb15-30"></a>  <span class="fu">stat_halfeye</span>(<span class="at">adjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb15-31"><a href="#cb15-31"></a>               <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb15-32"><a href="#cb15-32"></a>               <span class="at">.width =</span> <span class="dv">0</span>,</span>
+<span id="cb15-33"><a href="#cb15-33"></a>               <span class="at">point_colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb15-34"><a href="#cb15-34"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb15-35"><a href="#cb15-35"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>,</span>
+<span id="cb15-36"><a href="#cb15-36"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>),</span>
+<span id="cb15-37"><a href="#cb15-37"></a>               <span class="at">outlier.shape =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb15-38"><a href="#cb15-38"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Density"</span>)</span>
+<span id="cb15-39"><a href="#cb15-39"></a></span>
+<span id="cb15-40"><a href="#cb15-40"></a>p4<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Property_data, </span>
+<span id="cb15-41"><a href="#cb15-41"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Green Index</span><span class="st">`</span>, </span>
+<span id="cb15-42"><a href="#cb15-42"></a>          )) <span class="sc">+</span></span>
+<span id="cb15-43"><a href="#cb15-43"></a>  <span class="fu">stat_halfeye</span>(<span class="at">adjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb15-44"><a href="#cb15-44"></a>               <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb15-45"><a href="#cb15-45"></a>               <span class="at">.width =</span> <span class="dv">0</span>,</span>
+<span id="cb15-46"><a href="#cb15-46"></a>               <span class="at">point_colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb15-47"><a href="#cb15-47"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb15-48"><a href="#cb15-48"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>,</span>
+<span id="cb15-49"><a href="#cb15-49"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>),</span>
+<span id="cb15-50"><a href="#cb15-50"></a>               <span class="at">outlier.shape =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb15-51"><a href="#cb15-51"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Density"</span>)</span>
+<span id="cb15-52"><a href="#cb15-52"></a>p5<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Property_data, </span>
+<span id="cb15-53"><a href="#cb15-53"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Dist. Subway</span><span class="st">`</span>, </span>
+<span id="cb15-54"><a href="#cb15-54"></a>          )) <span class="sc">+</span></span>
+<span id="cb15-55"><a href="#cb15-55"></a>  <span class="fu">stat_halfeye</span>(<span class="at">adjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb15-56"><a href="#cb15-56"></a>               <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb15-57"><a href="#cb15-57"></a>               <span class="at">.width =</span> <span class="dv">0</span>,</span>
+<span id="cb15-58"><a href="#cb15-58"></a>               <span class="at">point_colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb15-59"><a href="#cb15-59"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb15-60"><a href="#cb15-60"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>,</span>
+<span id="cb15-61"><a href="#cb15-61"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>),</span>
+<span id="cb15-62"><a href="#cb15-62"></a>               <span class="at">outlier.shape =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb15-63"><a href="#cb15-63"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Density"</span>)</span>
+<span id="cb15-64"><a href="#cb15-64"></a></span>
+<span id="cb15-65"><a href="#cb15-65"></a>p6<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Property_data, </span>
+<span id="cb15-66"><a href="#cb15-66"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">High School</span><span class="st">`</span>, </span>
+<span id="cb15-67"><a href="#cb15-67"></a>          )) <span class="sc">+</span></span>
+<span id="cb15-68"><a href="#cb15-68"></a>  <span class="fu">stat_halfeye</span>(<span class="at">adjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb15-69"><a href="#cb15-69"></a>               <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb15-70"><a href="#cb15-70"></a>               <span class="at">.width =</span> <span class="dv">0</span>,</span>
+<span id="cb15-71"><a href="#cb15-71"></a>               <span class="at">point_colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb15-72"><a href="#cb15-72"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb15-73"><a href="#cb15-73"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>,</span>
+<span id="cb15-74"><a href="#cb15-74"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>),</span>
+<span id="cb15-75"><a href="#cb15-75"></a>               <span class="at">outlier.shape =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb15-76"><a href="#cb15-76"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Density"</span>)</span>
+<span id="cb15-77"><a href="#cb15-77"></a>(p1<span class="sc">+</span>p2)<span class="sc">/</span>(p3<span class="sc">+</span>p4)<span class="sc">/</span>(p5<span class="sc">+</span>p6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the plots above, we can see that:</p>
+<ul>
+<li>Bus Stop: The distribution is right-skewed, with the majority of houses having fewer than 20 bus stops within a 400-meter radius. While most houses are located near at least one bus stop, which can enhance accessibility, a higher number of bus stops in proximity may also increase exposure to pollution from nearby roads. It would thus be interesting to see how the property prices varies with the number of bus stops in the vicinity later on through CDA.</li>
+<li>Dist. Green (Distance to Green Area): The distribution exhibits two peaks, one around 5 and another around 9.6. Therefore, it may be beneficial for further analysis to categorize this variable into two bins based on these two peaks.</li>
+<li>Dist. Water (Distance to nearest river, stream, pond, or seashore): The distribution is slightly left skewed.</li>
+<li>Green Index: The distribution resembles a normal distribution.</li>
+<li>Dist. Subway (Distance to Subway Station): This distribution has a concentration around 7.</li>
+<li>High School (Distance to High Schools): There are multiple peaks that resemble normal distributions. This suggests that the data might be a mixture of several normal distributions rather than a single one. This suggests that different areas may have distinct clusters of school density. Some possible explanations for this observation may include:
+<ul>
+<li>Properties in urban areas or dense cities may have a high density of nearby schools, forming peaks at higher values. In contrast, suburban or rural areas may have fewer nearby schools, creating peaks at lower values.</li>
+<li>Some regions might have policies that cluster multiple schools together to form education hubs.</li>
+<li>Areas with physical barriers (eg rivers, mountains) may have fewer schools nearby due to the land constraints.</li>
+</ul></li>
+</ul>
+<p>For further analysis, we can bin Bus Stop and Dist. Green. Given the large number of peaks for High School (&gt;10), categorizing this variable may oversimplify the data and obscure the underlying patterns, making it less beneficial for analysis.</p>
+<p>For Bus Stop, we will bin according to this definition: (1) 0-5 (2) 6-10 (3) 11-20 (4) 21-30 (5) &gt;30</p>
+<p>For Dist. Green, the 2 categories will be defined as: (1) &lt;8 (2) &gt;=8</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>Property_data<span class="sc">$</span>BusStop_binned <span class="ot">&lt;-</span><span class="fu">ifelse</span>(Property_data<span class="sc">$</span><span class="st">`</span><span class="at">Bus Stop</span><span class="st">`</span><span class="sc">&lt;=</span><span class="dv">5</span>,<span class="st">"0-5"</span>, <span class="fu">ifelse</span>(Property_data<span class="sc">$</span><span class="st">`</span><span class="at">Bus Stop</span><span class="st">`</span><span class="sc">&lt;=</span><span class="dv">10</span>, <span class="st">"6-10"</span>, <span class="fu">ifelse</span>(Property_data<span class="sc">$</span><span class="st">`</span><span class="at">Bus Stop</span><span class="st">`</span><span class="sc">&lt;=</span><span class="dv">20</span>, <span class="st">"11-20"</span>, <span class="fu">ifelse</span>(Property_data<span class="sc">$</span><span class="st">`</span><span class="at">Bus Stop</span><span class="st">`</span><span class="sc">&lt;=</span><span class="dv">30</span>, <span class="st">"21-30"</span>, <span class="st">"&gt;30"</span>))))</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a>Property_data<span class="sc">$</span>DistGreen_binned <span class="ot">&lt;-</span><span class="fu">ifelse</span>(Property_data<span class="sc">$</span><span class="st">`</span><span class="at">Dist. Green</span><span class="st">`</span><span class="sc">&lt;</span><span class="dv">8</span>, <span class="st">"&lt;8"</span>, <span class="st">"&gt;=8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="property-price-and-floor" class="level4">
+<h4 class="anchored" data-anchor-id="property-price-and-floor"><strong>Property Price and Floor</strong></h4>
+<p>The team hopes to enable users to visualise how the distributions of various continuous variables in the dataset may differ if grouped by categorical variables as well. Based on common knowledge and general trends in Singapore housing prices, house prices varies across floor ranges, with houses on higher floors typically fetching higher transaction prices compared to low floors. Therefore, we will examine the relationship between house price and floor range in Busan.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>Property_data<span class="sc">$</span>Floor_binned <span class="ot">&lt;-</span> <span class="fu">factor</span>(Property_data<span class="sc">$</span>Floor_binned, </span>
+<span id="cb17-2"><a href="#cb17-2"></a>                               <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Middle"</span>, <span class="st">"Middle-high"</span>, <span class="st">"High"</span>, <span class="st">"Top"</span>), <span class="at">ordered =</span> <span class="cn">TRUE</span> )</span>
+<span id="cb17-3"><a href="#cb17-3"></a></span>
+<span id="cb17-4"><a href="#cb17-4"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Property_data, </span>
+<span id="cb17-5"><a href="#cb17-5"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Floor_binned, </span>
+<span id="cb17-6"><a href="#cb17-6"></a>           <span class="at">y =</span> <span class="st">`</span><span class="at">Property Prices</span><span class="st">`</span>,</span>
+<span id="cb17-7"><a href="#cb17-7"></a>           <span class="at">fill=</span>Floor_binned</span>
+<span id="cb17-8"><a href="#cb17-8"></a>          )) <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>  <span class="fu">stat_halfeye</span>(<span class="at">adjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb17-10"><a href="#cb17-10"></a>               <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb17-11"><a href="#cb17-11"></a>               <span class="at">.width =</span> <span class="dv">0</span>,</span>
+<span id="cb17-12"><a href="#cb17-12"></a>               <span class="at">point_colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb17-13"><a href="#cb17-13"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb17-14"><a href="#cb17-14"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>,</span>
+<span id="cb17-15"><a href="#cb17-15"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>),</span>
+<span id="cb17-16"><a href="#cb17-16"></a>               <span class="at">outlier.shape =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb17-17"><a href="#cb17-17"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Floor"</span>,</span>
+<span id="cb17-18"><a href="#cb17-18"></a>       <span class="at">y =</span> <span class="st">"Property Price (won/m\u00B2)"</span>,</span>
+<span id="cb17-19"><a href="#cb17-19"></a>       <span class="at">title =</span><span class="st">"Property price increases with floor"</span>) <span class="sc">+</span>   </span>
+<span id="cb17-20"><a href="#cb17-20"></a>  <span class="fu">theme</span>(</span>
+<span id="cb17-21"><a href="#cb17-21"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb17-22"><a href="#cb17-22"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">angle=</span><span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb17-23"><a href="#cb17-23"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Pastel1"</span>)<span class="sc">+</span></span>
+<span id="cb17-24"><a href="#cb17-24"></a>    <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">"point"</span>, <span class="at">shape=</span><span class="dv">20</span>, <span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">"red4"</span>, <span class="at">fill=</span><span class="st">"red4"</span>)<span class="sc">+</span></span>
+<span id="cb17-25"><a href="#cb17-25"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>,<span class="at">hjust =</span> <span class="fl">0.5</span>)) </span>
+<span id="cb17-26"><a href="#cb17-26"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Based on the plot, we observe an increasing trend in the median prices of houses in low floors to the top floors. In addition, distribution of the house prices have some resemblance to normal distribution. The median house prices for high and top floors is significantly higher than the median house prices for low floors.</p>
+<p>However, confirmatory analysis will be required to examine if the prices are significantly different between the low floor, middle floor and middle-high floors, as the median prices are only slightly different based on the plot above. Thus this could be explored by creating a another chart for visualising statistical test results, as it may be too cluttered if we add in the significance of t-tests into the plot as well, as seen below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Property_data, </span>
+<span id="cb18-2"><a href="#cb18-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Floor_binned, </span>
+<span id="cb18-3"><a href="#cb18-3"></a>           <span class="at">y =</span> <span class="st">`</span><span class="at">Property Prices</span><span class="st">`</span>,</span>
+<span id="cb18-4"><a href="#cb18-4"></a>           <span class="at">fill=</span>Floor_binned</span>
+<span id="cb18-5"><a href="#cb18-5"></a>          )) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="fu">stat_halfeye</span>(<span class="at">adjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb18-7"><a href="#cb18-7"></a>               <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb18-8"><a href="#cb18-8"></a>               <span class="at">.width =</span> <span class="dv">0</span>,</span>
+<span id="cb18-9"><a href="#cb18-9"></a>               <span class="at">point_colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb18-10"><a href="#cb18-10"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>,</span>
+<span id="cb18-12"><a href="#cb18-12"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>),</span>
+<span id="cb18-13"><a href="#cb18-13"></a>               <span class="at">outlier.shape =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb18-14"><a href="#cb18-14"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Floor"</span>,</span>
+<span id="cb18-15"><a href="#cb18-15"></a>       <span class="at">y =</span> <span class="st">"Property Price (won/m\u00B2)"</span>,</span>
+<span id="cb18-16"><a href="#cb18-16"></a>       <span class="at">title =</span><span class="st">"Property price increases with floor"</span>) <span class="sc">+</span>   </span>
+<span id="cb18-17"><a href="#cb18-17"></a>  <span class="fu">theme</span>(</span>
+<span id="cb18-18"><a href="#cb18-18"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb18-19"><a href="#cb18-19"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">angle=</span><span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb18-20"><a href="#cb18-20"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Pastel1"</span>)<span class="sc">+</span></span>
+<span id="cb18-21"><a href="#cb18-21"></a>    <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">"point"</span>, <span class="at">shape=</span><span class="dv">20</span>, <span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">"red4"</span>, <span class="at">fill=</span><span class="st">"red4"</span>)<span class="sc">+</span></span>
+<span id="cb18-22"><a href="#cb18-22"></a>  <span class="fu">geom_pwc</span>(</span>
+<span id="cb18-23"><a href="#cb18-23"></a>  <span class="fu">aes</span>(<span class="at">group =</span> Floor_binned), <span class="at">tip.length =</span> <span class="dv">0</span>,</span>
+<span id="cb18-24"><a href="#cb18-24"></a>  <span class="at">method =</span> <span class="st">"t_test"</span>, <span class="at">label =</span> <span class="st">"p.adj.signif"</span></span>
+<span id="cb18-25"><a href="#cb18-25"></a>)<span class="sc">+</span></span>
+<span id="cb18-26"><a href="#cb18-26"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>,<span class="at">hjust =</span> <span class="fl">0.5</span>)) </span>
+<span id="cb18-27"><a href="#cb18-27"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For the shiny application, we can add in the following features to enhance interactivity:</p>
+<ul>
+<li>enable users to choose which variables they want to visualise. They can choose either 1 continuous variable only or 1 categorical and 1 continuous variable</li>
+<li>since plotly does not support <code>stathalfeye</code>, we cannot display summary statistics using interactive plot tool tip. Therefore we can place panels to indicate the summary statistics such as mean/median values for the continuous variable (Overall) instead and an additional table can be included at the side to display summary statistics grouped by the categorical variable</li>
+<li>enable users to filter the range for the continuous variable</li>
+</ul>
+</section>
+<section id="property-price-and-bus-stops" class="level4">
+<h4 class="anchored" data-anchor-id="property-price-and-bus-stops"><strong>Property Price and Bus Stops</strong></h4>
+<p>Next, we examine if property price varies with number of bus stops in the vicinity.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Property_data, </span>
+<span id="cb19-2"><a href="#cb19-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> BusStop_binned, </span>
+<span id="cb19-3"><a href="#cb19-3"></a>           <span class="at">y =</span> <span class="st">`</span><span class="at">Property Prices</span><span class="st">`</span>,</span>
+<span id="cb19-4"><a href="#cb19-4"></a>           <span class="at">fill=</span>BusStop_binned</span>
+<span id="cb19-5"><a href="#cb19-5"></a>          )) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>  <span class="fu">stat_halfeye</span>(<span class="at">adjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb19-7"><a href="#cb19-7"></a>               <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb19-8"><a href="#cb19-8"></a>               <span class="at">.width =</span> <span class="dv">0</span>,</span>
+<span id="cb19-9"><a href="#cb19-9"></a>               <span class="at">point_colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb19-10"><a href="#cb19-10"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>,</span>
+<span id="cb19-12"><a href="#cb19-12"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>),</span>
+<span id="cb19-13"><a href="#cb19-13"></a>               <span class="at">outlier.shape =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb19-14"><a href="#cb19-14"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"No. of Bus Stops Nearby"</span>,</span>
+<span id="cb19-15"><a href="#cb19-15"></a>       <span class="at">y =</span> <span class="st">"Property Price (won/m\u00B2)"</span>,</span>
+<span id="cb19-16"><a href="#cb19-16"></a>       <span class="at">title =</span><span class="st">"Property price does not vary with number of bus stops"</span>) <span class="sc">+</span>   </span>
+<span id="cb19-17"><a href="#cb19-17"></a>  <span class="fu">theme</span>(</span>
+<span id="cb19-18"><a href="#cb19-18"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb19-19"><a href="#cb19-19"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">angle=</span><span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb19-20"><a href="#cb19-20"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Pastel1"</span>)<span class="sc">+</span></span>
+<span id="cb19-21"><a href="#cb19-21"></a>    <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">"point"</span>, <span class="at">shape=</span><span class="dv">20</span>, <span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">"red4"</span>, <span class="at">fill=</span><span class="st">"red4"</span>)<span class="sc">+</span></span>
+<span id="cb19-22"><a href="#cb19-22"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>,<span class="at">hjust =</span> <span class="fl">0.5</span>)) </span>
+<span id="cb19-23"><a href="#cb19-23"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Contrary to expectations, there appears to be no significant difference in housing prices across the binned ranges of bus stops nearby based on the plot. However, this needs to be verified through CDA. This suggests that the proximity to bus stops may not be as influential on housing prices as initially assumed. This could be explained by the diminishing returns of accessibility: while a few bus stops may enhance convenience, the effect might level off or even become a liability as congestion or noise from busier areas increases. Further investigation into additional contextual factors or finer grained analysis might be needed to uncover the true relationship between public transportation access and housing prices.</p>
+</section>
+<section id="property-price-and-dist.-green" class="level4">
+<h4 class="anchored" data-anchor-id="property-price-and-dist.-green"><strong>Property Price and Dist. Green</strong></h4>
+<p>Next, we examine if property price varies with distance to greenery.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>p1<span class="ot">&lt;-</span><span class="fu">ggplot</span>(Property_data, </span>
+<span id="cb20-2"><a href="#cb20-2"></a>       <span class="fu">aes</span>(<span class="at">x =</span> DistGreen_binned, </span>
+<span id="cb20-3"><a href="#cb20-3"></a>           <span class="at">y =</span> <span class="st">`</span><span class="at">Property Prices</span><span class="st">`</span>,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>           <span class="at">fill=</span>DistGreen_binned</span>
+<span id="cb20-5"><a href="#cb20-5"></a>          )) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>  <span class="fu">stat_halfeye</span>(<span class="at">adjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb20-7"><a href="#cb20-7"></a>               <span class="at">justification =</span> <span class="sc">-</span><span class="fl">0.1</span>,</span>
+<span id="cb20-8"><a href="#cb20-8"></a>               <span class="at">.width =</span> <span class="dv">0</span>,</span>
+<span id="cb20-9"><a href="#cb20-9"></a>               <span class="at">point_colour =</span> <span class="cn">NA</span>,</span>
+<span id="cb20-10"><a href="#cb20-10"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.1</span>)) <span class="sc">+</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>,</span>
+<span id="cb20-12"><a href="#cb20-12"></a>               <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="fl">0.3</span>),</span>
+<span id="cb20-13"><a href="#cb20-13"></a>               <span class="at">outlier.shape =</span> <span class="cn">NA</span>)<span class="sc">+</span></span>
+<span id="cb20-14"><a href="#cb20-14"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Distance to Greenery"</span>,</span>
+<span id="cb20-15"><a href="#cb20-15"></a>       <span class="at">y =</span> <span class="st">"Property Price (won/m\u00B2)"</span>,</span>
+<span id="cb20-16"><a href="#cb20-16"></a>       <span class="at">title =</span><span class="st">"Property price does not vary significantly between DistGreen categories"</span>) <span class="sc">+</span>   </span>
+<span id="cb20-17"><a href="#cb20-17"></a>  <span class="fu">theme</span>(</span>
+<span id="cb20-18"><a href="#cb20-18"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb20-19"><a href="#cb20-19"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="dv">1</span>, <span class="at">angle=</span><span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb20-20"><a href="#cb20-20"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span> <span class="fu">scale_fill_brewer</span>(<span class="at">palette=</span><span class="st">"Pastel1"</span>)<span class="sc">+</span></span>
+<span id="cb20-21"><a href="#cb20-21"></a>    <span class="fu">stat_summary</span>(<span class="at">fun.y=</span>mean, <span class="at">geom=</span><span class="st">"point"</span>, <span class="at">shape=</span><span class="dv">20</span>, <span class="at">size=</span><span class="dv">2</span>, <span class="at">color=</span><span class="st">"red4"</span>, <span class="at">fill=</span><span class="st">"red4"</span>)<span class="sc">+</span></span>
+<span id="cb20-22"><a href="#cb20-22"></a>  <span class="fu">theme</span>(<span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>,<span class="at">hjust =</span> <span class="fl">0.5</span>)) </span>
+<span id="cb20-23"><a href="#cb20-23"></a>p1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There appears to be no significant difference in housing prices across the 2 categories of distance to greenery. This could be due to the following reasons:</p>
+<ul>
+<li>Value of proximity to green spaces might not be directly reflected in property prices. Greenery could be valued more highly in specific contexts (such as urban areas), while in other locations, it may not significantly affect housing prices. In addition, some properties may have limited access to greenery, but this could be compensated by other features, such as access to shopping centers, schools, and public transportation, which could reduce the impact of access to greenery on housing prices.</li>
+<li>There might be a loss of important nuances or subtleties in how different distances to greenery affect housing prices by binning into just 2 categories. A more granular categorization, or examing distance to greenery as a continuous variable, might capture more detailed patterns that are missed when using broad bins.</li>
+</ul>
+</section>
+<section id="parallel-coordinates-plot-with-histogram" class="level4">
+<h4 class="anchored" data-anchor-id="parallel-coordinates-plot-with-histogram"><strong>Parallel coordinates plot with histogram</strong></h4>
+<p>As we have many continuous variables in the dataset, it may be useful to explore the use of parallel coordinates plot with histogram.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>continuous_vars<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Property Prices"</span>, <span class="st">"Floor"</span>, <span class="st">"Parking"</span>, <span class="st">"Year"</span>, <span class="st">"Dist. Green"</span>, <span class="st">"Dist. Water"</span>, <span class="st">"Green Index"</span>, <span class="st">"Dist. Subway"</span>, <span class="st">"Bus Stop"</span>, <span class="st">"High School"</span> )</span>
+<span id="cb21-2"><a href="#cb21-2"></a>cont_df<span class="ot">&lt;-</span>Property_data[,continuous_vars]</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co"># Normalizing the data to [0, 1] range for each column in the data frame</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>df_normalized <span class="ot">&lt;-</span> <span class="fu">apply</span>(cont_df, <span class="dv">2</span>, <span class="cf">function</span>(x) (x <span class="sc">-</span> <span class="fu">min</span>(x)) <span class="sc">/</span> (<span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)))</span>
+<span id="cb21-5"><a href="#cb21-5"></a></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="co"># Convert the result back to a data frame </span></span>
+<span id="cb21-7"><a href="#cb21-7"></a>df_normalized <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(df_normalized)</span>
+<span id="cb21-8"><a href="#cb21-8"></a></span>
+<span id="cb21-9"><a href="#cb21-9"></a></span>
+<span id="cb21-10"><a href="#cb21-10"></a><span class="co">#histoVisibility &lt;- rep(TRUE, ncol(df_normalized[1:3]))</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="co">#parallelPlot(df_normalized[1:3],</span></span>
+<span id="cb21-12"><a href="#cb21-12"></a>             <span class="co">#rotateTitle = TRUE,</span></span>
+<span id="cb21-13"><a href="#cb21-13"></a>             <span class="co">#histoVisibility = histoVisibility)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The parallel coordinate plot with histogram allows for the simultaneous display of multiple continuous variables, with each variable represented by a vertical axis. Observations are depicted as lines that traverse across the axes By examining the path of each line across the axes, we can easily track how changes in one variable influence others and possibly identify patterns. However, if too many variables are selected, the interactive plot will hang and may be difficult to interpret.</p>
+<p>Hence, for our shiny app, we could set a minimum selection of 3 variables and up to 5 variables can be selected.</p>
+</section>
+</section>
+<section id="cda" class="level3">
+<h3 class="anchored" data-anchor-id="cda"><strong>5 CDA</strong></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>ggstatsplot<span class="sc">::</span><span class="fu">ggcorrmat</span>(</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="at">data =</span> Property_data, </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="at">cor.vars =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For the shiny application, we can add in the following features to enhance interactivity:</p>
+<ul>
+<li>enable users to select which continuous variables they wish to include in the correlation heatmap. Users have to select a minimum of 3 variables.</li>
+<li>enable users to choose the type of statistical approach: “parametric”, “nonparametric”, “robust” and “bayes”.</li>
+<li>enable users to select the significance level</li>
+<li>enable users to choose the p.adjust.method</li>
+</ul>
+<p>To visualise the relationship and see the p-value, we can incorporate the scatterplot diagram into the shiny application alongside the correlation heatmap.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggscatterstats</span>(</span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="at">data =</span> Property_data,</span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="at">x =</span> <span class="st">`</span><span class="at">Property Prices</span><span class="st">`</span>,</span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="at">y =</span> Floor,</span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="at">marginal =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb23-6"><a href="#cb23-6"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For the shiny application, we can add in the following features to enhance interactivity:</p>
+<ul>
+<li>enable users to select 2 continuous variables to visualise on the scatterplot</li>
+<li>enable users to choose the type of statistical approach: “parametric”, “nonparametric”, “robust” and “bayes”.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">ggbetweenstats</span>(</span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="at">data =</span> Property_data,</span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="at">x =</span> Floor_binned, </span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="at">y =</span> <span class="st">`</span><span class="at">Property Prices</span><span class="st">`</span>,</span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="at">type =</span> <span class="st">"p"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="at">pairwise.comparisons =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb24-8"><a href="#cb24-8"></a>  <span class="at">pairwise.display =</span> <span class="st">"s"</span>,</span>
+<span id="cb24-9"><a href="#cb24-9"></a>  <span class="at">p.adjust.method =</span> <span class="st">"fdr"</span>,</span>
+<span id="cb24-10"><a href="#cb24-10"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span></span>
+<span id="cb24-11"><a href="#cb24-11"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Take-home_Ex03_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For the shiny application, we can add in the following features to enhance interactivity:</p>
+<p>-enable users to choose 1 continuous variable and 1 categorical variable - enable users to choose the type of statistical approach: “parametric”, “nonparametric”, “robust” and “bayes”. - enable users to select which pairwise comparisons to display: (1) “significant” (abbreviation accepted: “s”), (2) “non-significant” (abbreviation accepted: “ns”), (3) “all”. - enable users to choose the p.adjust.method</p>
+
+
 </section>
 
 </main> <!-- /main -->
