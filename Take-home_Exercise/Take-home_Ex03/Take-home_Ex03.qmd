@@ -94,6 +94,8 @@ Property_data$Season <- ifelse(Property_data$Spring==1, "Spring", ifelse(Propert
 As we have many continuous variables in the dataset, it will be useful to bin some of the continuous variables into categorical variables for further analyses in our project. The distribution of the size of the houses in the dataset is shown in the histogram below. Majority of the houses have size of less than 100m^2^, with a relatively small number having size greater than 130m^2^.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 ggplot(Property_data, aes(Size)) +
   geom_histogram(boundary = 100,
                  color="black", 
@@ -115,6 +117,8 @@ Property_data$Size_binned <- ifelse(Property_data$Size<40, "<40", ifelse(Propert
 The distribution of the house floors are shown in the histogram below. Majority of the houses are below 40 floors.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 ggplot(Property_data, aes(Floor)) +
   geom_histogram(boundary = 100,
                  color="black", 
@@ -150,6 +154,8 @@ Firstly, we will generate boxplots and display smoothed histogram to visualise t
 
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 p1<-ggplot(Property_data, 
        aes(x = `Bus Stop`, 
           )) +
@@ -266,6 +272,8 @@ Property_data$DistGreen_binned <-ifelse(Property_data$`Dist. Green`<8, "<8", ">=
 The team hopes to enable users to visualise how the distributions of various continuous variables in the dataset may differ if grouped by categorical variables as well. Based on common knowledge and general trends in Singapore housing prices, house prices varies across floor ranges, with houses on higher floors typically fetching higher transaction prices compared to low floors. Therefore, we will examine the relationship between house price and floor range in Busan.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 Property_data$Floor_binned <- factor(Property_data$Floor_binned, 
                                levels = c("Low", "Middle", "Middle-high", "High", "Top"), ordered = TRUE )
 
@@ -298,6 +306,8 @@ Based on the plot, we observe an increasing trend in the median prices of houses
 However, confirmatory analysis will be required to examine if the prices are significantly different between the low floor, middle floor and middle-high floors, as the median prices are only slightly different based on the plot above. Thus this could be explored by creating a another chart for visualising statistical test results, as it may be too cluttered if we add in the significance of t-tests into the plot as well, as seen below:
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 p1<-ggplot(Property_data, 
        aes(x = Floor_binned, 
            y = `Property Prices`,
@@ -337,6 +347,8 @@ For the shiny application, we can add in the following features to enhance inter
 #### **Property Price and Bus Stops**
 Next, we examine if property price varies with number of bus stops in the vicinity.
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 p1<-ggplot(Property_data, 
        aes(x = BusStop_binned, 
            y = `Property Prices`,
@@ -366,6 +378,8 @@ Contrary to expectations, there appears to be no significant difference in housi
 #### **Property Price and Dist. Green**
 Next, we examine if property price varies with distance to greenery.
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 p1<-ggplot(Property_data, 
        aes(x = DistGreen_binned, 
            y = `Property Prices`,
@@ -399,6 +413,8 @@ There appears to be no significant difference in housing prices across the 2 cat
 As we have many continuous variables in the dataset, it may be useful to explore the use of parallel coordinates plot with histogram.
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 continuous_vars<-c("Property Prices", "Floor", "Parking", "Year", "Dist. Green", "Dist. Water", "Green Index", "Dist. Subway", "Bus Stop", "High School" )
 cont_df<-Property_data[,continuous_vars]
 # Normalizing the data to [0, 1] range for each column in the data frame
@@ -420,6 +436,8 @@ Hence, for our shiny app, we could set a minimum selection of 3 variables and up
 
 ### **5 CDA**
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 ggstatsplot::ggcorrmat(
   data = Property_data, 
   cor.vars = 1:4)
@@ -434,6 +452,8 @@ For the shiny application, we can add in the following features to enhance inter
 
 To visualise the relationship and see the p-value, we can incorporate the scatterplot diagram into the shiny application alongside the correlation heatmap.
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 ggscatterstats(
   data = Property_data,
   x = `Property Prices`,
@@ -448,6 +468,8 @@ For the shiny application, we can add in the following features to enhance inter
 
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
 ggbetweenstats(
   data = Property_data,
   x = Floor_binned, 
