@@ -408,10 +408,10 @@ df_normalized <- apply(cont_df, 2, function(x) (x - min(x)) / (max(x) - min(x)))
 df_normalized <- as.data.frame(df_normalized)
 
 
-#histoVisibility <- rep(TRUE, ncol(df_normalized[1:3]))
-#parallelPlot(df_normalized[1:3],
-             #rotateTitle = TRUE,
-             #histoVisibility = histoVisibility)
+histoVisibility <- rep(TRUE, ncol(df_normalized[1:3]))
+parallelPlot(df_normalized[1:3],
+             rotateTitle = TRUE,
+             histoVisibility = histoVisibility)
 ```
 The parallel coordinate plot with histogram allows for the simultaneous display of multiple continuous variables, with each variable represented by a vertical axis. Observations are depicted as lines that traverse across the axes By examining the path of each line across the axes, we can easily track how changes in one variable influence others and possibly identify patterns. However, if too many variables are selected, the interactive plot will hang and may be difficult to interpret.
 
