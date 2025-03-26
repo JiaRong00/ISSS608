@@ -404,10 +404,73 @@ p1<-ggplot(Property_data,
   theme(axis.title.y = element_text(angle = 90,hjust = 0.5)) 
 p1
 ```
-There appears to be no significant difference in housing prices across the 2 categories of distance to greenery. This could be due to the following reasons:
+The median property prices for houses closer to greenery is higher compared to houses further from greenery, as expected. However, the difference appears to be rather small based on the plot above and hence the significance of this difference needs to be verified through CDA. The small difference in housing prices could be due to the following reasons:
 
 -   Value of proximity to green spaces might not be directly reflected in property prices. Greenery could be valued more highly in specific contexts (such as urban areas), while in other locations, it may not significantly affect housing prices. In addition, some properties may have limited access to greenery, but this could be compensated by other features, such as access to shopping centers, schools, and public transportation, which could reduce the impact of access to greenery on housing prices.
 -   There might be a loss of important nuances or subtleties in how different distances to greenery affect housing prices by binning into just 2 categories. A more granular categorization, or examing distance to greenery as a continuous variable, might capture more detailed patterns that are missed when using broad bins.
+
+#### **Housing Prices and Season of Transaction**
+Next, we are interested to find out if the season could affect the housing transaction prices in Korea.
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+p1<-ggplot(Property_data, 
+       aes(x = Season, 
+           y = `Property Prices`,
+           fill=Season
+          )) +
+  stat_halfeye(adjust = 0.5,
+               justification = -0.1,
+               .width = 0,
+               point_colour = NA,
+                position = position_dodge(0.1)) +
+  geom_boxplot(width = .2,
+               position = position_dodge(0.3),
+               outlier.shape = NA)+
+  labs(x = "Season",
+       y = "Property Price (won/m\u00B2)",
+       title ="Housing Prices are significantly higher in fall") +   
+  theme(
+    legend.position = "right",
+    axis.title.y = element_text(hjust=1, angle=0)) +
+  coord_flip()+ scale_fill_brewer(palette="Pastel1")+
+    stat_summary(fun.y=mean, geom="point", shape=20, size=2, color="red4", fill="red4")+
+  theme(axis.title.y = element_text(angle = 90,hjust = 0.5)) 
+p1
+```
+Based on the plot, there is no difference in the median housing prices for transactions that occur during spring, summer and winter. However, median transaction prices during fall is significantly higher compared to other seasons. This could be due to fall season providing a more favorable weather for moving house, Unlike the hot and humid summer or the cold and snowy winter. In addition, families with schooling children may prefer to finalize home purchases in the fall so they can move in before the winter school break. Additionally, some universities and companies also have fall admissions or job relocations, contributing to higher housing demand. The combination of these factors may boost housing demand in fall, leading to upward pressure on prices.
+
+#### **Year of Construction & Housing Prices**
+Lastly, we investigate the relationship between year of construction and housing prices. 
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+p1<-ggplot(Property_data, 
+       aes(x = Year_binned, 
+           y = `Property Prices`,
+           fill=Year_binned
+          )) +
+  stat_halfeye(adjust = 0.5,
+               justification = -0.1,
+               .width = 0,
+               point_colour = NA,
+                position = position_dodge(0.1)) +
+  geom_boxplot(width = .2,
+               position = position_dodge(0.3),
+               outlier.shape = NA)+
+  labs(x = "Year of Construction",
+       y = "Property Price (won/m\u00B2)",
+       title ="Houses built in 1969-1979 have higher transaction values") +   
+  theme(
+    legend.position = "right",
+    axis.title.y = element_text(hjust=1, angle=0)) +
+  coord_flip()+ scale_fill_brewer(palette="Pastel1")+
+    stat_summary(fun.y=mean, geom="point", shape=20, size=2, color="red4", fill="red4")+
+  theme(axis.title.y = element_text(angle = 90,hjust = 0.5)) 
+p1
+```
+Interestingly, houses built between 1969 and 1979 have significantly higher transaction prices compared to those built in later decades, while properties from 1980 to 1999 have the lowest median prices. Homes constructed between 2000 and 2009, as well as those from 2010 to 2019, exhibit similar price levels. This trend could be attributed to several factors. Older properties from 1969-1979 may have heritage or architectural significance or hold potential for redevelopment, driving up their market prices as investors anticipate future gains. In contrast, houses built between 1980 and 1999 may fall into a transitional phase where they lack both the charm and of older homes and the modern amenities of newer ones, leading to lower demand and subsequently lower prices. Meanwhile, the homes built after 2000 may have similar features and hence exhibit little variation in housing prices.
 
 #### **Parallel coordinates plot with histogram**
 As we have many continuous variables in the dataset, it may be useful to explore the use of parallel coordinates plot with histogram.
@@ -435,14 +498,28 @@ Hence, for our shiny app, we could set a minimum selection of 3 variables and up
 
 
 ### **5 CDA**
+#### **5.1 Bivariate Analysis: Continuous Variables**
+Next,  our team is interested in finding out if there is any significant correlations between the continuous variables in the dataset, particularly between housing prices and the environmental factors.
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
+continuous_vars<-c("Property Prices", "Floor", "Parking", "Dist. Green", "Dist. Water", "Green Index", "Dist. Subway", "Bus Stop", "High School", "Year")
+cont_df<-Property_data[,continuous_vars]
 ggstatsplot::ggcorrmat(
-  data = Property_data, 
-  cor.vars = 1:4)
+  data = cont_df
+)
 
 ```
+Based on the correlation heatmap, housing prices do not exhibit a strong linear relationship with any of the environmental factors, as the absolute correlation values remain below 0.5. This suggests that variables such as distance to greenery, water bodies, subway stations, bus stops, and high schools have a more complex influence on property prices that cannot be captured solely through linear correlations. It is possible that these factors interact in a non-linear manner or are influenced by additional contextual variables such as neighborhood desirability or government policies. In contrast, variables like parking space availability, floor level, and construction year show stronger linear relationships with housing prices, indicating that these factors may play a more direct role in determining property values. Several potential reasons could explain this observation:
+
+1. Housing prices are influenced by combination of multiple factors. Environmental factors like proximity to greenery might not be the primary drivers of price variations.
+
+2. The correlation analysis measures only linear relationships between variables. If the relationship between housing prices and environmental factors is non-linear this may not be captured. For example, being too close to a bus stop or subway station could increase accessibility but also expose residents to noise and pollution, leading to a mixed effect on property values.
+
+3. Parking space, floor and construction year may have more direct impact on households. Parking space is a practical necessity, particularly in urban areas where parking is limited, making it a strong determinant of property value. Higher floors often offer better views, more privacy, and less noise, making them more desirable. Construction year reflects the age, design, and structural quality of a property. Newer buildings tend to have modern amenities and better infrastructure, making them more expensive.
+
+
 For the shiny application, we can add in the following features to enhance interactivity:
 
 -   enable users to select which continuous variables they wish to include in the correlation heatmap. Users have to select a minimum of 3 variables.
@@ -450,26 +527,36 @@ For the shiny application, we can add in the following features to enhance inter
 -   enable users to select the significance level
 -   enable users to choose the p.adjust.method
 
-To visualise the relationship and see the p-value, we can incorporate the scatterplot diagram into the shiny application alongside the correlation heatmap.
+To visualise the relationship and see the p-value, we can incorporate the scatterplot diagram into the shiny application alongside the correlation heatmap. The scatterplot may be useful for complementing the correlation heatmap, as we can possibly add additional panel control in the shiny app to enable users to filter the variable by another categorical variable, or by the range of a continuous variable. This may enable us to better visualise the complex relationships between housing prices and the various factors. Below, we show the scatterplot of property prices and green index.
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
 ggscatterstats(
   data = Property_data,
   x = `Property Prices`,
-  y = Floor,
+  y = `Green Index`,
   marginal = TRUE,
   )
 ```
+A weak negative correlation is observed between the green index and property prices, suggesting that homes in greener areas tend to be less expensive. This may be because urban areas, where prices are higher, are more developed and have fewer green spaces, while suburban and rural areas have more greenery but lower demand, fewer amenities, and greater distance from city centers. Additionally, green spaces are often far from commercial hubs and transport links, making accessibility a higher priority for buyers. Areas with high Green Index values may also be zoned for parks, nature reserves, or low-density housing, which generally have lower real estate values. In contrast, prime urban properties may have limited greenery but command higher prices due to location advantages. The weak correlation may also be due to the Green Index not capturing green space quality—for instance, large undeveloped areas far from key facilities may add little value, whereas well-maintained parks in prime locations can drive up housing prices.
+
 For the shiny application, we can add in the following features to enhance interactivity:
 
 -   enable users to select 2 continuous variables to visualise on the scatterplot
 -   enable users to choose the type of statistical approach: "parametric", "nonparametric", "robust" and "bayes".
+-   enable users to filter by either a categorical variable or a range of a continuous variable selected for the scatter plot, enabling the visualization of more complex relationships beyond simple linear trends. Grouping by a categorical variable can reveal additional insights.
 
+#### **5.2 Bivariate Analysis: Continuous & Categorical Variables**
+In this section, we will do confirmatory analyses for the findings observed for EDA (section 4).
+
+##### **Property Price and Floor**
 
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
+#| fig-height: 6
+#| fig-width: 6
 ggbetweenstats(
   data = Property_data,
   x = Floor_binned, 
@@ -483,11 +570,91 @@ ggbetweenstats(
 )
 ```
 
+
+
+
 For the shiny application, we can add in the following features to enhance interactivity:
 
 -enable users to choose 1 continuous variable and 1 categorical variable
 -   enable users to choose the type of statistical approach: "parametric", "nonparametric", "robust" and "bayes".
 -   enable users to select which pairwise comparisons to display: (1) "significant" (abbreviation accepted: "s"), (2) "non-significant" (abbreviation accepted: "ns"), (3) "all".
 -   enable users to choose the p.adjust.method
+-   may be usedul to show a table displaying all the statistic results
 
 
+##### **Property Price and Bus Stops**
+
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| fig-height: 6
+#| fig-width: 6
+ggbetweenstats(
+  data = Property_data,
+  x = BusStop_binned, 
+  y = `Property Prices`,
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
+
+##### **Property Price and Dist. Green**
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| fig-height: 6
+#| fig-width: 5
+ggbetweenstats(
+  data = Property_data,
+  x = DistGreen_binned, 
+  y = `Property Prices`,
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
+
+##### **Housing Prices and Season of Transaction**
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| fig-height: 6
+#| fig-width: 5
+ggbetweenstats(
+  data = Property_data,
+  x = Season, 
+  y = `Property Prices`,
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
+
+##### **Year of Construction & Housing Prices**
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| fig-height: 4
+#| fig-width: 4
+ggbetweenstats(
+  data = Property_data,
+  x = Year_binned, 
+  y = `Property Prices`,
+  type = "p",
+  mean.ci = TRUE, 
+  pairwise.comparisons = TRUE, 
+  pairwise.display = "s",
+  p.adjust.method = "fdr",
+  messages = FALSE
+)
+```
