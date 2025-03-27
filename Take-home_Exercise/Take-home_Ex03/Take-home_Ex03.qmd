@@ -87,6 +87,9 @@ The season of transaction is currently encoded as dummy variables in 3 separate 
 
 ```{r}
 Property_data$Season <- ifelse(Property_data$Spring==1, "Spring", ifelse(Property_data$Fall==1, "Fall", ifelse(Property_data$Winter==1, "Winter", "Summer")))
+
+Property_data$Season <- factor(Property_data$Season, 
+                               levels = c("Spring", "Summer", "Fall", "Winter"), ordered = TRUE )
 ```
 
 #### **3.2 Bin House Size**
@@ -264,6 +267,9 @@ For Dist. Green, the 2 categories will be defined as:
 ```{r}
 Property_data$BusStop_binned <-ifelse(Property_data$`Bus Stop`<=5,"0-5", ifelse(Property_data$`Bus Stop`<=10, "6-10", ifelse(Property_data$`Bus Stop`<=20, "11-20", ifelse(Property_data$`Bus Stop`<=30, "21-30", ">30"))))
 
+Property_data$BusStop_binned <- factor(Property_data$BusStop_binned, 
+                               levels = c("0-5", "6-10", "11-20", "21-30", ">30"), ordered = TRUE )
+
 Property_data$DistGreen_binned <-ifelse(Property_data$`Dist. Green`<8, "<8", ">=8")
 ```
 
@@ -373,7 +379,7 @@ p1<-ggplot(Property_data,
   theme(axis.title.y = element_text(angle = 90,hjust = 0.5)) 
 p1
 ```
-Contrary to expectations, there appears to be no significant difference in housing prices across the binned ranges of bus stops nearby based on the plot. However, this needs to be verified through CDA. This suggests that the proximity to bus stops may not be as influential on housing prices as initially assumed. This could be explained by the diminishing returns of accessibility: while a few bus stops may enhance convenience, the effect might level off or even become a liability as congestion or noise from busier areas increases. Further investigation into additional contextual factors or finer grained analysis might be needed to uncover the true relationship between public transportation access and housing prices.
+Contrary to expectations, there appears to be only slight differences in median housing prices across the binned ranges of bus stops nearby based on the plot. However, this needs to be verified through CDA. This suggests that the proximity to bus stops may not be as influential on housing prices as initially assumed. This could be explained by the diminishing returns of accessibility: while a few bus stops may enhance convenience, the effect might level off or even become a liability as congestion or noise from busier areas increases. Further investigation into additional contextual factors or finer grained analysis might be needed to uncover the true relationship between public transportation access and housing prices.
 
 #### **Property Price and Dist. Green**
 Next, we examine if property price varies with distance to greenery.
@@ -470,7 +476,7 @@ p1<-ggplot(Property_data,
   theme(axis.title.y = element_text(angle = 90,hjust = 0.5)) 
 p1
 ```
-Interestingly, houses built between 1969 and 1979 have significantly higher transaction prices compared to those built in later decades, while properties from 1980 to 1999 have the lowest median prices. Homes constructed between 2000 and 2009, as well as those from 2010 to 2019, exhibit similar price levels. This trend could be attributed to several factors. Older properties from 1969-1979 may have heritage or architectural significance or hold potential for redevelopment, driving up their market prices as investors anticipate future gains. In contrast, houses built between 1980 and 1999 may fall into a transitional phase where they lack both the charm and of older homes and the modern amenities of newer ones, leading to lower demand and subsequently lower prices. Meanwhile, the homes built after 2000 may have similar features and hence exhibit little variation in housing prices.
+Interestingly, houses built between 1969 and 1979 have significantly higher transaction prices compared to those built in later decades, while properties from 1980 to 1999 have the lowest median prices. Homes constructed between 2000 and 2009, as well as those from 2010 to 2019, exhibit relatively similar price levels. This trend could be attributed to several factors. Older properties from 1969-1979 may have heritage or architectural significance or hold potential for redevelopment, driving up their market prices as investors anticipate future gains. In contrast, houses built between 1980 and 1999 may fall into a transitional phase where they lack both the charm and of older homes and the modern amenities of newer ones, leading to lower demand and subsequently lower prices. Meanwhile, the homes built after 2000 may have similar features and hence exhibit little variation in housing prices.
 
 #### **Parallel coordinates plot with histogram**
 As we have many continuous variables in the dataset, it may be useful to explore the use of parallel coordinates plot with histogram.
@@ -548,15 +554,14 @@ For the shiny application, we can add in the following features to enhance inter
 -   enable users to filter by either a categorical variable or a range of a continuous variable selected for the scatter plot, enabling the visualization of more complex relationships beyond simple linear trends. Grouping by a categorical variable can reveal additional insights.
 
 #### **5.2 Bivariate Analysis: Continuous & Categorical Variables**
-In this section, we will do confirmatory analyses for the findings observed for EDA (section 4).
+In this section, we will do confirmatory analyses for the findings observed in EDA (section 4).
 
 ##### **Property Price and Floor**
-
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-#| fig-height: 6
-#| fig-width: 6
+#| fig-height: 7
+#| fig-width: 8
 ggbetweenstats(
   data = Property_data,
   x = Floor_binned, 
@@ -569,9 +574,7 @@ ggbetweenstats(
   messages = FALSE
 )
 ```
-
-
-
+Based on the results, we can see that there is indeed an increasing trend of median house price, from low to top floors.
 
 For the shiny application, we can add in the following features to enhance interactivity:
 
@@ -583,12 +586,11 @@ For the shiny application, we can add in the following features to enhance inter
 
 
 ##### **Property Price and Bus Stops**
-
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-#| fig-height: 6
-#| fig-width: 6
+#| fig-height: 7
+#| fig-width: 8
 ggbetweenstats(
   data = Property_data,
   x = BusStop_binned, 
@@ -602,12 +604,14 @@ ggbetweenstats(
 )
 ```
 
+The plot shows that houses with 6-10 bus stops nearby have consistently higher prices compared to those with 0-5 bus stops or more than 10 bus stops. This suggests that having 6-10 bus stops strikes an optimal balance between accessibility and convenience, making these properties more desirable. In contrast, fewer than 6 bus stops may indicate limited public transport options, while more than 10 bus stops might not add further value—potentially due to increased noise, congestion, or diminishing returns in accessibility.
+
 ##### **Property Price and Dist. Green**
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-#| fig-height: 6
-#| fig-width: 5
+#| fig-height: 4
+#| fig-width: 6
 ggbetweenstats(
   data = Property_data,
   x = DistGreen_binned, 
@@ -621,12 +625,14 @@ ggbetweenstats(
 )
 ```
 
+Property prices are indeed significantly higher for houses nearer to greenery.
+
 ##### **Housing Prices and Season of Transaction**
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
 #| fig-height: 6
-#| fig-width: 5
+#| fig-width: 8
 ggbetweenstats(
   data = Property_data,
   x = Season, 
@@ -640,12 +646,15 @@ ggbetweenstats(
 )
 ```
 
+Apart from fall having higher transaction prices compared to all other seasons, the statistic test also revealed that spring and summer have lower transaction prices than winter, but there are no significant differences in transaction prices in spring and summer. 
+
+
 ##### **Year of Construction & Housing Prices**
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
-#| fig-height: 4
-#| fig-width: 4
+#| fig-height: 6
+#| fig-width: 7
 ggbetweenstats(
   data = Property_data,
   x = Year_binned, 
@@ -658,3 +667,4 @@ ggbetweenstats(
   messages = FALSE
 )
 ```
+Houses built in 1980-1999, 2000-2009 and 2010-2019 folow trend of increasing house prices for newer houses. However, house built in 1969-1979 is significant more valued compared to the newer houses.
